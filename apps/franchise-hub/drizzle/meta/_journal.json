@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1787476230454,
+      "tag": "0000_normal_darkhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1787476459417,
+      "tag": "0001_salty_firebird",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1787476534657,
+      "tag": "0002_brave_loki",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1787476720848,
+      "tag": "0003_fuzzy_killraven",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1787477844691,
+      "tag": "0004_amused_avengers",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1787478393794,
+      "tag": "0005_absurd_pride",
+      "breakpoints": true
+    }
+  ]
+}
