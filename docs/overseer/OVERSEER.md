@@ -153,3 +153,9 @@ The source integration is candid about its boundary: it imports an authenticated
 PR #6 is a substantial, well-bounded **source-integration** proposal with meaningful safeguards and focused test coverage. It should not be characterised as a complete franchise-commerce platform or as independently revalidated production readiness. The three findings above should be recorded as merge/release follow-ups; the migration item is a separate deployment gate, not a request to apply migrations during source integration.
 
 > This follow-up is a static code and documentation review. It is not a security test, runtime validation, financial audit, legal review, or production approval.
+
+## Remediation planning record — 2026-08-23T13:15:31Z
+
+A detailed, planning-only remediation plan was prepared for `OVERSEER-20260823-004`, `OVERSEER-20260823-005`, and `OVERSEER-20260823-006`. The plan preserves the required sequence: first establish the canonical source decision for PR #6; then complete bounded terminology/provenance and review/audit-transaction work; and finally conduct an owner-approved, target-specific database-migration preflight and non-production rehearsal.
+
+The plan does not authorize code changes, a merge, migration generation or execution, database access, production action, deployment, commercial-policy changes, credentials, OAuth changes, or a change to the configurable royalty model. These remain owner-gated. The detailed plan is retained with this review task and should be used as the implementation brief only after the stated gates are satisfied.
