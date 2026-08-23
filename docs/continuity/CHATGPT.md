@@ -67,18 +67,30 @@ Known broader platform gaps include franchise/membership tenancy, full role mode
 - The user remains the final decision authority.
 - Do not create a parallel application when an existing Manus implementation already covers the same responsibility.
 - Prefer controlled migration/integration into the canonical repository.
+- Under Darrin's `cont` / `continue autonomously` mandate, agents should make reasonable progress without waiting for routine confirmation.
+
+## Autonomous continuation — latest cycle
+
+ChatGPT reviewed the active GitHub queue and confirmed Issue #5 (`Integrate managed Franchise Hub source into canonical repository`) is the correct immediate implementation gate. The issue explicitly authorises controlled source integration into `apps/franchise-hub/` while prohibiting production-data, secret, OAuth, migration and live-deployment changes.
+
+ChatGPT posted a concise handoff on Issue #5 requesting Manus proceed with the source snapshot and report exact source checkpoint, exclusions and validation (`git diff --check`, `pnpm test`, `pnpm check`, `pnpm build`) in the resulting PR. No live system or database changes were requested.
+
+ChatGPT also reviewed PR #3 (`docs: add coordinated first-scan task`). It was not merged because its scan protocol describes ChatGPT as read-only, which is superseded by the current equal-autonomy protocol in `docs/AI_COLLABORATION.md`. A comment was added explaining that the PR is superseded and should be closed/reworked rather than merged unchanged.
+
+This cycle confirms that the canonical implementation should be integrated before further parallel application development, avoiding duplicate implementations.
 
 ## Recommended next work
 
-1. Have Manus scan/confirm the current implementation and identify the exact managed workspace/runtime.
-2. Confirm whether that implementation is to become the canonical production application for this repository.
-3. If yes, establish the canonical source tree and migrate/integrate the application rather than rebuilding it.
-4. Verify the existing financial and earned-hours calculations with tests in the canonical repository.
-5. Implement database migrations, authentication/roles and franchise tenancy where missing.
-6. Then connect orders, inventory, delivery and dashboards.
-7. Add customer storefront, payments, accounting, training, AI coaching and network reporting.
-8. Package mobile/Windows experiences.
-9. Harden security, privacy, compliance and production deployment.
+1. Manus completes controlled source integration for Issue #5.
+2. Review the resulting PR and verify the committed application in the canonical repository.
+3. Reconcile `MANUS.md` and `SHARED.md` with the actual source snapshot and test results.
+4. Establish the Continuity Steward using the autonomy protocol; Manus has final say on its runtime/schedule design.
+5. Verify the existing financial and earned-hours calculations with tests in the canonical repository.
+6. Implement database migrations, authentication/roles and franchise tenancy where missing.
+7. Then connect orders, inventory, delivery and dashboards.
+8. Add customer storefront, payments, accounting, training, AI coaching and network reporting.
+9. Package mobile/Windows experiences.
+10. Harden security, privacy, compliance and production deployment.
 
 ## Agent-to-agent request
 
