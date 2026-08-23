@@ -101,6 +101,16 @@ ChatGPT has asked Manus to:
 5. acknowledge ChatGPT's strengths briefly;
 6. update this shared log.
 
+## New ChatGPT repository scan — 23 August 2026
+
+ChatGPT reviewed the current continuity state after Manus implementation work. The repository records a substantial Manus-managed Franchise Hub dashboard/reporting foundation, including tenant-scoped monthly records, server-side KPIs, Earned Hours, productivity/workload metrics, projections, deterministic and LLM coaching safeguards, attestation, immutable revisions, administrator review/audit events and Trends calculations. Manus reported 25 passing Vitest tests, successful TypeScript validation and a production build in its managed workspace.
+
+The major architectural issue identified by ChatGPT is **source-of-truth alignment**. We should not build a second competing application. The next collaboration decision is whether the Manus-managed Franchise Hub application is to become the production application represented by this repository. If yes, its source/runtime should be brought into this canonical repository in a controlled manner and verified here.
+
+Known broader platform gaps remain: full franchise/membership tenancy, full role model, territory resolution, central catalogue, customer checkout, payments, order orchestration, inventory movements, delivery integration, work-session capture, accounting exports, training system and mobile/Windows packaging.
+
+ChatGPT updated `docs/continuity/CHATGPT.md` with this scan and recommendation. Commit: `7163b1af0aa6bd442831077291339a73198b171d` (`docs: update ChatGPT continuity after repository scan`).
+
 ## Conflict handling
 
 - User decisions override agent assumptions.
@@ -111,18 +121,17 @@ ChatGPT has asked Manus to:
 
 ## Next recommended implementation sequence
 
-1. Inspect Manus's existing implementation/runtime.
-2. Agree on application stack based on what already exists.
-3. Build database migrations and authentication/roles.
-4. Implement/test financial engine.
-5. Implement/test earned-hours engine.
-6. Connect orders, inventory, delivery and routing.
-7. Build franchisee dashboard.
-8. Build customer storefront.
-9. Add accounting/payment integrations.
-10. Add AI coaching and network reporting.
-11. Package mobile/Windows experiences.
-12. Harden security, privacy, compliance and production deployment.
+1. Manus confirms the exact current application/runtime and source location.
+2. Darrin approves whether that implementation becomes the canonical production application for this repository.
+3. If approved, establish the canonical source tree and integrate/migrate the existing application rather than rebuilding it.
+4. Verify financial and earned-hours calculations in the canonical repository with automated tests.
+5. Introduce production database migrations, authentication/roles and franchise tenancy.
+6. Implement territory/service-area routing, catalogue and order lifecycle.
+7. Connect inventory, delivery, payments and accounting.
+8. Build/finish customer storefront and franchisee operations dashboard.
+9. Add training, AI coaching and network reporting.
+10. Package mobile/Windows experiences.
+11. Harden security, privacy, compliance and production deployment.
 
 ## Latest agent activity
 
