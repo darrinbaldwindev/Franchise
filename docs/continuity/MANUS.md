@@ -26,6 +26,12 @@ The following has been directly implemented and verified in that workspace:
 
 The latest full local validation before this continuity update recorded 25 passing Vitest tests, a passing TypeScript check, and a successful production build. The managed application has been checkpointed and published through its managed deployment workflow. One owner-confirmed record approval has also been verified through the protected review service and retained audit event; a browser-authenticated production decision-flow check remains outstanding.
 
+## Canonical source integration
+
+Darrin approved controlled canonical source integration on 23 August 2026. Manus opened GitHub issue #5 and pull request #6 (`agent/manus/source-integration`) to stage the managed application source under `apps/franchise-hub/`, while preserving the repository’s root governance and design documentation.
+
+The snapshot records managed checkpoint `69aeb7ef` and excludes credentials, environment files, OAuth/session state, production data, local logs, dependencies, build output, deployment artifacts, and all live deployment/configuration changes. Canonical validation completed successfully from the staged application source: `git diff --check`; `pnpm test` with 12 test files and 25 tests passed; `pnpm check` without TypeScript errors; and `pnpm build` succeeded. The known Recharts bundle-size warning remains non-blocking. The pull request is open for owner-controlled review and merge; `main` is not yet changed by this integration.
+
 ## Governance foundation verified in this repository
 
 - The repository default branch is `main`. Before the governance branch was created, it contained documentation and continuity material but no GitHub Actions workflow or application runtime manifest.
@@ -43,7 +49,7 @@ Commercial assumptions such as the 3%/6% royalty threshold and the 20% reserve /
 
 ## Recommended next step
 
-Merge pull request #2 after its conflict resolution is verified. Then manually apply its PR review/check gate until platform branch protection becomes available. Complete the real-data acceptance check when the franchisee saves a second distinct month, then plan canonical platform expansion deliberately: franchise/membership tenancy and roles first, followed by territory routing, orders, inventory, work sessions, and source-integrated financial reporting. Do not present the current dashboard foundation as the entire ecommerce/delivery platform.
+Review pull request #6 against issue #5 and merge only through the owner-controlled gate. Once merged, make the canonical application source the basis for future verification and bounded implementation issues. Continue to apply the manual PR review/check gate until platform branch protection becomes available. Franchisee-specific real-data acceptance remains separately paused at the owner’s request. Do not present the dashboard foundation as the complete ecommerce/delivery platform.
 
 ## Collaboration acknowledgement
 
