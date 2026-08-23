@@ -1,0 +1,59 @@
+name: Pull request verification
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  governance:
+    name: Governance and change hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify required governance files
+        run: |
+          test -f AGENTS.md
+          test -f docs/AI_COLLABORATION.md
+          test -f docs/continuity/SHARED.md
+          test -f docs/governance/TASK_BOARD.md
+          test -f docs/governance/CHATGPT_REPOSITORY_INSTRUCTIONS.md
+          test -f .github/PULL_REQUEST_TEMPLATE.md
+
+      - name: Check whitespace errors
+        run: git diff --check "origin/${{ github.base_ref }}...HEAD"
+
+      - name: Verify issue linkage for non-governance changes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            const governanceOnly = files.every(({ filename }) =>
+              filename === "AGENTS.md" ||
+              filename.startsWith("docs/") ||
+              filename.startsWith(".github/")
+            );
+            const body = context.payload.pull_request.body || "";
+            const hasIssueLink = /(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#\d+/i.test(body);
+            if (!governanceOnly && !hasIssueLink) {
+              core.setFailed("Non-governance pull requests must include a closing issue reference, for example: Closes #123.");
+            }
+
+      - name: Report baseline limitation
+        run: |
+          echo "The repository currently has no application runtime manifest."
+          echo "When a runtime is introduced, extend this workflow with its exact format, lint, test, type-check, build, and migration checks."
