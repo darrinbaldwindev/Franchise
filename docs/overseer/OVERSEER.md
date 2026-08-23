@@ -99,3 +99,57 @@ Accessible repositories for this scan were `darrinbaldwindev/Franchise`, `darrin
 A lightweight read-only change scan should occur daily, with a deeper cross-repository review weekly and an additional scan after major merges, architecture changes, or explicit owner requests. No background schedule is configured by this record.
 
 > This review log is evidence-based governance documentation. It is not proof of runtime, security, production, legal, financial, or release readiness.
+
+## Follow-up review — 2026-08-23T13:07:55Z
+
+### Scope and limits
+
+A detailed **static** review was completed for open pull request [#6](https://github.com/darrinbaldwindev/Franchise/pull/6), head `75406d2869b582eb200597b9d2fe31e940a3b3fe`. The review covered its change inventory, application manifest, authentication and tRPC access controls, data schema and migrations, KPI calculations, review/audit logic, source-integration and readiness records, and focused tests. No application code, migration, build, test, deployment, database, production record, or external model call was executed by Overseer.
+
+The PR is open and non-draft, with 160 changed files, 27,328 additions, and 6 deletions. At review time, it had no review decision, reviews, or comments. Its GitHub merge state was `UNKNOWN`; independent check-run retrieval was unavailable to this reviewer because the attached GitHub integration returned an access error. The PR body reports successful `git diff --check`, 25 passing Vitest tests, TypeScript validation, and a production build. Those reported command results were not independently re-executed in this review.
+
+### Review strengths observed
+
+The source integration is candid about its boundary: it imports an authenticated tenant-scoped dashboard/reporting and review foundation rather than claiming delivery-commerce completeness. The server derives KPI calculations from stored records, uses authenticated user IDs for franchisee data paths, requires an attestation before monthly saves, restricts the franchisor queue and decision procedures to administrators, and retains separate revision and reviewer-event records. The OAuth callback contains a state-nonce comparison before exchanging a code, and session cookies are configured as HTTP-only. The coaching path reads the authenticated user’s saved snapshot server-side and supplies an explicit non-financial-advice boundary plus a deterministic fallback.
+
+### OVERSEER-20260823-004
+
+- **Severity:** MEDIUM
+- **Area:** data / product
+- **Finding:** The implementation uses “verified” for franchisee-attested saved inputs and calculated metrics before a franchisor review decision has been recorded.
+- **Evidence:** `apps/franchise-hub/docs/PRODUCTION_READINESS.md` says that the current dashboard accepts franchisee-entered inputs and that “verified” in the UI should be reserved until a future source integration, reconciliation, or authorised review confirms the figures. Conversely, `apps/franchise-hub/server/db.ts` names every saved record’s inputs `verifiedInputs`; `apps/franchise-hub/server/routers.ts` tells users to save “verified monthly figures” and supplies a `verifiedContext` to the coaching path; `apps/franchise-hub/server/franchiseMetrics.ts` describes current results as verified. The record’s persisted review status remains `awaiting-review` after an attested save.
+- **Why it matters:** Attestation, deterministic calculation, and administrator approval are different provenance states. Conflating them can overstate the reliability of manually entered financial-operating inputs and conflicts with the repository’s documented review model.
+- **Recommendation:** Use separate terms consistently: for example, **franchisee-attested** for saved inputs, **server-calculated** for derived metrics, and **review-approved** only after the administrator decision. Add tests that assert no unapproved record is labelled verified in the API payload, deterministic coaching, or user-facing copy.
+- **Suggested owner:** project agent
+- **Status:** OPEN
+- **Confidence:** HIGH
+
+### OVERSEER-20260823-005
+
+- **Severity:** MEDIUM
+- **Area:** operations / audit
+- **Finding:** The protected review-decision path can update the current review state and append the reviewer audit event in two separate database operations without an explicit review-state guard or transaction.
+- **Evidence:** `apps/franchise-hub/server/db.ts` loads a record by ID, checks only its attestation, then updates `monthlyBusinessRecords` followed by a separate insert into `monthlyBusinessRecordReviewEvents`. It does not constrain the update to `reviewStatus = awaiting-review`, and it does not wrap the update and audit insert in a transaction. The queue itself filters only awaiting-review records, but the administrator decision procedure accepts a record ID directly.
+- **Why it matters:** An authorised repeat or concurrent decision could overwrite the current record summary and append additional events. A persistence failure after the state update could leave the summary and immutable-event trail inconsistent.
+- **Recommendation:** Before commercial reliance on review status, make the state transition conditional on the expected current state and perform the state update plus audit-event insert transactionally. Return an explicit conflict when the record was already decided or revised, and add tests for repeated decisions, concurrent attempts, and audit-insert failure semantics.
+- **Suggested owner:** project agent
+- **Status:** OPEN
+- **Confidence:** HIGH
+
+### OVERSEER-20260823-006
+
+- **Severity:** MEDIUM
+- **Area:** operations
+- **Finding:** The staged migration sequence includes additive `NOT NULL` monthly-record fields without a migration-specific default or backfill, but no target-database compatibility evidence accompanies the source import.
+- **Evidence:** `apps/franchise-hub/drizzle/0003_fuzzy_killraven.sql` adds `operatingTarget` and `wageBenchmark` as `NOT NULL`; later migrations add audit and review metadata. PR #6 deliberately excludes database-migration execution and target-database change. `apps/franchise-hub/docs/PRODUCTION_READINESS.md` says migrations must be applied before publishing.
+- **Why it matters:** The operational outcome depends on the target schema, existing row population, SQL-mode behavior, and migration history. Applying imported migrations without a target-specific plan could fail or create values that do not represent approved business data.
+- **Recommendation:** Treat migration execution as a separate owner-approved deployment gate. Establish the target database revision, take an approved backup/checkpoint, rehearse the migration against a representative non-production copy, define any required backfill, and verify rollback/recovery semantics before applying changes.
+- **Suggested owner:** Darrin / Manus Main
+- **Status:** NEEDS DECISION
+- **Confidence:** MEDIUM
+
+### Review conclusion
+
+PR #6 is a substantial, well-bounded **source-integration** proposal with meaningful safeguards and focused test coverage. It should not be characterised as a complete franchise-commerce platform or as independently revalidated production readiness. The three findings above should be recorded as merge/release follow-ups; the migration item is a separate deployment gate, not a request to apply migrations during source integration.
+
+> This follow-up is a static code and documentation review. It is not a security test, runtime validation, financial audit, legal review, or production approval.
