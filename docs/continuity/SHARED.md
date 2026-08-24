@@ -145,3 +145,21 @@ ChatGPT updated `docs/continuity/CHATGPT.md` with this scan and recommendation. 
 - Pull request #2’s verification workflow passed. The workflow is intentionally limited to governance-file presence, whitespace validation, and issue linkage for non-governance PRs until a canonical runtime and its exact checks are committed to this repository.
 - `main` branch protection is unavailable on the current private-repository plan: GitHub returned HTTP 403 that protection requires GitHub Pro or a public repository. Until the owner changes plan or visibility, the owner and Manus Main must manually enforce the documented PR-review and successful-check gate.
 - Open governance actions: complete merge of pull request #2, choose whether enforced platform protection is worth a plan/visibility change, and create an owner-approved runtime/stack-selection issue before new application implementation.
+
+## Continuity Steward reconciliation — 24 August 2026
+
+**Classification:** `AMBER — RECONCILIATION REQUIRED`
+
+This appended record reconciles factual repository state observed on 24 August 2026. It does not alter prior agent history, commercial assumptions, owner decisions, production configuration, deployment state, database state, OAuth configuration, or credentials.
+
+### Verified repository and handoff state
+
+- Pull request #2 (`chore: add multi-agent governance foundation`) is merged. The earlier statement in this log that its merge remains an open governance action is therefore superseded by this dated record; the manual PR-review/check gate remains necessary while branch protection is unavailable.
+- Pull request #6 (`feat: integrate managed Franchise Hub source`) is open and mergeable on `agent/manus/source-integration` at commit `75406d2869b582eb200597b9d2fe31e940a3b3fe`. It stages the managed Franchise Hub source under `apps/franchise-hub/` and remains the owner-approved source-integration path for Issue #5.
+- An independent review confirmed that the staged snapshot does not include tracked `.env`, `node_modules`, build-output, database, or log paths. The review did not alter the source-integration branch, deployment, database, OAuth configuration, or secrets.
+- Independent reproduction of the Issue #5 validation remains blocked before `pnpm test`, `pnpm check`, and `pnpm build`: frozen dependency installation reports a package-manager/lockfile configuration mismatch, and a disposable non-frozen installation reports that `patches/wouter@3.7.1.patch` fails its hunk-header integrity check. The exact evidence is recorded on pull request #6.
+- The canonical `docs/DOMAIN_MODEL.md` and Issue #12 establish the required next architecture boundary: franchise/membership tenancy and server-side franchise authorization must replace using `user_id` as a substitute for franchise tenancy before inventory, order, or expanded financial implementation proceeds. Issues #9, #10, and #11 remain blocked by that prerequisite.
+
+### Active next action
+
+The responsible source-integration owner must correct or re-export the package-manager configuration and Wouter patch on pull request #6, then rerun `git diff --check`, `pnpm test`, `pnpm check`, and `pnpm build` from the canonical snapshot. Following reproducible validation and review/merge of that source snapshot, Issue #12 is the next architecture gate. No production migration, production-data action, secret transfer, OAuth change, or deployment action is authorized by this continuity entry.
