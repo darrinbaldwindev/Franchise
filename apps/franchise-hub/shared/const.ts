@@ -35,3 +35,26 @@ export const decodeOAuthState = (state: string): OAuthState => {
   }
   return { redirectUri: decoded };
 };
+
+export const hasMatchingOAuthNonce = (
+  state: string,
+  expectedNonce: string | undefined
+): boolean => {
+  return inspectOAuthNonceState(state, expectedNonce) === "valid";
+};
+
+export type OAuthNonceState =
+  | "valid"
+  | "missing-state-nonce"
+  | "missing-browser-cookie"
+  | "mismatched-nonce";
+
+export const inspectOAuthNonceState = (
+  state: string,
+  expectedNonce: string | undefined
+): OAuthNonceState => {
+  const { nonce } = decodeOAuthState(state);
+  if (!nonce) return "missing-state-nonce";
+  if (!expectedNonce) return "missing-browser-cookie";
+  return nonce === expectedNonce ? "valid" : "mismatched-nonce";
+};

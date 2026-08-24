@@ -38,6 +38,12 @@
 - [x] Add automated tests for historical calculation integrity and tenant-isolated report access.
 - [x] Re-run test, type-check, production build, and desktop/mobile preview validation for reporting.
 - [ ] Confirm the populated Trends charts and month-over-month indicators with at least two authorised saved monthly records when real operating data is available.
+- [x] Run the owner-resumed, non-mutating real-data acceptance validation against the currently saved franchisee record state; user ID 1 has three approved zero-activity months and the review queue has no awaiting-review records, while the other franchisee account still has one month.
+- [x] Perform the owner-authorised autonomous review of all available non-mutating real-data acceptance evidence and document remaining dependencies: only zero-activity multi-month history is available, and no distinct user-role franchisee record is awaiting review.
+- [x] Investigate the observed role and Review queue discrepancy; the displayed records belonged to the administrator account, while `adminProcedure` continued to enforce server-side reviewer access.
+- [x] Exclude administrator-owned records from the server-side franchisor review queue and add regression coverage for the franchisee-only boundary.
+- [ ] Complete an additional owner-authorised non-data-dependent safeguards review while preserving the two real-data acceptance gates.
+- [ ] Synchronise the current managed OAuth and franchisee-only review-queue security fixes into canonical pull request #6 under its existing owner-approved source-integration scope.
 - [x] Improve the one-month zero-activity Trends state so charts use plain-language guidance instead of unhelpful zero-value axes.
 - [x] Add a clear first-month action that takes franchisees straight to the simple monthly-entry workflow when they are ready to save another month.
 - [x] Replace technical dashboard terminology with plain-language labels and short explanations at decision points.
@@ -50,4 +56,9 @@
 - [x] Review the canonical GitHub repository’s collaboration guidance and reconcile approved requirements with this workspace; continuity updates pushed in commits `1277c0a` and `6421971`.
 - [x] Rescan the canonical GitHub repository for new collaboration guidance and reconcile any changes with this workspace; future canonical changes require an issue, agent branch, pull request, passing checks, and owner-controlled merge rather than direct edits to `main`.
 - [x] Perform a fresh read-only canonical-repository scan; franchisee-account validation remains paused until the owner explicitly resumes it. The scan found an open governance PR (#3), a continuity-steward issue (#4), and no canonical application runtime yet.
-- [ ] Integrate the managed Franchise Hub source into the canonical GitHub repository through an owner-approved, issue-scoped branch and pull request without changing the live managed deployment.
+- [x] Integrate the managed Franchise Hub source into the canonical GitHub repository through an owner-approved, issue-scoped branch and pull request without changing the live managed deployment; issue #5 and PR #6 now hold the reviewable source snapshot and verification evidence.
+- [x] Add a secure, plain-language recovery page for `invalid oauth state` callbacks while preserving strict nonce matching and preventing any code exchange or data change.
+- [x] Verify a real supported-browser OAuth sign-in completes end to end after the recovery update; the owner confirmed dashboard access from a normal browser, while cookie-blocking contexts remain explicitly unsupported.
+- [x] Detect blocked login-start OAuth nonce-cookie persistence before redirect, preserve strict callback nonce validation, and guide the user to a supported cookie-enabled browser; the owner subsequently reached the dashboard successfully.
+- [x] Record the user-confirmed successful supported-browser OAuth sign-in and reconcile it with live authentication logs and production-readiness documentation; runtime logs intentionally omit successful-session credential details.
+- [x] Assess whether a separate OAuth nonce-cookie retention defect remains after supported-browser validation; the owner reached the dashboard successfully, so no browser-specific defect is currently established. Any recurrence in a supported cookie-enabled browser must be investigated as a new bug.

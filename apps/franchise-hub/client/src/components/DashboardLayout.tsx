@@ -47,6 +47,9 @@ export default function DashboardLayout({
     return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
   });
   const { loading, user } = useAuth();
+  const oauthCookieBlocked =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("auth") === "cookies-required";
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
@@ -72,6 +75,11 @@ export default function DashboardLayout({
             <div className="w-full rounded-2xl border border-[#d7e8dc] bg-[#f2f9f4] p-3 text-left text-xs leading-5 text-[#507064]">
               Your figures remain isolated to your authenticated account. Calculations are generated server-side from saved records.
             </div>
+            {oauthCookieBlocked && (
+              <div role="alert" className="w-full rounded-2xl border border-amber-200 bg-amber-50 p-3 text-left text-xs leading-5 text-amber-900">
+                This browser is blocking the secure sign-in cookie. Open Franchise Hub in a normal browser tab, allow cookies for this site, then try again.
+              </div>
+            )}
           </div>
           <Button
             onClick={() => startLogin()}

@@ -19,6 +19,18 @@ export const startLogin = () => {
 
   const nonce = crypto.randomUUID();
   document.cookie = `${OAUTH_STATE_COOKIE}=${nonce}; Path=/; Max-Age=600; SameSite=None; Secure`;
+  const persistedNonce = document.cookie
+    .split("; ")
+    .find(cookie => cookie.startsWith(`${OAUTH_STATE_COOKIE}=`))
+    ?.split("=")[1];
+
+  if (persistedNonce !== nonce) {
+    const recoveryUrl = new URL(window.location.origin);
+    recoveryUrl.searchParams.set("auth", "cookies-required");
+    window.location.assign(recoveryUrl.toString());
+    return;
+  }
+
   const state = encodeOAuthState({ redirectUri, nonce });
 
   const url = new URL(`${oauthPortalUrl}/app-auth`);

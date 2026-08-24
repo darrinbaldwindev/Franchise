@@ -6,7 +6,7 @@ This document records the controlled source snapshot staged for the owner-approv
 
 ## Source origin
 
-The snapshot originates from the managed **Franchise Hub** full-stack workspace at checkpoint `69aeb7ef`. It represents the existing dashboard/reporting and franchisor-review foundation, not the complete customer commerce and delivery platform described by the repository architecture.
+The initial snapshot originated from the managed **Franchise Hub** full-stack workspace at checkpoint `69aeb7ef`. The open integration branch was subsequently synchronised through managed checkpoint `12be6e21` with the OAuth recovery/preflight hardening and franchisee-only review-queue boundary fix. It represents the existing dashboard/reporting and franchisor-review foundation, not the complete customer commerce and delivery platform described by the repository architecture.
 
 ## Included
 
@@ -27,7 +27,7 @@ pnpm check
 pnpm build
 ```
 
-The completed results were: `git diff --check` passed; `pnpm test` passed with 12 test files and 25 tests; `pnpm check` completed without TypeScript errors; and `pnpm build` completed successfully. The production build retains the previously known non-blocking Rollup warning that the Recharts client bundle exceeds 500 kB after minification. No validation command accessed production data or changed the live deployment.
+The latest completed results were: `git diff --check` passed; `pnpm test` passed with 14 test files and 28 tests; `pnpm check` completed without TypeScript errors; and `pnpm build` completed successfully. The production build retains the previously known non-blocking Rollup warning that the Recharts client bundle exceeds 500 kB after minification. No validation command accessed production data or changed the live deployment.
 
 The existing managed deployment remains the live environment during this source-integration pull request. No database migration, secret transfer, OAuth configuration change, or production release is part of issue #5.
 

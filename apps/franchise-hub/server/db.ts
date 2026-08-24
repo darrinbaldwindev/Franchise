@@ -5,6 +5,7 @@ import { calculatePerformance, createDeterministicCoaching } from "./franchiseMe
 import { buildMonthlyRevisionEntry } from "./franchiseAudit";
 import { buildReviewDecision } from "./franchisorReviewAudit";
 import { buildPerformanceHistory } from "./franchiseHistory";
+import { isFranchiseeReviewCandidate } from "./franchisorReviewQueue";
 import type { ReviewMonthlyRecordInput, SaveMonthlyBusinessInput } from "./franchiseHubSchemas";
 import { ENV } from "./_core/env";
 
@@ -188,9 +189,10 @@ export async function getFranchisePerformanceHistory(userId: number) {
 export async function getReviewQueue() {
   const db = await getDb();
   if (!db) throw new Error("Database is unavailable");
-  return db.select({
+  const candidates = await db.select({
     monthlyRecordId: monthlyBusinessRecords.id,
     franchiseeUserId: monthlyBusinessRecords.userId,
+    franchiseeRole: users.role,
     franchiseeName: users.name,
     franchiseeEmail: users.email,
     monthKey: monthlyBusinessRecords.monthKey,
@@ -201,8 +203,16 @@ export async function getReviewQueue() {
     reviewStatus: monthlyBusinessRecords.reviewStatus,
   }).from(monthlyBusinessRecords)
     .innerJoin(users, eq(monthlyBusinessRecords.userId, users.id))
-    .where(and(eq(monthlyBusinessRecords.attestationConfirmed, true), eq(monthlyBusinessRecords.reviewStatus, "awaiting-review")))
+    .where(and(
+      eq(monthlyBusinessRecords.attestationConfirmed, true),
+      eq(monthlyBusinessRecords.reviewStatus, "awaiting-review"),
+      eq(users.role, "user"),
+    ))
     .orderBy(desc(monthlyBusinessRecords.updatedAt));
+
+  return candidates
+    .filter(isFranchiseeReviewCandidate)
+    .map(({ franchiseeRole: _franchiseeRole, ...record }) => record);
 }
 
 export async function reviewMonthlyRecord(reviewerId: number, input: ReviewMonthlyRecordInput) {
