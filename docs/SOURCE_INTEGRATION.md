@@ -22,12 +22,15 @@ The canonical source snapshot has passed the following commands from `apps/franc
 
 ```bash
 git diff --check
+rm -rf node_modules && pnpm install --frozen-lockfile --ignore-scripts
 pnpm test
 pnpm check
 pnpm build
 ```
 
-The latest completed results were: `git diff --check` passed; `pnpm test` passed with 14 test files and 28 tests; `pnpm check` completed without TypeScript errors; and `pnpm build` completed successfully. The production build retains the previously known non-blocking Rollup warning that the Recharts client bundle exceeds 500 kB after minification. No validation command accessed production data or changed the live deployment.
+The latest completed results were: `git diff --check` passed; a clean, scripts-disabled frozen install completed successfully; `pnpm test` passed with 14 test files and 28 tests; `pnpm check` completed without TypeScript errors; and `pnpm build` completed successfully. The production build retains the previously known non-blocking Rollup warning that the Recharts client bundle exceeds 500 kB after minification. No validation command accessed production data or changed the live deployment.
+
+The frozen-install repair moves the Tailwind transitive override and Wouter patched-dependency declaration from the ignored `package.json` `pnpm` field into `pnpm-workspace.yaml`. It also corrects the Wouter patch hunk's source line to 337 and regenerates the lockfile's patched-dependency hash. This repair was first reproduced and verified in an isolated disposable copy, then independently verified from an empty `node_modules` directory on this integration branch. The application behaviour and pinned Wouter version remain unchanged.
 
 The existing managed deployment remains the live environment during this source-integration pull request. No database migration, secret transfer, OAuth configuration change, or production release is part of issue #5.
 
