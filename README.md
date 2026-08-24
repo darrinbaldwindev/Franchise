@@ -59,3 +59,5 @@ Earned hours are an internal business-performance metric. They are not a stateme
 ## Repository status
 
 This repository is the source of truth for the production platform. Business rules should be documented before implementation, and financial/legal assumptions must remain configurable rather than hard-coded.
+
+The managed Franchise Hub dashboard/reporting foundation is staged under [`apps/franchise-hub/`](apps/franchise-hub/) for review through the controlled source-integration process. See [`docs/SOURCE_INTEGRATION.md`](docs/SOURCE_INTEGRATION.md) for the included source, excluded runtime state, verification commands, and live-deployment boundary.

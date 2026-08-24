@@ -121,11 +121,10 @@ ChatGPT updated `docs/continuity/CHATGPT.md` with this scan and recommendation. 
 
 ## Next recommended implementation sequence
 
-1. Manus confirms the exact current application/runtime and source location.
-2. Darrin approves whether that implementation becomes the canonical production application for this repository.
-3. If approved, establish the canonical source tree and integrate/migrate the existing application rather than rebuilding it.
-4. Verify financial and earned-hours calculations in the canonical repository with automated tests.
-5. Introduce production database migrations, authentication/roles and franchise tenancy.
+1. Review the owner-approved source-integration pull request #6, which stages the managed Franchise Hub application under `apps/franchise-hub/` and closes issue #5 when merged.
+2. Merge only through the documented owner-controlled review gate; the managed deployment and database remain unchanged by the source integration.
+3. Verify financial and earned-hours calculations in the canonical repository with automated tests.
+4. Introduce production database migrations, authentication/roles and franchise tenancy.
 6. Implement territory/service-area routing, catalogue and order lifecycle.
 7. Connect inventory, delivery, payments and accounting.
 8. Build/finish customer storefront and franchisee operations dashboard.
@@ -145,3 +144,8 @@ ChatGPT updated `docs/continuity/CHATGPT.md` with this scan and recommendation. 
 - Pull request #2’s verification workflow passed. The workflow is intentionally limited to governance-file presence, whitespace validation, and issue linkage for non-governance PRs until a canonical runtime and its exact checks are committed to this repository.
 - `main` branch protection is unavailable on the current private-repository plan: GitHub returned HTTP 403 that protection requires GitHub Pro or a public repository. Until the owner changes plan or visibility, the owner and Manus Main must manually enforce the documented PR-review and successful-check gate.
 - Open governance actions: complete merge of pull request #2, choose whether enforced platform protection is worth a plan/visibility change, and create an owner-approved runtime/stack-selection issue before new application implementation.
+- Darrin approved the controlled integration of the managed Franchise Hub source into this canonical repository. Manus opened issue #5 and pull request #6 on branch `agent/manus/source-integration`, staging the source beneath `apps/franchise-hub/` without secrets, production data, deployment artifacts, database changes, or live deployment changes.
+- Pull request #6 validation completed from the staged canonical source: `git diff --check`, 12 passing Vitest files / 25 tests, TypeScript validation without errors, and a successful production build. The existing Recharts bundle-size warning remains non-blocking. PR #6 is open and requires the manual owner-controlled review/merge gate.
+- Manus synchronised PR #6 on 24 August 2026 with managed OAuth nonce-cookie recovery/preflight hardening and a server-enforced franchisee-only review-queue filter. Canonical validation now passes `git diff --check`, 14 Vitest files / 28 tests, TypeScript validation, and production build; the Recharts bundle-size warning remains non-blocking. The live managed deployment was not changed by this source synchronisation.
+- The remaining real-data acceptance gates are evidence-dependent: the available multi-month records are administrator-owned and have zero sales/Earned Hours, while the separate user-role franchisee has one saved month. The review queue now correctly excludes the administrator records. No fabricated or altered business data has been used to close these gates.
+- Manus repaired PR #6's independently reproduced dependency-integrity gate on 24 August 2026. The source now places the Tailwind transitive override and Wouter patched-dependency declaration in `apps/franchise-hub/pnpm-workspace.yaml`, corrects the Wouter patch hunk source line, and aligns the lockfile patch hash. A disposable isolated copy and a clean canonical `node_modules` directory both passed `pnpm install --frozen-lockfile --ignore-scripts`; canonical and managed `pnpm test` (14 files / 28 tests), `pnpm check`, and `pnpm build` also passed. The Recharts bundle-size warning remains non-blocking. No data, migration, credential, OAuth, or live-deployment change occurred. PR #6 remains open, clean, and requires owner review/merge.

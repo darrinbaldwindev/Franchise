@@ -1,0 +1,64 @@
+# Project TODO
+
+- [x] Define the tenant-isolated schema for franchisee monthly metrics, cost assumptions, workload targets, and coaching records.
+- [x] Apply the schema migration and verify the deployed database tables.
+- [x] Implement validated server-side calculation services for contribution, Earned Hours, productivity, progress, and projections.
+- [x] Add protected data access procedures that isolate every record to the signed-in franchisee.
+- [x] Retain deterministic coaching based on verified saved metrics and workload targets.
+- [x] Build the authenticated, responsive franchisee performance dashboard with polished KPI, projection, and contribution views.
+- [x] Add secure create/update flows for monthly business figures and planning assumptions.
+- [x] Add an LLM-assisted coaching layer grounded only in verified server-side metrics with non-financial-advice safeguards.
+- [x] Add prominent government-payment, financial-projection, and planning disclaimers.
+- [x] Write and run unit tests for calculations, validation, tenant isolation, and coaching safeguards.
+- [x] Verify TypeScript, production build, responsive rendering, and key authenticated user flows.
+- [x] Document production readiness, limitations, and the remaining live commerce/delivery integration work.
+- [x] Validate the authenticated dashboard preview at desktop and mobile breakpoints; document account-specific live save and coaching validation requirements.
+- [x] Add franchisee attestations and provenance metadata to each saved monthly business record.
+- [x] Preserve an auditable revision history for material changes to monthly records.
+- [x] Surface the current record’s attestation and revision context in the franchisee dashboard.
+- [x] Add automated coverage for attestation validation, record revisions, and tenant-isolated audit history.
+- [x] Re-run the production test, type-check, build, and responsive preview validation for the extended workflow.
+- [x] Test the revision-entry payload for created and updated monthly saves, including attestation and snapshot content.
+- [x] Re-run desktop and mobile preview validation after the attestation and revision-history interface changes.
+- [x] Add review status, reviewer attribution, and reviewer notes to attested monthly operating records.
+- [x] Implement admin-only procedures for queue review, approval, and return-for-correction actions.
+- [x] Preserve review decisions in the auditable record history without altering the franchisee’s saved calculation inputs.
+- [x] Build a franchisor review queue and an approval-status view for franchisees.
+- [x] Add tests for admin authorization, review-state validation, tenant data boundaries, and audit events.
+- [x] Re-run the production test, type-check, build, and responsive validation for review workflows.
+- [x] Test review-decision validation for correction notes, immutable audit-event payloads, and unchanged franchisee calculation inputs.
+- [x] Validate the franchisor review interface at mobile and desktop breakpoints, documenting the authenticated-admin live-review requirement.
+- [x] Verify the confirmed approval against an authorised attested record through the protected review service and immutable audit event.
+- [ ] Validate the authenticated production review UI using an appropriate franchisee-owned awaiting-review record; the admin-owned queue item has only confirmed current UI control visibility at desktop and mobile breakpoints, with no decision made.
+- [x] Resolve or document the hosting-layer limitation that causes direct production `/reviews` requests to return 404.
+- [x] Adopt and validate the production-safe franchisor review route `/#/reviews` so client navigation does not depend on server deep-link rewrites.
+- [x] Add a protected server-side performance-history service derived only from the signed-in franchisee’s saved monthly records.
+- [x] Calculate historical sales, contribution, Earned Hours, productivity, target progress, and month-over-month changes server-side.
+- [x] Build a responsive franchisee trends view with empty states and prominent planning/projection safeguards.
+- [x] Add automated tests for historical calculation integrity and tenant-isolated report access.
+- [x] Re-run test, type-check, production build, and desktop/mobile preview validation for reporting.
+- [ ] Confirm the populated Trends charts and month-over-month indicators with at least two authorised saved monthly records when real operating data is available.
+- [x] Run the owner-resumed, non-mutating real-data acceptance validation against the currently saved franchisee record state; user ID 1 has three approved zero-activity months and the review queue has no awaiting-review records, while the other franchisee account still has one month.
+- [x] Perform the owner-authorised autonomous review of all available non-mutating real-data acceptance evidence and document remaining dependencies: only zero-activity multi-month history is available, and no distinct user-role franchisee record is awaiting review.
+- [x] Investigate the observed role and Review queue discrepancy; the displayed records belonged to the administrator account, while `adminProcedure` continued to enforce server-side reviewer access.
+- [x] Exclude administrator-owned records from the server-side franchisor review queue and add regression coverage for the franchisee-only boundary.
+- [ ] Complete an additional owner-authorised non-data-dependent safeguards review while preserving the two real-data acceptance gates.
+- [ ] Synchronise the current managed OAuth and franchisee-only review-queue security fixes into canonical pull request #6 under its existing owner-approved source-integration scope.
+- [x] Improve the one-month zero-activity Trends state so charts use plain-language guidance instead of unhelpful zero-value axes.
+- [x] Add a clear first-month action that takes franchisees straight to the simple monthly-entry workflow when they are ready to save another month.
+- [x] Replace technical dashboard terminology with plain-language labels and short explanations at decision points.
+- [x] Add a dedicated plain-language next-step panel that changes for unsaved, awaiting-review, correction-needed, and approved records.
+- [x] Reduce the monthly record form to a progressively disclosed, beginner-friendly workflow without changing server-side validation.
+- [x] Make review status and trends access understandable without requiring users to interpret internal workflow terms.
+- [x] Add UI-level coverage that blocks saving until the quick-check confirmation is selected, alongside progressive cost settings and plain-language status coverage.
+- [x] Validate the simplified franchisee dashboard while authenticated at desktop and mobile breakpoints.
+- [x] Review the repository’s AI collaboration protocol and incorporate any approved project workflow requirements; no separate repository protocol file is currently present.
+- [x] Review the canonical GitHub repository’s collaboration guidance and reconcile approved requirements with this workspace; continuity updates pushed in commits `1277c0a` and `6421971`.
+- [x] Rescan the canonical GitHub repository for new collaboration guidance and reconcile any changes with this workspace; future canonical changes require an issue, agent branch, pull request, passing checks, and owner-controlled merge rather than direct edits to `main`.
+- [x] Perform a fresh read-only canonical-repository scan; franchisee-account validation remains paused until the owner explicitly resumes it. The scan found an open governance PR (#3), a continuity-steward issue (#4), and no canonical application runtime yet.
+- [x] Integrate the managed Franchise Hub source into the canonical GitHub repository through an owner-approved, issue-scoped branch and pull request without changing the live managed deployment; issue #5 and PR #6 now hold the reviewable source snapshot and verification evidence.
+- [x] Add a secure, plain-language recovery page for `invalid oauth state` callbacks while preserving strict nonce matching and preventing any code exchange or data change.
+- [x] Verify a real supported-browser OAuth sign-in completes end to end after the recovery update; the owner confirmed dashboard access from a normal browser, while cookie-blocking contexts remain explicitly unsupported.
+- [x] Detect blocked login-start OAuth nonce-cookie persistence before redirect, preserve strict callback nonce validation, and guide the user to a supported cookie-enabled browser; the owner subsequently reached the dashboard successfully.
+- [x] Record the user-confirmed successful supported-browser OAuth sign-in and reconcile it with live authentication logs and production-readiness documentation; runtime logs intentionally omit successful-session credential details.
+- [x] Assess whether a separate OAuth nonce-cookie retention defect remains after supported-browser validation; the owner reached the dashboard successfully, so no browser-specific defect is currently established. Any recurrence in a supported cookie-enabled browser must be investigated as a new bug.
