@@ -167,3 +167,39 @@ This log is now aligned with that decision. The next meaningful implementation s
 ## Recommended next action
 
 Inspect the current canonical PR/application state and select the smallest secure implementation step that materially advances Opening #1. Do not duplicate existing work. If a blocker has already been fixed, verify the new commit rather than repeating the historical recommendation.
+
+## Reconciliation entry — 25 August 2026 (Issue #1)
+
+This entry records a first-hand review of GitHub Issue #1, the three continuity logs, the canonical `main` branch at `de655a6`, and Pull Request #6 at `67ee3ce8205d2a9c6aa2e25123802dd384dec908`.
+
+### Confirmed current source state
+
+The canonical `main` branch contains **zero** files under `apps/franchise-hub/`. The Franchise Hub source described in earlier continuity records is therefore staged only on the open PR #6 branch (`agent/manus/source-integration`), not yet part of the canonical branch. PR #6 is currently `OPEN` and `CONFLICTING`; its content conflicts are limited to `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`.
+
+No merge, rebase, approval, closure, deployment, migration, or production-data action was performed in this review. Those actions remain owner-gated.
+
+### Independently reproduced validation of PR #6
+
+In an isolated worktree at the exact PR head, dependency installation succeeded with `pnpm install --frozen-lockfile`. The following checks were then run successfully:
+
+| Command | Result | Evidence classification |
+| --- | --- | --- |
+| `pnpm test` | 15 test files and 30 tests passed | Independently reproduced |
+| `pnpm check` | TypeScript completed without errors | Independently reproduced |
+| `pnpm build` | Client and server production bundles completed | Independently reproduced, with warnings |
+
+The build emitted warnings for undefined `VITE_ANALYTICS_ENDPOINT` and `VITE_ANALYTICS_WEBSITE_ID` placeholders, a non-module analytics script reference, and a large JavaScript chunk. These warnings did not fail the build but should be resolved or explicitly configured before a production release.
+
+### Security and production-gate evidence
+
+The PR-head debug-telemetry safeguard is materially stronger than the earlier historical report: the public `client/public/__manus__/debug-collector.js` file is absent, and the production static-file middleware returns `404` for the collector-script and telemetry routes before serving static assets. This is source-inspection evidence at the PR head; it is not canonical-branch evidence until the PR is integrated.
+
+The tenancy gate remains unresolved. `franchiseTenantIsolation.test.ts` verifies that the router propagates authenticated user IDs into mocked data-access calls, but it does not prove the required Franchise A/Franchise B read-and-write isolation, inactive-membership denial, unauthorized context-switch denial, or franchise-owned-record authorization. The staged application also remains account-scoped rather than implementing the required franchise membership/context model.
+
+### Opening #1 implication and next bounded work
+
+The immediate implementation blocker is now clear: first reconcile and integrate the staged source through an owner-gated PR #6 decision, then establish genuine franchise-context tenancy before expanding commerce. Gate 3 supplier-cost and delivery-economics research remains required for commercial opening readiness, but it should not be treated as a substitute for this security and canonical-source integration gate.
+
+**Current first-hand capability statement:** In this environment, Manus can inspect and modify the authenticated repository, create bounded branches and pull requests, run isolated Node/TypeScript validation, inspect staged source, perform web research, and maintain evidence-based continuity records. It cannot infer authorization to merge, deploy, migrate production data, activate providers, or make material commercial, legal, financial, privacy, or security decisions on Darrin’s behalf.
+
+**Recommended owner decision:** authorize a named integrator to reconcile the two documentation conflicts on PR #6 and decide whether the validated-but-incomplete source should be merged as a development baseline. Approval to merge must not be interpreted as production approval; genuine franchise tenancy and the remaining opening workflow still require implementation and evidence.
