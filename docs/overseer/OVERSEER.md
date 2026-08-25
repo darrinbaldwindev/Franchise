@@ -319,3 +319,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Authorize or defer one narrow source-only implementation package. The PR #6 hold remains in force either way.
 
 **Status:** AUTHORIZED — telemetry disposition selected; implementation pending separate Darrin authorization.
+
+## Owner decision — bounded telemetry-removal implementation authorization (2026-08-25)
+
+**Decision:** Authorize one separate implementation-capable project agent to create a dedicated remediation pull request that removes the PR #6 debug collector and only collector-specific Vite injection/ingest plumbing.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** Parent baseline is PR #6 branch `agent/manus/source-integration` at `992caf85afcc5f321247b16c36e038c55295066e`, with base `main` at `b85dce737fe8130186ef551d28a0bd4533ddfc72`. The exact source-only contract and static acceptance checklist are retained in this task as `franchise_pr6_telemetry_removal_implementation_authorization_2026-08-25.md` and `franchise_pr6_telemetry_removal_implementation_handoff_2026-08-25.md`.
+
+**Approved scope:** A separate remediation branch/PR based on the parent source-integration head, limited to: deletion of `apps/franchise-hub/client/public/__manus__/debug-collector.js`; removal in `apps/franchise-hub/vite.config.ts` of the collector plugin definition/registration, collector script injection, `/__manus__/logs` ingest middleware, and demonstrably collector-only helpers/imports; and removal of collector-specific dead direct references. The remediation PR must state its parent baseline, exact changed paths, and limitations.
+
+**Excluded scope:** The implementation agent may not run application, test, build, type-check, formatter, migration, server, database, deployment, or provider commands; may not access environments, data, credentials, or secrets; may not add replacement telemetry; and may not change tenancy, provenance, review/audit, migration, financial, inventory, order, delivery, coaching, package, CI/CD, deployment, continuity, scheduling, connector, or Overseer-log surfaces. No merge, close, rebase, approval, issue modification, deployment, release, or production action is authorized.
+
+**Verification before reassessment:** The separate PR must provide its parent-base/head revisions, changed-file inventory, static reference evidence for removal of `vitePluginManusDebugCollector`, `__manus__/debug-collector.js`, and `/__manus__/logs`, proof of no replacement telemetry, and proof of isolation from all excluded surfaces. Build-artifact inspection and runtime verification remain separately owner-gated.
+
+**Overseer boundary:** This read-only Overseer will not implement the change. It will perform a fresh independent static review only after the remediation PR URL and head revision are available.
+
+**Status:** AUTHORIZED — bounded separate remediation PR creation by an implementation-capable agent only; PR #6 hold remains in force.
