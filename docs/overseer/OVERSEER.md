@@ -355,3 +355,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the initial membership-role policy and privilege boundary before authorizing a tenancy implementation package.
 
 **Status:** AUTHORIZED — canonical tenancy design selected; implementation pending separate Darrin authorization.
+
+## Owner decision — initial tenant-scoped membership-role policy (2026-08-25)
+
+**Decision:** Select the initial tenant-scoped roles: `franchise_owner`, `franchise_operator`, and `franchise_reviewer`. Keep `platform_admin` separate and do not allow a platform-level role alone to access franchise-owned data without an explicit valid franchise membership and authorized context.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The imported dashboard currently uses global `user`/`admin` role checks, including administrator review procedures. The selected tenancy model and `docs/TENANCY_AUTHORIZATION.md` require membership role, status, and effective dates to be resolved server-side and prohibit global role assumptions from substituting for tenant scope.
+
+**Approved scope:** Policy direction only. `franchise_owner` is the tenant governance role; `franchise_operator` is for routine permitted dashboard/operational use; `franchise_reviewer` is for the later controlled review workflow. Every role applies only inside an authorized franchise context. No role grants a future commerce, financial, migration, deployment, or release authority by default.
+
+**Excluded scope:** No schema, application, configuration, test/build, migration, environment/data/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. Existing global `admin` behavior is not reclassified or extended by this policy selection.
+
+**Verification before reassessment:** Any later implementation must prove missing/inactive/expired membership denial, role denial for disallowed actions, cross-franchise isolation, repository/helper non-bypass, and no global-admin-to-tenant escalation. Future owner/reviewer privilege overlap and membership lifecycle are separate policy decisions.
+
+**Next owner decision:** Select the active franchise-context selection mechanism for users with multiple active memberships.
+
+**Status:** AUTHORIZED — membership-role policy selected; implementation pending separate Darrin authorization.
