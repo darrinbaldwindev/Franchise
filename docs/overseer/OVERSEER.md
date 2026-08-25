@@ -373,3 +373,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the active franchise-context selection mechanism for users with multiple active memberships.
 
 **Status:** AUTHORIZED — membership-role policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — active franchise-context selection (2026-08-25)
+
+**Decision:** Select a server-held, session-bound active franchise context. A user with multiple active memberships must explicitly invoke a context-selection action; the server validates membership, role, status, and effective dates before binding the selected franchise/membership to the authorized request/session context.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** `docs/TENANCY_AUTHORIZATION.md` requires explicit context for multi-franchise users, prohibits silently choosing the first membership, and states that a client-supplied franchise ID is only a requested scope, never authorization proof. The selected tenancy and membership-role policy requires business procedures to consume a server-derived context rather than raw client tenant input.
+
+**Approved scope:** Policy direction only. A single valid membership may establish context deterministically after server validation. Multiple valid memberships require explicit selection; a context switch must be server-validated and business queries/writes must read the bound context rather than accept arbitrary `franchise_id` fields.
+
+**Excluded scope:** No session-store, cookie, API, schema, application, configuration, test/build, migration, environment/data/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. This entry does not select a session technology or duration.
+
+**Verification before reassessment:** Any later implementation must show no implicit multi-membership default, denial of unauthorized/inactive/expired context selection, prevention of context-switch parameter tampering, no platform-admin bypass, server-derived context propagation to repository paths, and A/B tenant isolation.
+
+**Next owner decision:** Select the membership lifecycle and revocation rule, including the effect of membership status/effective-date changes on an existing active context.
+
+**Status:** AUTHORIZED — active-context policy selected; implementation pending separate Darrin authorization.
