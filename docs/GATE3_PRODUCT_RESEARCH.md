@@ -68,7 +68,7 @@ Source: https://www.campbells.com.au/
 
 ### 3. Kelly's Distributors
 
-Strong beverage specialist. Its 2026 catalogue states 800+ beverage products, 150+ brands, Australia-wide delivery and no minimum order quantity, with a South East Queensland warehouse.
+Strong beverage specialist. Kelly's currently publishes a catalogue/range of 800+ wholesale beverages, states there is no minimum order, and operates from South East Queensland. Its current online catalogue provides useful public benchmark prices, although these must not be assumed to be the franchise's negotiated wholesale account price.
 
 Use for:
 
@@ -79,7 +79,7 @@ Use for:
 - bottled water;
 - functional/coconut beverages.
 
-Source: https://kellysdistributors.com.au/catalogue/
+Source: https://kellysdistributors.com.au/
 
 ### 4. IBA Distributors
 
@@ -146,6 +146,38 @@ Supplier selection should ultimately consider:
 - product data availability;
 - GST treatment;
 - reliability.
+
+## Verified public supplier benchmark evidence — August 2026
+
+Kelly's current public catalogue provides concrete price benchmarks for beverage candidates. These are **public listed prices including tax**, not confirmed negotiated franchise wholesale account prices.
+
+| Candidate SKU | Pack | Public listed price incl. tax | Approx. unit cost incl. tax | Status |
+|---|---:|---:|---:|---|
+| Red Bull 250ml | 24 | $59.68 | $2.49 | benchmark |
+| Red Bull 250ml special price | 24 | $45.49 | $1.90 | benchmark/sale |
+| Red Bull Tropical 250ml | 12 | $29.81 | $2.48 | benchmark |
+| Red Bull Red Edition 250ml | 12 | $29.81 | $2.48 | benchmark |
+| Red Bull Berry Sugar Free 250ml | 12 | $29.81 | $2.48 | benchmark |
+| Red Bull 473ml | 12 | $42.13 | $3.51 | benchmark |
+| Red Bull Sugar Free 473ml | 12 | $42.13 | $3.51 | benchmark |
+| Monster Zero Sugar Ultra White 500ml | 24 | $85.30 | $3.55 | benchmark |
+| Monster Super-Premium Import 553ml | 24 | $92.40 | $3.85 | benchmark |
+| Kamikaze Energy Creaming Soda 500ml | 12 | $47.91 | $3.99 | benchmark |
+| Coca-Cola Classic PET 1.25L | 12 | $46.97 | $3.91 | benchmark |
+
+Kelly's states that it is a South East Queensland wholesale beverage distributor, sells to businesses, offers local pickup/home delivery and has no minimum order. citeturn0search8turn0search7
+
+The current public Red Bull listing confirms the $59.68/24-pack price and product specifications; the special-price listing confirms a $45.49/24-pack promotion. citeturn0search5turn0search4
+
+The current energy category also lists Monster and other beverage candidates. citeturn0search1turn0search3
+
+### What this tells us
+
+1. Beverage suppliers can provide public price evidence sufficient to establish a first benchmark range.
+2. Special pricing can materially change unit economics, so promotions should not be treated as permanent base cost.
+3. The V1 SKU model should record **normal account price** and **temporary promotional price** separately.
+4. The first supplier quote request should prioritise the highest-volume beverage candidates.
+5. We should not approve a retail price until actual account cost and delivery economics are known.
 
 ## Delivery economics — current evidence
 
@@ -247,15 +279,18 @@ For V1, the safest operating model is to sell sealed, supplier-packaged products
 2. Beverages and convenience snacks should form the core range.
 3. Nuts/healthy snacks can provide differentiation and basket-building opportunities.
 4. The Distributors Brisbane and Campbells are strong breadth/core candidates.
-5. Kelly's is particularly relevant for beverages.
+5. Kelly's is particularly relevant for beverages and now has public benchmark prices we can use while obtaining account pricing.
 6. IBA, Trumps and Nut Grocer provide specialist/niche coverage.
 7. Final pricing cannot responsibly be completed from public wholesale landing pages alone because several suppliers require account access or quotations for actual wholesale prices.
 8. Delivery economics must be modelled separately for Marketplace and direct-order delivery.
 9. The $50 free-delivery threshold remains an explicit economic test rather than an assumption that every $50 order is profitable.
+10. Promotional supplier pricing should be separated from normal recurring cost in the SKU model.
 
 ## Immediate next research task
 
-Obtain or capture verified supplier costs for the first 40–60 candidate SKUs, then benchmark them against current Australian customer-facing prices and the two delivery models.
+Obtain or capture verified supplier costs for the first 40–60 candidate SKUs, prioritising the core beverage and snack lines.
+
+Then benchmark them against current Australian customer-facing prices and the two delivery models.
 
 The next output should be a SKU-level economics table with:
 
