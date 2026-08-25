@@ -681,3 +681,23 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Required next action:** Reassess a revised PR #14 head if supplied; continue to hold PR #6 for current-main conflict resolution, complete telemetry removal, selected tenancy/review/audit implementation, target-specific migration preflight, authorized nonzero-franchisee evidence, and Darrin's separate merge decision.
 
 **Status:** OPEN / HELD — PR #14 wording qualification pending; PR #6 gates unchanged.
+
+## Material PR #13 update — stale continuity branch now conflicts with current main (2026-08-25T09:39Z)
+
+**Scope:** Read-only refresh of all active Franchise PRs and static three-way comparison for PR #13. PR #13 remains open/non-draft at unchanged head `55f359090ba24251920ebf126b5b150bf1655379`; observed current main was `c1add1e4f28b2f095b66752e29eb421f9808ee2a`, with merge base `ef9e70db3b3e4c938fc18c545f14febdc2823c7a`. No source, command-validation, migration, target-environment, data, credential, merge, rebase, deployment, release, or production action was performed.
+
+**Verified static facts:** GitHub now reports PR #13 merge state `DIRTY`. Its only changed path is `docs/continuity/SHARED.md`. The read-only three-way comparison identifies that same path as `changed in both` between current main and PR #13 head. There is no new PR #13 source revision, review decision, reported check result, or new contributor validation evidence.
+
+**Risk classification:** **MEDIUM — stale continuity reconciliation conflicts with current canonical direction.** The pull request cannot be regarded as merge-ready while the only proposed continuity edit conflicts with current main. This status change is separate from all PR #6 integration and source gates.
+
+**Required owner action:** A separate bounded documentation-reconciliation authorization is required before any agent may rebase/resolve/modify PR #13. Darrin’s existing policy delegation does not authorize source changes, conflict resolution, rebase, or merge.
+
+**Permitted actions:** Read-only static review, preparation of a source-only documentation reconciliation proposal, preservation of current-main continuity direction, and reassessment of a new explicit head.
+
+**Prohibited actions:** Do not merge, approve, close, rebase, resolve conflicts, deploy, release, run migrations, alter data, use credentials, or treat static analysis as integration validation.
+
+**Verification before reassessment:** Supply a separately authorized revised PR #13 head; show conflict-free reconciliation with then-current main; identify every continuity-record change; preserve current-main governance direction; and obtain Darrin’s explicit merge decision if integration remains desired.
+
+**External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5408558741](https://github.com/darrinbaldwindev/Franchise/pull/13#issuecomment-5408558741). It does not approve a merge, deployment, release, or production action.
+
+**Status:** OPEN / HELD — pending separate owner authorization for any documentation reconciliation.
