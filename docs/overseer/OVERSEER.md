@@ -593,3 +593,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next delegated policy decision:** Determine the minimum immutable audit-event fields and retention semantics necessary to support the selected provenance, review, correction, and finality policies.
 
 **Status:** AUTHORIZED — approval-finality policy selected through Darrin’s delegated recommended-A instruction; implementation pending separate Darrin authorization.
+
+## Delegated policy decision — immutable audit-event evidence and retention (2026-08-25)
+
+**Decision:** Applying Darrin’s delegated recommended option A, every lifecycle event for an attested monthly-record revision must be append-only and immutable. At minimum, an event must identify: a unique event ID; franchise ID and authorized franchise-context identity; monthly record ID and immutable input-revision identity; event type; prior and next lifecycle state where applicable; server-recorded UTC time; acting membership/person identity and effective role; the reason/note where required; source/origin reference; and a correlation/request identifier. An exceptional reopening/revocation must additionally reference the separate Darrin authorization. Audit events are retained without routine deletion or in-place alteration until a separately approved, evidence-preserving retention/deletion policy exists.
+
+**Authority:** Darrin’s explicit delegation in this task to continue autonomously using the recommended option A for subsequent Franchise PR #6 policy decisions, bounded to policy/planning and existing owner-gated operational limits.
+
+**Evidence:** PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908` currently records review-event actor/record/action/note/time fields and saved-input revisions, but event schema lacks franchise/membership context, prior/next state, immutable revision linkage, correlation, source reference, exception authorization reference, and a retention policy. Current events are associated with user IDs rather than the selected franchise-membership model. The selected provenance, correction-resubmission, reviewer-only, and approval-finality policies require revision-specific, tenant-scoped evidence. Static source inspection is not run-time verification.
+
+**Approved scope:** Policy direction only. A later implementation must write event/state changes atomically when a transition occurs; preserve prior events and input revisions; use server-derived membership/franchise context; avoid a client-supplied tenant identity; and make deletion/alteration a separately governed process with evidence-preservation requirements.
+
+**Excluded scope:** No schema/API/application/configuration/test/build/migration/data mutation/audit export/retention deletion/credential/environment/merge/deployment/release/production action is authorized. This decision sets no legal, tax, accounting, privacy, or statutory retention duration.
+
+**Verification before reassessment:** Any later implementation must prove append-only behavior; required fields per event type; revision and tenant linkage; server UTC timestamps; actor membership/role evidence; atomic event/state behavior; immutable preservation of correction/review/finality history; denial of unauthorized event insertion/alteration; and explicit handling of any governed retention/deletion exception.
+
+**Next delegated policy decision:** Set the source-level migration-preflight boundary so migration history is not mistaken for authorized environment execution.
+
+**Status:** AUTHORIZED — immutable audit-event/retention policy selected through Darrin’s delegated recommended-A instruction; implementation pending separate Darrin authorization.
