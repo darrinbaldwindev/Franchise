@@ -6,45 +6,164 @@ Manus
 
 ## Last updated
 
-2026-08-23
+2026-08-25
+
+## Strategic priority — current
+
+The immediate project objective is **Franchise #1 opening**, followed by operating and maintaining that first franchise before broad replication.
+
+Project sequence:
+
+**Build → Open → Operate → Maintain → Improve → Replicate**
+
+The platform should be treated as a micro home-delivery business first and a technology platform second.
+
+Before significant implementation, determine whether the work materially helps Franchise #1 reach opening stage or operate successfully. Defer non-essential scale/platform work unless it is a genuine security, reliability, legal/compliance, architectural prerequisite, or continuity/governance requirement.
 
 ## First-hand capabilities in this project environment
 
 Manus can inspect and modify the authenticated GitHub repository, develop the managed full-stack web workspace, run TypeScript/Vitest/build validation, query the provisioned database, and verify browser-facing behaviour where an authenticated session is available. It can also perform structured web research, create project documentation, manage managed-environment deployment checkpoints, create bounded branches and pull requests, and coordinate scheduled sub-agent roles within the documented owner boundaries.
 
+These capabilities are runtime-specific. They do not imply permissions unavailable in a particular environment.
+
+## Opening-stage definition
+
+Franchise #1 is ready to open when:
+
+- products are loaded;
+- pricing is configured;
+- initial stock is available;
+- customer ordering works;
+- payment works;
+- orders reach the franchisee;
+- the franchisee can fulfil orders;
+- delivery can occur;
+- inventory updates correctly;
+- financial calculations work;
+- work/earned-hours calculations work;
+- an end-to-end workflow passes;
+- the franchisee can operate without developer intervention.
+
+## Minimum V1 implementation priority
+
+1. Secure franchisee authentication and required franchise tenancy.
+2. Catalogue and pricing.
+3. Customer ordering and checkout/payment.
+4. Order receipt and fulfilment.
+5. Inventory adjustment.
+6. Delivery workflow/integration.
+7. Basic sales/contribution reporting.
+8. Work-session recording and earned-hours calculation.
+9. End-to-end operational testing.
+10. Opening readiness.
+
+## Explicitly deferred until after Franchise #1 operates
+
+Unless a genuine prerequisite emerges:
+
+- advanced AI systems;
+- native mobile applications;
+- Windows packaging;
+- sophisticated multi-franchise analytics;
+- complex territory algorithms;
+- advanced accounting automation;
+- elaborate network dashboards;
+- advanced franchise automation;
+- hypothetical enterprise infrastructure.
+
+Existing architecture documentation remains valid as future direction; deferred does not mean discarded.
+
 ## Current implementation and verified state
 
-The active implementation currently lives in the managed **Franchise Hub** workspace rather than this documentation-only repository checkout. It is an authenticated React/TypeScript, Express/tRPC, Drizzle/MySQL dashboard foundation for franchisee monthly performance reporting and franchisor review.
+The active implementation currently lives in the managed **Franchise Hub** workspace and this repository now contains the canonical collaboration and architecture documentation. The managed application is an authenticated React/TypeScript, Express/tRPC, Drizzle/MySQL dashboard foundation for franchisee monthly performance reporting and franchisor review.
 
 The following has been directly implemented and verified in that workspace:
 
-- Tenant-scoped monthly business records, saved under the authenticated account, with server-side KPI calculations for sales, operating contribution, Earned Hours, productivity, workload progress and selected projections.
+- Tenant-scoped monthly business records saved under the authenticated account, with server-side KPI calculations for sales, operating contribution, Earned Hours, productivity, workload progress and selected projections.
 - Server-side deterministic coaching and an LLM coaching path that only receives a saved, server-derived metric snapshot. The numerical calculation engine remains deterministic and authoritative.
 - Required franchisee attestation, immutable input-revision snapshots, administrator-only review procedures, reviewer attribution/notes and separate review events that do not alter calculation inputs.
 - Tenant-scoped Trends reporting with server-calculated month-over-month metrics, first-month guidance, and hash-based routes that avoid the managed host's direct deep-link limitation.
-- A simplified, plain-language franchisee workflow that protects the save action until the user completes a short accuracy check.
+- A simplified franchisee workflow that protects the save action until the user completes a short accuracy check.
 
-The latest full local validation before this continuity update recorded 25 passing Vitest tests, a passing TypeScript check, and a successful production build. The managed application has been checkpointed and published through its managed deployment workflow. One owner-confirmed record approval has also been verified through the protected review service and retained audit event; a browser-authenticated production decision-flow check remains outstanding.
+Historical validation reported 25 passing Vitest tests, a passing TypeScript check and a successful production build in the managed workspace. Where validation has not been independently reproduced against the canonical repository, label it reported or managed-workspace validation rather than canonical production verification.
 
-## Governance foundation verified in this repository
+## Current architecture boundary
 
-- The repository default branch is `main`. Before the governance branch was created, it contained documentation and continuity material but no GitHub Actions workflow or application runtime manifest.
-- Branch `agent/manus/governance-starter` adds `AGENTS.md`, a GitHub-first task board, a copy-ready ChatGPT prompt, a pull-request template, and a baseline pull-request verification workflow.
-- The workflow passed on pull request #2. Until a canonical application runtime is committed here, it enforces governance-file presence, whitespace validation, and issue linkage for non-governance changes only.
-- GitHub rejected `main` branch-protection configuration with HTTP 403 because the current private-repository plan requires GitHub Pro or a public repository. No protection setting changed; the owner and Manus Main must manually enforce the documented PR review and passing-check gate in the interim.
+The managed application remains a dashboard/reporting foundation, not the complete central ecommerce/delivery platform.
 
-## Current boundaries, risks and unverified work
+It currently uses an account-scoped tenancy model and `user`/`admin` roles rather than the complete `franchise_id` and multi-role model described by the canonical architecture.
 
-The current workspace is a dashboard/reporting and review foundation, **not** the complete central franchise platform described in this repository. It currently uses an account-scoped tenancy model and `user`/`admin` roles rather than the full `franchise_id` and multi-role model in the canonical architecture. It does not yet provide territory resolution, central catalogue, customer checkout, payments, order orchestration, inventory movements, delivery-provider integration, work-session capture, accounting exports, training, or mobile/Windows packaging.
+Before expanding commerce beyond the minimum required for Franchise #1, establish:
 
-The live database currently has only one saved month for the relevant franchisee account, so populated two-month Trends comparison acceptance remains unverified. No fabricated records have been inserted for that purpose. The latest non-mutating check still showed August 2026 as the only saved month for that account.
+**User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation**
 
-Commercial assumptions such as the 3%/6% royalty threshold and the 20% reserve / 80% owner-allocation layer have not been hard-coded as final contractual or accounting rules. Any expansion from the dashboard foundation must preserve configurable commercial assumptions, franchise-level isolation, and server-side source-of-truth calculations.
+Real isolation tests must prove at minimum:
 
-## Recommended next step
+- Franchise A cannot read Franchise B;
+- Franchise A cannot mutate Franchise B;
+- inactive membership is denied;
+- unauthorized franchise switching is denied;
+- franchise-owned records require authorized franchise scope.
 
-Merge pull request #2 after its conflict resolution is verified. Then manually apply its PR review/check gate until platform branch protection becomes available. Complete the real-data acceptance check when the franchisee saves a second distinct month, then plan canonical platform expansion deliberately: franchise/membership tenancy and roles first, followed by territory routing, orders, inventory, work sessions, and source-integrated financial reporting. Do not present the current dashboard foundation as the entire ecommerce/delivery platform.
+## Known PR/integration gates
 
-## Collaboration acknowledgement
+Previously identified PR #6 concerns remain unless current implementation demonstrates otherwise:
 
-ChatGPT's documented strengths in business logic, product architecture, requirements and cross-system consistency complement Manus's implementation, testing and managed-environment verification work. This record is based on direct inspection of the active workspace, its deployed data boundaries, and the GitHub repository state.
+- `franchiseTenantIsolation.test.ts` was identified as validating user-ID propagation rather than genuine A/B franchise isolation;
+- `apps/franchise-hub/client/public/__manus__/debug-collector.js` was identified as an executable public asset and should be removed from canonical production source or provably development-gated;
+- migration history must remain distinct from executing/applying production migrations.
+
+Before declaring these resolved, inspect the current commit and record exact evidence.
+
+## Eventual platform gaps
+
+The eventual platform may still require territory/service-area resolution, central catalogue, customer checkout, payments, order orchestration, inventory movements, delivery integration, work-session capture, accounting exports, training, AI coaching, network reporting and mobile/Windows experiences.
+
+These are not all prerequisites for opening Franchise #1.
+
+## Governance foundation
+
+- Repository default branch is `main`.
+- `docs/AI_COLLABORATION.md` establishes the equal-autonomy collaboration protocol.
+- Exactly three primary continuity logs are used: `CHATGPT.md`, `MANUS.md`, `SHARED.md`.
+- Continuity Steward may reconcile them but must not silently decide material business disputes.
+- Darrin remains final authority.
+- Agents should coordinate through GitHub rather than using Darrin as a messenger.
+
+## Continuity synchronization rules
+
+Before substantial work:
+
+1. Read `docs/continuity/SHARED.md`.
+2. Inspect recent commits and relevant implementation.
+3. Read the relevant agent log when needed.
+4. Check whether the proposed work helps Opening #1.
+
+After substantial work:
+
+1. Update this log with first-hand implementation evidence.
+2. Update `SHARED.md` when overall state materially changes.
+3. Record commit SHA/message where practical.
+4. Distinguish reported, automated and independently verified validation.
+
+Historical continuity entries should be retained as history but superseded by newer reconciliations when state changes.
+
+## Continuity Steward scheduling
+
+The collaboration protocol recommends:
+
+- lightweight continuity scan every 6 hours;
+- fast synchronization check on every push to `main`;
+- deeper weekly review.
+
+Manus has final say on operational implementation of the schedule based on the actual sub-agent/runtime capability. If a persistent scheduled sub-agent is unavailable, use the closest reliable mechanism and document the limitation.
+
+## Current collaboration state
+
+ChatGPT has explicitly reset the project priority to Opening Franchise #1 first and updated `SHARED.md` and `CHATGPT.md` accordingly.
+
+This log is now aligned with that decision. The next meaningful implementation should be the highest-value blocker to opening Franchise #1, not general platform expansion.
+
+## Recommended next action
+
+Inspect the current canonical PR/application state and select the smallest secure implementation step that materially advances Opening #1. Do not duplicate existing work. If a blocker has already been fixed, verify the new commit rather than repeating the historical recommendation.
