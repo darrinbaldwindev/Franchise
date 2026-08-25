@@ -391,3 +391,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the membership lifecycle and revocation rule, including the effect of membership status/effective-date changes on an existing active context.
 
 **Status:** AUTHORIZED — active-context policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — membership lifecycle and active-context invalidation (2026-08-25)
+
+**Decision:** Membership suspension, revocation, expiry, or a relevant role reduction invalidates an active franchise context on the next tenant-owned server request. Membership validity may be checked directly or through an equivalent server-managed membership version/revocation mechanism; client-cached role or session state cannot override current membership state.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** `docs/TENANCY_AUTHORIZATION.md` requires membership status, role, and effective dates to be verified server-side and requires inactive/expired membership denial. The selected server-held active-context policy makes membership validity the continuing authorization boundary rather than a one-time sign-in fact.
+
+**Approved scope:** Policy direction only. `pending` membership cannot establish context; `active` membership within its effective dates may do so; `suspended`, `revoked`, or `expired` membership is denied on the next tenant-owned request; and a role reduction re-evaluates/denies actions outside the new role. Historical business and audit records remain intact.
+
+**Excluded scope:** No schema, session, application, configuration, test/build, migration, environment/data/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. This decision does not select session technology, storage, or timing implementation.
+
+**Verification before reassessment:** Any later implementation must prove immediate next-request denial for suspension/revocation/expiry/role reduction, no context-switch resurrection, no client-side bypass, no platform-admin bypass, repository/helper stale-context prevention, and historical record integrity.
+
+**Next owner decision:** Select the effective-date convention for membership validity, including time basis and end-boundary semantics.
+
+**Status:** AUTHORIZED — membership invalidation policy selected; implementation pending separate Darrin authorization.
