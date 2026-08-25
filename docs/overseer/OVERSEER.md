@@ -729,3 +729,24 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Verification:** Before Overseer reassessment, provide the candidate PR URL, full head/base/source SHAs, changed-file list, static no-conflict-marker evidence, fresh static merge evidence against then-current main, canonical-preservation proof, evidence-terminology/gate-retention proof, and a statement that no project or target-environment command was run.
 
 **Status:** AUTHORIZED — bounded candidate-PR creation only. All independent PR #6 gates and all merge/deployment/release decisions remain held and separately owner-gated.
+
+## Implementation dispatch blocker — named PR #6 continuity implementer (2026-08-25)
+
+**Scope:** Follow-up to the owner authorization at the preceding entry. A separate implementation task was dispatched for the named **Franchise PR #6 Continuity Reconciliation Implementer**. No application, continuity, branch, PR, test/build, migration, environment, data, credential, merge, deployment, release, or production action was performed by Overseer.
+
+**Verified evidence:**
+
+| Item | Evidence | Classification |
+|---|---|---|
+| Authorized baseline | Direct read-only check: live `main` `043301c05b5b6e2eea429b4fe85feabb1b2fe868`; PR #6 source head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; merge base `5e963de433e050c54f7063287f96d971cfde13f2`. | Verified fact |
+| First task | `https://manus.im/app/FAFThhLty7lloiKHjcPUoR` stopped without a repository mutation after treating PR metadata’s historical `baseRefOid` as live `main`; the interpretation was corrected. | Verified task record |
+| Corrected task | `https://manus.im/app/r2oqZacQT0ix3o7iN4zWm9` verified no baseline change but is waiting because its task-local shell/public endpoints cannot authenticate to the private repository. | Verified task record |
+| Candidate artifact | No dedicated candidate branch, commit, or candidate PR exists. | Verified fact |
+
+**Risk classification:** **MEDIUM — authenticated execution-access blocker.** The blocker neither closes nor changes the existing source, tenancy, telemetry, provenance, audit, migration, validation, nonzero-evidence, or merge gates. It does not permit read-only Overseer to substitute for the separately authorized implementer.
+
+**Bounded access remedy:** The named task needs an authenticated GitHub capability that can read private refs and create branches, commits, and pull requests through its own bounded task identity. It must not receive credentials through a message. The task was instructed to use its enabled GitHub connector’s native repository operations, if available, instead of unauthenticated terminal Git. If connector-native ref-read/branch-create/commit/PR-create operations are unavailable, the task must report that capability gap and stop without mutation.
+
+**Next review condition:** Once such task-local authenticated GitHub access is available, the named implementer must re-check the direct live refs, proceed only if still matching, and supply one candidate PR URL with full head/base/source SHAs and the static acceptance evidence defined in the authorization record. Overseer will then conduct a read-only reassessment.
+
+**Status:** BLOCKED — no candidate created; no gate closed; no external PR notice required.
