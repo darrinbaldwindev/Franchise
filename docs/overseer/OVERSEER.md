@@ -649,3 +649,17 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5408108972](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5408108972). The notice does not approve a merge, deployment, release, or production action.
 
 **Status:** OPEN — PR #6 remains held pending separate owner authorization for any conflict-resolution change and resolution of all other gates.
+
+## Consolidated PR #6 policy and gate reconciliation (2026-08-25T08:26Z)
+
+**Scope:** Read-only reconciliation of policy decisions recorded in this log, current PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`, current canonical main `25d4f754560f611f2104670040ddaf3656e72f48`, open Issue #12, static current-main conflict evidence, and prior notices. No source, test/build, migration, target-environment, data, credential, merge, deployment, release, or production action was performed.
+
+**Policy completion:** The delegated recommended-A policy process has now set tenancy/membership direction; reviewer authority; correction resubmission; approval finality; provenance terminology; immutable audit-event evidence/retention; complete telemetry removal; and source-history-versus-target-migration boundaries. These are policy/planning directions only and do not alter current source or gate status.
+
+**Held gates:** PR #6 remains held for: (1) separately authorized reconciliation of its conflicts with current main continuity records; (2) a dedicated deletion-only telemetry-remediation PR that meets the complete-removal acceptance contract; (3) separately authorized implementation of membership-derived tenant context and cross-tenant denial evidence; (4) separately authorized provenance/review/audit lifecycle implementation and tests; (5) separately authorized, target-specific migration preflight and non-production rehearsal before any environment action; (6) explicitly authorized nonzero franchisee evidence; and (7) Darrin’s explicit future merge decision after all applicable gates are independently reassessed.
+
+**New material notices:** Telemetry-scope divergence [issuecomment-5404391802](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5404391802); current-main continuity conflict [issuecomment-5408108972](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5408108972). Neither notice authorizes merge, deployment, release, or production action.
+
+**Delegation boundary:** Darrin’s recommended-A delegation was applied only to policy/planning decisions. It does not authorize source modification, conflict resolution/rebase, command validation, target access, migration, data action, credential use, merge, deployment, release, or provider activity. Any such action requires a separate explicit authorization.
+
+**Status:** OPEN / HELD — no operational next step is authorized; continue read-only monitoring and reassess a separately authorized remediation/conflict-resolution PR head when supplied.
