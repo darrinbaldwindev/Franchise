@@ -499,3 +499,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the resubmission behavior after a `needs-correction` review decision.
 
 **Status:** AUTHORIZED — reviewer-only atomic review/audit policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — correction resubmission and fresh review cycle (2026-08-25)
+
+**Decision:** A corrected re-attestation from `needs-correction` creates a new immutable input revision, retains every preceding review/correction event, and atomically resets the current record to `awaiting-review` while appending a distinct immutable `resubmitted` event. Only current reviewer-derived fields may be cleared on reset. Changed inputs do not auto-approve. An approved record cannot be reopened by this path; reopening/revocation remains a separate owner decision.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** At PR #6 head `992caf85afcc5f321247b16c36e038c55295066e`, the static save path upserts a user/month record, sets current review state to `awaiting-review`, and writes a `created` or `updated` monthly-record revision. Current review events represent only `approved` or `needs-correction`; the existing review update and event insertion are separate operations. Static source inspection is not run-time verification.
+
+**Approved scope:** Policy direction only. A later resubmission operation must use the selected membership-derived active franchise context and record franchise scope; allow only `needs-correction → awaiting-review` after a corrected re-attestation; preserve prior review/correction evidence; append the corrected input revision and `resubmitted` event; reset current reviewer-derived fields only; and perform reset/event atomically. A stale, cross-tenant, unauthorized, or non-correction-path request must create neither transition nor event.
+
+**Excluded scope:** No approved-record reopening/revocation, reviewer assignment, appeal, notification, retention, API, schema, application, configuration, test/build, migration, data mutation, environment/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized.
+
+**Verification before reassessment:** Any later implementation must prove same-franchise membership/context enforcement; correction-path-only transition; no submitter self-approval or automatic approval; immutable preceding review/correction preservation; atomic reset/event behavior; stale and cross-tenant denial without event; current-review-field semantics; and denial of approved-record reopening through resubmission.
+
+**Next owner decision:** Select the canonical provenance terminology and state vocabulary for attested, corrected, reviewed, approved, and related records.
+
+**Status:** AUTHORIZED — correction resubmission policy selected; implementation pending separate Darrin authorization.
