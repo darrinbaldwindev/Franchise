@@ -629,3 +629,23 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next review:** Reconcile all selected policies against the current held PR #6 gates and identify which next steps are still blocked by separate operational authorization.
 
 **Status:** AUTHORIZED — migration-preflight boundary selected through Darrin’s delegated recommended-A instruction; all environment actions remain separately owner-gated.
+
+## Material PR #6 update — static conflict with current canonical continuity records (2026-08-25T08:22Z)
+
+**Scope:** Read-only three-way merge analysis of open, non-draft PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908` against current canonical `main` `25d4f754560f611f2104670040ddaf3656e72f48`, using merge base `b85dce737fe8130186ef551d28a0bd4533ddfc72`. GitHub metadata observed at review: base reference `b85dce737fe8130186ef551d28a0bd4533ddfc72`, current merge-state field `UNKNOWN`, no review decision, and no reported status checks. No branch, source, conflict, command-validation, migration, deployment, credential, target-environment, or production action was performed by Overseer.
+
+**Verified static facts:** The three-way result identifies `changed in both` conflicts in `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`. PR #6’s version contains older continuity material plus new development-only telemetry/managed-workspace assertions; current main’s versions contain later strategic-priority and governance direction. Current `docs/DOMAIN_MODEL.md`, `docs/TENANCY_AUTHORIZATION.md`, and `docs/MIGRATION_MAP.md` are canonical main additions after the PR’s base and were not themselves reported as merge-conflict paths by the static analysis.
+
+**Risk classification:** **MEDIUM — canonical continuity/governance reconciliation required.** PR #6 cannot be considered merge-ready with unresolved path-level conflicts against current main. A resolution that replaces current-main continuity direction without explicit owner scope could create governance drift. This is independent of, and does not close, telemetry removal, membership tenancy, provenance, review/audit, migration-preflight, or authorized nonzero-franchisee-evidence gates.
+
+**Required owner action:** A separate, bounded source-conflict resolution authorization is required before any agent may refresh/rebase/resolve PR #6. It must preserve the current canonical domain/tenancy/migration records and current continuity/governance direction. Darrin’s delegated recommended-A policy authority does not authorize source changes, rebases, merge conflict resolution, or merge.
+
+**Permitted actions:** Read-only static review, conflict-resolution proposal preparation, retention of current-main canonical records, and reassessment of a later explicit new PR head.
+
+**Prohibited actions:** Do not merge, approve, close, rebase, resolve conflicts, deploy, release, run migrations, alter data, use credentials, or treat the static result as passing validation.
+
+**Verification before reassessment:** Supply a separately authorized new PR head; prove conflict-free reconciliation with current main; show retention of canonical domain/tenancy/migration documentation and current continuity/governance direction; identify every continuity-record difference; and re-evaluate the remaining PR #6 gates independently.
+
+**External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5408108972](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5408108972). The notice does not approve a merge, deployment, release, or production action.
+
+**Status:** OPEN — PR #6 remains held pending separate owner authorization for any conflict-resolution change and resolution of all other gates.
