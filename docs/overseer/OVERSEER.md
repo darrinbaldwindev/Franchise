@@ -265,3 +265,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Verification before reassessment:** Before any implementation decision, Darrin must select a specific staged tranche with its exact permitted scope, excluded scope, acceptance evidence, and review condition. Target-database access or migration remains a separate later decision.
 
 **Status:** AUTHORIZED — full-gate planning brief complete; awaiting a separate bounded implementation-authorization decision.
+
+## Owner decision — Stage 0 design-lock traceability (2026-08-25)
+
+**Decision:** Authorize Stage 0 read-only design-lock work for PR #6 only.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 remains at `992caf85afcc5f321247b16c36e038c55295066e`. Static mapping found the user-ID-centric tenant test and associated router/persistence/schema surfaces; a public debug collector plus Vite injection/middleware path; provenance wording across persistence, coaching, metrics, and UI surfaces; separate current-review update and review-event insert operations; and source-controlled Drizzle migration metadata/commands including `0003_fuzzy_killraven.sql` with `NOT NULL` additions.
+
+**Outcome:** A Stage 0 traceability record was prepared inside Manus as `franchise_pr6_stage0_traceability_record_2026-08-25.md`. It maps each residual gate to candidate surfaces, dependencies, stop conditions, later acceptance evidence, and the distinction between source history and target-environment migration work.
+
+**Approved scope:** Static inspection and planning record only.
+
+**Excluded scope:** No application, schema, configuration, test/build, migration, target environment, data, credential, connector, schedule, branch, pull-request, merge, close, rebase, approval, deployment, release, provider, or production action is authorized. No source file is approved for modification by this entry.
+
+**Next owner decision:** Select a single later implementation authorization. The Stage 0 recommendation is a narrow telemetry-exclusion implementation proposal (not implementation) because its source/build path is bounded; tenancy remains the larger Issue #12 architectural prerequisite.
+
+**Status:** COMPLETED — Stage 0 planning only; PR #6 hold remains in force.
