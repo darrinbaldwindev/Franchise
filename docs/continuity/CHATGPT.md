@@ -4,94 +4,172 @@
 ChatGPT
 
 ## Last updated
-2026-08-23
+2026-08-25
 
 ## Role
 Business/product reasoning, architecture, financial-model logic, research, requirements, documentation, code review and cross-system consistency.
 
-## Work completed in this project conversation
+## Current strategic priority
 
-- Developed the home-delivery franchise concept and its operating model.
-- Reframed the franchise away from a traditional full-time employment proposition toward a flexible home-business model.
+**Get Franchise #1 to opening stage, then operate and maintain it before expanding the platform for replication.**
+
+Project sequence:
+
+**Build → Open → Operate → Maintain → Improve → Replicate**
+
+The Franchise project is a micro home-delivery business first and a technology platform second. Technology exists to operate the business.
+
+Under Darrin's `cont` / `continue autonomously` mandate, continue the highest-value work toward this objective without routine confirmation, within actual tool permissions and the decision boundaries in `docs/AI_COLLABORATION.md`.
+
+## Scope-control rule
+
+Before significant new work ask:
+
+> Does this materially help Franchise #1 reach opening stage or operate successfully?
+
+If yes, prioritise it.
+
+If no, defer it unless it is a genuine security, reliability, legal/compliance, architectural prerequisite, or required continuity/governance task.
+
+## Opening definition
+
+Franchise #1 is ready to open when products, pricing, opening stock, customer ordering, payment, franchisee order receipt, fulfilment, delivery, inventory updates, financial calculations and work/earned-hours calculations all work end-to-end, and the franchisee can operate without developer intervention.
+
+## Minimum V1 focus
+
+- secure franchisee login;
+- required franchise tenancy/security;
+- catalogue and pricing;
+- customer ordering and checkout/payment;
+- order receipt and fulfilment;
+- inventory adjustment;
+- delivery workflow;
+- basic sales/contribution reporting;
+- work-session recording;
+- earned-hours calculation;
+- end-to-end operational test.
+
+## Defer until after Franchise #1 is operating
+
+Unless a genuine prerequisite emerges, defer:
+
+- advanced AI systems;
+- native mobile applications;
+- Windows packaging;
+- sophisticated multi-franchise analytics;
+- complex territory algorithms;
+- advanced accounting automation;
+- elaborate network dashboards;
+- advanced franchise automation;
+- hypothetical enterprise infrastructure.
+
+Existing documentation for these capabilities remains useful and should not be deleted; implementation scope is simply frozen until the first franchise proves the operating model.
+
+## Business model decisions
+
+- Entry package: AUD $4,995.
+- Opening stock: approximately $2,000 cost basis.
+- Target retail value: $3,300+, subject to SKU-level verification before being marketed as a hard value claim.
+- Optional add-ons: technology, shelving, furniture, extra stock and related equipment.
+- Customer-facing free delivery remains part of the proposition; actual delivery cost must be tracked internally.
+- Royalty concept: 3% through the defined breakeven amount, then 6% above it; contractual threshold/legal treatment remains to be finalised.
+- 20% reserve / 80% owner allocation remains a proposed configurable layer, not final legal/accounting advice.
+- Gross sales are not owner income; contribution must be calculated from verified inputs.
+- Franchisee work should be driven by actual sales and economic return rather than assuming full-time work.
+
+## Earned-hours model
+
+Primary relationship:
+
+`actual work → sales → contribution → earned hours`
+
+Earned hours are an internal business-performance metric calculated from verified contribution available for owner work divided by a configurable wage benchmark.
+
+They are not a Centrelink, pension, tax, employment or legal entitlement calculation.
+
+Actual work sessions must remain distinct from storefront availability hours.
+
+## Required V1 security boundary
+
+Scope reduction does not permit insecure tenancy shortcuts.
+
+Minimum correct relationship:
+
+**User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation**
+
+Real tenant-isolation tests must demonstrate at least:
+
+- Franchise A cannot read Franchise B;
+- Franchise A cannot mutate Franchise B;
+- inactive membership is denied;
+- unauthorized franchise switching is denied;
+- franchise-owned records require authorized franchise scope.
+
+## Collaboration state
+
+The repository is the durable collaboration source of truth.
+
+Exactly three primary continuity documents are used:
+
+- `docs/continuity/CHATGPT.md`
+- `docs/continuity/MANUS.md`
+- `docs/continuity/SHARED.md`
+
+`docs/AI_COLLABORATION.md` is the operating protocol. ChatGPT, Manus and authorised Manus sub-agents have the same autonomy standard within their actual capabilities and permissions. Darrin remains final authority.
+
+Agents should coordinate through GitHub rather than using Darrin as a messenger.
+
+## Current repository state
+
+The repository contains a substantial Manus-managed Franchise Hub dashboard/reporting foundation plus canonical domain, migration and tenancy documentation.
+
+PR #6 has reported successful dependency installation, tests, TypeScript validation and production build, and GitHub verification is green at the reviewed head. These are reported/automated validation unless independently reproduced by the reviewing agent.
+
+Previously identified PR #6 acceptance concerns remain unless a newer implementation demonstrably resolves them:
+
+- `franchiseTenantIsolation.test.ts` was identified as testing user-ID propagation rather than true A/B franchise isolation;
+- `apps/franchise-hub/client/public/__manus__/debug-collector.js` was identified as an executable public asset and should be removed from canonical production source or provably development-gated;
+- migration history must remain distinct from executing/applying production migrations.
+
+Do not claim these are resolved without inspecting the current commit.
+
+## Continuity reconciliation rules
+
+Historical records must be retained as history but superseded by newer reconciliation entries when state changes.
+
+Always identify commit SHA when reporting repository state.
+
+Distinguish:
+
+- reported validation;
+- automated CI validation;
+- independently reproduced validation.
+
+Do not treat an old continuity report as current merely because its file timestamp is recent.
+
+## Immediate autonomous priority
+
+The next useful work should be the highest-value blocker to opening Franchise #1.
+
+If Manus has pushed a blocker fix, inspect the new commit rather than repeating historical findings.
+
+If no implementation change is available, work on a concrete opening-readiness gap, test or operational requirement rather than expanding architecture.
+
+## Prior work completed
+
+- Developed the home-delivery franchise concept and operating model.
+- Reframed the franchise away from assuming full-time income.
 - Established AUD $4,995 as the base franchise package.
-- Established the concept of approximately $2,000 opening-stock cost basis and $3,300+ target retail value, subject to verification.
-- Established optional add-ons for tech, shelving, furniture and extra stock.
-- Established central franchisor-controlled website/app so franchisees do not need separate websites.
-- Established service-area/territory routing based on actual delivery coverage.
-- Established central order routing to the correct franchise.
-- Established free customer delivery as a possible proposition while tracking actual delivery costs internally.
-- Established order lifecycle and delivery-provider abstraction.
-- Established actual work-hour tracking separately from storefront availability.
-- Developed the franchisee dashboard concept.
-- Developed stock/reorder alerts.
-- Developed AI coaching concept.
-- Reframed the workload model so the business starts from economic return and actual work rather than assuming a fixed workload or full-time income.
-- Established the latest `actual work → sales → contribution → earned hours` model.
-- Connected GitHub as the source of truth.
-- Added `README.md` and the AI collaboration protocol.
-- Created GitHub Issue #1 for Manus collaboration and continuity.
-- Scanned the repository after Manus implementation work and reviewed the available continuity state.
-
-## Repository scan / collaboration update — 2026-08-23
-
-The repository is now treated as the durable collaboration record. The scan indicates that Manus has developed a substantial Franchise Hub application/workspace outside the original documentation-only foundation, including the dashboard/KPI/reporting foundation and verified tests/build work. The repository documentation records this state and the known gap between the dashboard foundation and the complete franchise platform.
-
-The important architectural issue identified is **source-of-truth alignment**: we should not create a second competing application. The next collaboration step is to deliberately establish whether the Manus-managed Franchise Hub application is the production application represented by this repository, then bring the implementation/runtime into the canonical repository in a controlled way.
-
-Manus-reported implemented areas include tenant-scoped business records, server-side KPI calculations, Sales, Operating Contribution, Earned Hours, productivity/workload metrics, projections, deterministic coaching, LLM coaching based on server-derived snapshots, attestations, immutable input revisions, admin review/audit events and Trends reporting. Manus reported passing Vitest tests, TypeScript validation and a production build in its managed workspace. These should be independently verified against the canonical repository before being called production-ready.
-
-Known broader platform gaps include franchise/membership tenancy, full role model, territory resolution, central catalogue, customer checkout, payments, order orchestration, inventory movements, delivery integration, work-session capture, accounting exports, training system and mobile/Windows packaging.
-
-## Important current decisions
-
-1. $4,995 is the entry package.
-2. Stock, technology, furniture and working capital are distinct economic concepts.
-3. Franchisees can use central branded software/site.
-4. Territory is controlled by real service coverage.
-5. Actual work hours, not opening hours, are labour.
-6. Do not assume every owner wants full-time income.
-7. Earned hours are a business-performance metric derived from contribution and a configured wage benchmark.
-8. Do not represent earned hours as government-benefit eligibility.
-9. 3% royalty applies through the defined breakeven threshold; 6% applies above it, subject to final contractual/legal definition.
-10. 20% reserve / 80% owner allocation is a proposed configurable economic layer, not a final legal/accounting rule.
-11. Gross sales must not be treated as owner income; contribution must be calculated from verified inputs.
-12. Customer-facing free delivery must retain an internal delivery-cost calculation.
-
-## Collaboration rules
-
-- Maintain three continuity logs: `CHATGPT.md`, `MANUS.md`, and `SHARED.md`.
-- Do not overwrite Manus's log.
-- Update `CHATGPT.md` after substantive ChatGPT work.
-- Update `SHARED.md` when a material project-state or architectural decision changes.
-- Read the shared state before making major recommendations.
-- The user remains the final decision authority.
-- Do not create a parallel application when an existing Manus implementation already covers the same responsibility.
-- Prefer controlled migration/integration into the canonical repository.
-- Under Darrin's `cont` / `continue autonomously` mandate, agents should make reasonable progress without waiting for routine confirmation.
-
-## Autonomous continuation — latest cycle
-
-ChatGPT reviewed the active GitHub queue and confirmed Issue #5 (`Integrate managed Franchise Hub source into canonical repository`) is the correct immediate implementation gate. The issue explicitly authorises controlled source integration into `apps/franchise-hub/` while prohibiting production-data, secret, OAuth, migration and live-deployment changes.
-
-ChatGPT posted a concise handoff on Issue #5 requesting Manus proceed with the source snapshot and report exact source checkpoint, exclusions and validation (`git diff --check`, `pnpm test`, `pnpm check`, `pnpm build`) in the resulting PR. No live system or database changes were requested.
-
-ChatGPT also reviewed PR #3 (`docs: add coordinated first-scan task`). It was not merged because its scan protocol describes ChatGPT as read-only, which is superseded by the current equal-autonomy protocol in `docs/AI_COLLABORATION.md`. A comment was added explaining that the PR is superseded and should be closed/reworked rather than merged unchanged.
-
-This cycle confirms that the canonical implementation should be integrated before further parallel application development, avoiding duplicate implementations.
-
-## Recommended next work
-
-1. Manus completes controlled source integration for Issue #5.
-2. Review the resulting PR and verify the committed application in the canonical repository.
-3. Reconcile `MANUS.md` and `SHARED.md` with the actual source snapshot and test results.
-4. Establish the Continuity Steward using the autonomy protocol; Manus has final say on its runtime/schedule design.
-5. Verify the existing financial and earned-hours calculations with tests in the canonical repository.
-6. Implement database migrations, authentication/roles and franchise tenancy where missing.
-7. Then connect orders, inventory, delivery and dashboards.
-8. Add customer storefront, payments, accounting, training, AI coaching and network reporting.
-9. Package mobile/Windows experiences.
-10. Harden security, privacy, compliance and production deployment.
+- Established approximately $2,000 opening-stock cost basis and $3,300+ target retail value subject to verification.
+- Established central branded software/site.
+- Established service-area routing based on actual delivery coverage.
+- Established free customer delivery proposition with internal delivery-cost tracking.
+- Developed franchisee dashboard, stock/reorder and AI coaching concepts.
+- Established the actual-work → sales → contribution → earned-hours model.
+- Established GitHub as source of truth.
+- Established the three-log collaboration model and AI collaboration protocol.
+- Reviewed Manus integration work and identified tenancy, debug telemetry and source-of-truth risks.
 
 ## Agent-to-agent request
 
-Manus should read this update, inspect the actual canonical repository and its managed application workspace, then update `MANUS.md` and `SHARED.md` with the exact implementation/source-of-truth status. Keep the exchange brief; use GitHub for durable state.
+Manus should read the updated `SHARED.md`, inspect current implementation, update `MANUS.md` with first-hand state, and update `SHARED.md` when material state changes. The strategic priority is now explicitly **Opening Franchise #1 first**.
