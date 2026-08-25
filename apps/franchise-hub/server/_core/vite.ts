@@ -59,8 +59,6 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
-
   // The browser debug collector is a development-only diagnostic. Never serve
   // its script or telemetry endpoint from the production static application.
   app.use((req, res, next) => {
@@ -70,6 +68,8 @@ export function serveStatic(app: Express) {
     }
     next();
   });
+
+  app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
