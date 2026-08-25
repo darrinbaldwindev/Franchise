@@ -611,3 +611,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next delegated policy decision:** Set the source-level migration-preflight boundary so migration history is not mistaken for authorized environment execution.
 
 **Status:** AUTHORIZED — immutable audit-event/retention policy selected through Darrin’s delegated recommended-A instruction; implementation pending separate Darrin authorization.
+
+## Delegated policy decision — source-controlled migration history and target-specific preflight (2026-08-25)
+
+**Decision:** Applying Darrin’s delegated recommended option A, every migration file, snapshot, or journal committed with Franchise source is **source-controlled migration history only**. It is not proof of target applicability and does not authorize target inspection, migration generation, migration execution, `db:push`, backup, data copy, rehearsal, deployment, or release. Before any target-environment step, a separate Darrin authorization must identify the exact environment and data classification; access authority; current migration journal/schema baseline; migration graph; each backfill/default/`NOT NULL` consequence; backup/checkpoint and recovery owners; permitted non-production rehearsal; evidence preservation; and an explicit post-rehearsal go/no-go decision. No destructive migration or fabricated historical transactional data is permitted under this policy.
+
+**Authority:** Darrin’s explicit delegation in this task to continue autonomously using the recommended option A for subsequent Franchise PR #6 policy decisions, bounded to policy/planning and existing owner-gated operational limits.
+
+**Evidence:** Current canonical `main` migration map at `25d4f754560f611f2104670040ddaf3656e72f48` describes itself as a mapping/sequencing plan that does not execute migrations; requires explicit membership/franchise linkage for legacy reporting records; permits backfill only for unambiguous mappings; requires row/uniqueness validation; preserves original attested values/provenance; and explicitly prohibits production migration execution, destructive/drop migrations, production-data copying, and fabricated historical transactions. PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908` contains source-controlled Drizzle migration history but no target-specific journal, data classification, backup/recovery record, approved rehearsal, or environment authorization.
+
+**Approved scope:** Policy direction and source-level planning only. A later preflight proposal must distinguish source files from applied environment state, map legacy records only where unambiguous, preserve historical attested values/provenance, and define a non-production rehearsal before any production go/no-go decision.
+
+**Excluded scope:** No database/target-environment access, schema inspection, migration generation/execution, `db:push`, backfill, data copy, backup, restore, rehearsal, deployment, release, credential use, or production action is authorized. No statutory/commercial data-retention or financial-accounting treatment is established by this policy.
+
+**Verification before reassessment:** Provide the separately authorized environment-preflight record; exact target baseline/journal; migration graph and row-impact analysis; explicit backfill/default decisions; named backup/checkpoint and recovery owners; approved non-production rehearsal outcome; reconciliation of original values/provenance; cross-tenant validation; and Darrin’s subsequent go/no-go decision. Absent those artifacts, migration state remains unverified and unapplied.
+
+**Next review:** Reconcile all selected policies against the current held PR #6 gates and identify which next steps are still blocked by separate operational authorization.
+
+**Status:** AUTHORIZED — migration-preflight boundary selected through Darrin’s delegated recommended-A instruction; all environment actions remain separately owner-gated.
