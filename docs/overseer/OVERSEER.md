@@ -409,3 +409,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the effective-date convention for membership validity, including time basis and end-boundary semantics.
 
 **Status:** AUTHORIZED — membership invalidation policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — membership effective-date convention (2026-08-25)
+
+**Decision:** Enforce membership validity with authoritative server UTC timestamps. `effective_from` is inclusive (`now_utc >= effective_from`); `effective_to` is exclusive (`now_utc < effective_to`); and `NULL effective_to` means open-ended. Display locale may not alter authorization.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The canonical membership model contains effective dates and requires server-side membership validation. The selected immediate invalidation policy requires an unambiguous security boundary for expiry, while a timezone- or end-of-day-undefined convention could leave authorization inconsistent at date boundaries.
+
+**Approved scope:** Policy direction only. Server-controlled UTC time determines membership validity. A revoked/suspended status denies access regardless of otherwise valid timestamps. Historical membership/business/audit evidence remains intact and no membership dates may be created or altered under this decision.
+
+**Excluded scope:** No schema, session, application, configuration, test/build, migration, environment/data/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. This does not select display-timezone or invitation workflow behavior.
+
+**Verification before reassessment:** Any later implementation must prove denial before `effective_from` and at/after `effective_to`, open-ended null end behavior, identical authorization across client timezones, server-time rather than client-time enforcement, and suspension/revocation override.
+
+**Next owner decision:** Select membership invitation and approval lifecycle, including who may initiate or approve an active membership.
+
+**Status:** AUTHORIZED — UTC effective-date policy selected; implementation pending separate Darrin authorization.
