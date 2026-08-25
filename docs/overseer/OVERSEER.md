@@ -663,3 +663,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Delegation boundary:** Darrin’s recommended-A delegation was applied only to policy/planning decisions. It does not authorize source modification, conflict resolution/rebase, command validation, target access, migration, data action, credential use, merge, deployment, release, or provider activity. Any such action requires a separate explicit authorization.
 
 **Status:** OPEN / HELD — no operational next step is authorized; continue read-only monitoring and reassess a separately authorized remediation/conflict-resolution PR head when supplied.
+
+## Material documentation update — PR #14 telemetry qualification and Issue #15 dependency (2026-08-25T09:16Z)
+
+**Scope:** Read-only review of open PR #14 `1ac3f12a999e104c3af1d944a6903cbac61213ff` (`docs: reconcile PR #6 opening-readiness state`), its two documentation paths, open Issue #15, and the exact referenced PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`. Current main reference observed through GitHub was `c1add1e4f28b2f095b66752e29eb421f9808ee2a`. No source, command-validation, migration, target-environment, data, credential, merge, deployment, release, or production action was performed by Overseer.
+
+**Verified static facts:** PR #14 correctly records absence of the *former public* path `apps/franchise-hub/client/public/__manus__/debug-collector.js` from PR #6 head. The same exact PR #6 head retains `apps/franchise-hub/client/devtools/debug-collector.js`, `/__manus__/logs` references, collector route constants, and `vitePluginManusDebugCollector` wiring in `apps/franchise-hub/vite.config.ts`. PR #14's broader “debug-telemetry safeguard” wording therefore requires qualification: it must not be read as complete collector removal or closure of the recorded telemetry gate.
+
+**Evidence classification:** PR #14's reported isolated install/test/check/build outcomes are contributor evidence only for this read-only Overseer review. They were not rerun, and no managed workspace, deployment, or live endpoint was inspected. The existing complete-removal policy remains unchanged: the current development-only collector design does not satisfy it, and the required dedicated deletion-only remediation PR has not been supplied.
+
+**Risk classification:** **MEDIUM — incomplete telemetry provenance/governance qualification in an opening-readiness record.** The affected documentation could otherwise overstate the evidence for the selected complete-removal requirement. It does not create a new approval, implementation authorization, or change to the held PR #6 gate.
+
+**External notification:** A new-material, PR-only notice was posted under the active authorized dispatch window: [issuecomment-5408396071](https://github.com/darrinbaldwindev/Franchise/pull/14#issuecomment-5408396071). It requests qualification only; it does not approve or instruct a merge, telemetry implementation, deployment, release, or production action.
+
+**Issue #15 observation:** Open Issue #15 (`App: implement real franchise membership tenancy before commerce V1`) restates the selected membership-derived authorization direction and P0 acceptance criteria. It is an issue/author claim and does not itself authorize implementation. It adds no new policy decision; its stated acceptance direction remains consistent with the previously recorded tenancy, role, active-context, lifecycle, review, and migration decisions.
+
+**Required next action:** Reassess a revised PR #14 head if supplied; continue to hold PR #6 for current-main conflict resolution, complete telemetry removal, selected tenancy/review/audit implementation, target-specific migration preflight, authorized nonzero-franchisee evidence, and Darrin's separate merge decision.
+
+**Status:** OPEN / HELD — PR #14 wording qualification pending; PR #6 gates unchanged.
