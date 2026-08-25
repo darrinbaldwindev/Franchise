@@ -701,3 +701,17 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5408558741](https://github.com/darrinbaldwindev/Franchise/pull/13#issuecomment-5408558741). It does not approve a merge, deployment, release, or production action.
 
 **Status:** OPEN / HELD — pending separate owner authorization for any documentation reconciliation.
+
+## Owner decision — PR #6 read-only conflict-resolution preparation (2026-08-25)
+
+**Decision:** Darrin selected **A — prepare a bounded, read-only conflict-resolution proposal** for PR #6. This authorizes only static comparison, preservation mapping, handoff drafting, and a static acceptance checklist. It does **not** authorize branch creation, source changes, rebase, conflict resolution, test/build execution, migration, target-environment access, data action, credential use, merge, deployment, release, or any change to PR #6.
+
+**Evidence:** Current PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; current main `043301c05b5b6e2eea429b4fe85feabb1b2fe868`; merge base `5e963de433e050c54f7063287f96d971cfde13f2`. A static three-way comparison identifies `changed in both` conflicts in `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`. Current main now also contains `docs/application/APP_TENANCY_IMPLEMENTATION_SPEC.md`, which reinforces the canonical tenancy contract and must be preserved without modification in any later source-change package.
+
+**Approved scope:** Prepare and retain the read-only handoff at `/home/ubuntu/overseer_scan/franchise_pr6_conflict_resolution_handoff_2026-08-25.md`. The handoff requires current-main opening-first governance to prevail, limits any future resolution to the two conflicting continuity files, preserves canonical domain/tenancy/migration/application-tenancy records, and prohibits conflating contributor/managed-workspace claims with independently reproduced canonical evidence.
+
+**Excluded scope:** All source, branch, PR, application, dependency, telemetry, schema/migration, configuration, data, CI/CD, deployment, release, and target-environment actions remain outside this authorization. The existing complete-removal telemetry policy and every other held PR #6 gate remain unchanged.
+
+**Verification:** Before a future read-only reassessment, a separately authorized implementation-capable agent must supply an exact revised head and static evidence of scope containment, no conflict markers, conflict-free reconciliation against then-current main, canonical-preservation proof, correct evidence terminology, and retention of all unresolved gates.
+
+**Status:** COMPLETED — read-only preparation only. A separate operational authorization is required before any agent may create or alter a conflict-resolved revision.
