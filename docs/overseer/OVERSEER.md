@@ -481,3 +481,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select which tenant-scoped membership role may perform review/audit state transitions and how the transition must be recorded.
 
 **Status:** AUTHORIZED — minimum-owner continuity policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — tenant-scoped review authority and atomic audit transition (2026-08-25)
+
+**Decision:** Only an active/effective `franchise_reviewer` in the record’s authorized franchise may decide a review. Self-review is prohibited. The initial transition set is `awaiting-review → approved` and `awaiting-review → needs-correction`; the latter requires a reason/note. Every transition must constrain expected prior state and authorized franchise scope in one atomic operation that writes the immutable review event.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** At PR #6 head `992caf85afcc5f321247b16c36e038c55295066e`, the review queue/decision currently uses global `adminProcedure` and global `users.role`; `reviewMonthlyRecord` reads a record, updates by ID, then separately inserts an audit event. The selected tenancy/role policy requires membership-derived server authorization and prohibits global role substitution.
+
+**Approved scope:** Policy direction only. A later review operation must validate reviewer membership/context, record franchise scope, prohibit self-review, constrain the record to `awaiting-review`, and write state/event together. If expected state/scope no longer matches, it must return no transition and create no review event. Review action decides review state only and does not alter attested business inputs.
+
+**Excluded scope:** No review API, schema, application, configuration, test/build, migration, data mutation, environment/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. Resubmission, assignment, owner audit-read, appeal, notification, and retention remain separate decisions.
+
+**Verification before reassessment:** Any later implementation must prove same-franchise reviewer authority; global-admin-only, operator, owner, self-review, and cross-tenant denial; expected-state stale-transition conflict without event; atomic update/event behavior; correction-reason requirement; unchanged submitted inputs; and reviewer lifecycle invalidation.
+
+**Next owner decision:** Select the resubmission behavior after a `needs-correction` review decision.
+
+**Status:** AUTHORIZED — reviewer-only atomic review/audit policy selected; implementation pending separate Darrin authorization.
