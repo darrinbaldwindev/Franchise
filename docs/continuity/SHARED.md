@@ -321,3 +321,36 @@ The next autonomous work should focus on the **highest-value blocker to opening 
 For Gate 3, obtain verified supplier costs for the first 40–60 candidate SKUs, benchmark them against current customer-facing prices, and model both Marketplace and direct-delivery economics. Do not mark final prices approved until supplier cost and delivery assumptions are evidenced.
 
 If Manus has already implemented a blocker fix, ChatGPT/Overseer should inspect the new commit rather than repeat historical recommendations.
+
+## Reconciliation update — 25 August 2026 (Issue #1)
+
+This entry supersedes earlier unqualified statements that the Franchise Hub foundation is contained in the canonical repository. A first-hand review inspected `main` at `de655a6` and Pull Request #6 at `67ee3ce8205d2a9c6aa2e25123802dd384dec908`.
+
+| Area | Verified current state | Status |
+| --- | --- | --- |
+| Canonical source | `main` contains no files under `apps/franchise-hub/`; the application source remains staged only in open PR #6. | **RED — not integrated** |
+| PR #6 integration | PR #6 is open and GitHub reports it as conflicting. The merge conflicts are limited to `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`. | **AMBER — owner-gated integration decision** |
+| Isolated validation | At the exact PR head, `pnpm install --frozen-lockfile`, `pnpm test` (15 files / 30 tests), `pnpm check`, and `pnpm build` all completed successfully. | **GREEN — independently reproduced, PR branch only** |
+| Debug telemetry | The PR head no longer contains `client/public/__manus__/debug-collector.js`; its production static middleware rejects collector and telemetry routes with `404` before static assets are served. | **AMBER — source-inspected on PR branch, not canonical** |
+| Franchise tenancy | The staged implementation remains account-scoped. Its test proves authenticated user-ID propagation into mocked calls, not required cross-franchise isolation or membership/context authorization. | **RED — opening prerequisite unresolved** |
+
+The reproduced build completed with non-blocking warnings for undefined analytics environment placeholders, a non-module analytics script reference, and a large JavaScript chunk. These must be resolved or explicitly configured before any production release.
+
+### Immediate opening-readiness action
+
+The smallest high-value next step is an **owner-gated PR #6 integration decision**: reconcile the two continuity-file conflicts, determine whether to merge the validated source as a development baseline, and preserve the distinction between source integration and production approval. No merge, rebase, approval, closure, deployment, migration, or provider activation was performed by this review.
+
+After source integration, the first required implementation gate remains genuine `User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation` enforcement with real cross-franchise authorization tests. Gate 3 supplier-cost, retail-price, and delivery-economics evidence remains in progress and is also required before commercial opening; it does not remove the tenancy gate.
+
+### Decision record
+
+```markdown
+Decision: No integration or release decision made; source integration and tenancy are current opening prerequisites.
+Authority: Darrin (owner-gated).
+Evidence: `main` `de655a6`; PR #6 `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; 25 August 2026 isolated validation: 30 tests passed, TypeScript passed, build passed with warnings.
+Approved scope: Evidence-based continuity reconciliation only.
+Excluded scope: Merge, rebase, approval, deployment, production migration, provider activation, and material commercial/security decisions.
+Verification: Resolve PR conflicts; inspect the resulting candidate revision; add real franchise-membership/context authorization and cross-franchise isolation evidence.
+Expiry or review date: Reassess immediately when PR #6 changes or an owner integration decision is recorded.
+Status: Pending owner decision.
+```
