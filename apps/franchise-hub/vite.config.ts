@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+import { MANUS_DEBUG_COLLECTOR_PATH, MANUS_DEBUG_LOGS_PATH } from "./shared/debugCollectorBoundary";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -13,6 +14,7 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 const PROJECT_ROOT = import.meta.dirname;
 const LOG_DIR = path.join(PROJECT_ROOT, ".manus-logs");
+const DEBUG_COLLECTOR_SOURCE_PATH = path.join(PROJECT_ROOT, "client", "devtools", "debug-collector.js");
 const MAX_LOG_SIZE_BYTES = 1 * 1024 * 1024; // 1MB per log file
 const TRIM_TARGET_BYTES = Math.floor(MAX_LOG_SIZE_BYTES * 0.6); // Trim to 60% to avoid constant re-trimming
 
@@ -69,26 +71,27 @@ function writeToLogFile(source: LogSource, entries: unknown[]) {
 }
 
 /**
- * Vite plugin to collect browser debug logs
+ * Development-only Vite plugin to collect browser debug logs.
  * - POST /__manus__/logs: Browser sends logs, written directly to files
  * - Files: browserConsole.log, networkRequests.log, sessionReplay.log
  * - Auto-trimmed when exceeding 1MB (keeps newest entries)
+ *
+ * The collector source is intentionally outside client/public so production
+ * builds neither copy nor execute it.
  */
 function vitePluginManusDebugCollector(): Plugin {
   return {
     name: "manus-debug-collector",
+    apply: "serve",
 
     transformIndexHtml(html) {
-      if (process.env.NODE_ENV === "production") {
-        return html;
-      }
       return {
         html,
         tags: [
           {
             tag: "script",
             attrs: {
-              src: "/__manus__/debug-collector.js",
+              src: MANUS_DEBUG_COLLECTOR_PATH,
               defer: true,
             },
             injectTo: "head",
@@ -98,8 +101,24 @@ function vitePluginManusDebugCollector(): Plugin {
     },
 
     configureServer(server: ViteDevServer) {
+      server.middlewares.use(MANUS_DEBUG_COLLECTOR_PATH, (req, res, next) => {
+        if (req.method !== "GET" && req.method !== "HEAD") return next();
+
+        try {
+          const source = fs.readFileSync(DEBUG_COLLECTOR_SOURCE_PATH, "utf-8");
+          res.writeHead(200, {
+            "Cache-Control": "no-store",
+            "Content-Type": "application/javascript; charset=utf-8",
+            "X-Content-Type-Options": "nosniff",
+          });
+          res.end(req.method === "HEAD" ? undefined : source);
+        } catch {
+          next();
+        }
+      });
+
       // POST /__manus__/logs: Browser sends logs (written directly to files)
-      server.middlewares.use("/__manus__/logs", (req, res, next) => {
+      server.middlewares.use(MANUS_DEBUG_LOGS_PATH, (req, res, next) => {
         if (req.method !== "POST") {
           return next();
         }

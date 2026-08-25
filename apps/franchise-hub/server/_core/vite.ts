@@ -4,6 +4,7 @@ import { type Server } from "http";
 import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
+import { isManusDebugCollectorRoute } from "../../shared/debugCollectorBoundary";
 import viteConfig from "../../vite.config";
 
 export async function setupVite(app: Express, server: Server) {
@@ -59,6 +60,16 @@ export function serveStatic(app: Express) {
   }
 
   app.use(express.static(distPath));
+
+  // The browser debug collector is a development-only diagnostic. Never serve
+  // its script or telemetry endpoint from the production static application.
+  app.use((req, res, next) => {
+    if (isManusDebugCollectorRoute(req.path)) {
+      res.status(404).end();
+      return;
+    }
+    next();
+  });
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
