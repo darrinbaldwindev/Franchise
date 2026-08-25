@@ -249,3 +249,19 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Expiry or review date:** Pending the next explicit owner decision; the standing PR-comment authorization remains time-bounded to `2026-09-22T13:15:31Z` and does not broaden this decision.
 
 **Status:** AUTHORIZED — planning/remediation-brief preparation only; PR #6 hold remains in force.
+
+## Owner decision — full-gate staged remediation brief (2026-08-25)
+
+**Decision:** Prepare one **staged, full-gate remediation brief** for PR #6, covering franchise membership/server authorization, production debug-telemetry exclusion, provenance vocabulary, guarded review/audit transition, and a separately owner-gated target-specific migration preflight.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The brief is based on PR #6 head `992caf85afcc5f321247b16c36e038c55295066e`, open Issue #12, and the standing static-review findings. It is retained in this task as `franchise_pr6_staged_remediation_brief_2026-08-25.md`.
+
+**Approved scope:** Planning artifact only. It may sequence work, identify candidate surfaces for later inspection, state acceptance evidence, and identify stop conditions and owner decisions. It does not identify any application file as approved for modification.
+
+**Excluded scope:** No code, test, build, migration, schema, configuration, CI/CD, continuity, data, credential, connector, schedule, branch, pull-request, merge, close, rebase, approval, deployment, release, provider, or production action is authorized. The PR #6 hold remains in force.
+
+**Verification before reassessment:** Before any implementation decision, Darrin must select a specific staged tranche with its exact permitted scope, excluded scope, acceptance evidence, and review condition. Target-database access or migration remains a separate later decision.
+
+**Status:** AUTHORIZED — full-gate planning brief complete; awaiting a separate bounded implementation-authorization decision.
