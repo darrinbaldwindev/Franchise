@@ -463,3 +463,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select owner succession and the minimum-owner continuity rule for a franchise.
 
 **Status:** AUTHORIZED — suspension/revocation authority selected; implementation pending separate Darrin authorization.
+
+## Owner decision — owner succession and minimum-owner continuity (2026-08-25)
+
+**Decision:** Every active franchise must retain at least one active, effective `franchise_owner`. A platform-governance authority activates an approved successor owner before the final existing owner may be demoted, suspended, or revoked. No `franchise_operator` or `franchise_reviewer` is promoted automatically. A zero-owner result requires a separately governed franchise closure/inactivation exception.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The selected owner-role policy reserves owner creation/elevation and owner status changes to platform governance. The selected UTC effective-date and immediate invalidation policies establish when an owner is active and how status changes take effect. No current canonical record defines an automatic successor or zero-owner exception.
+
+**Approved scope:** Policy direction only. For an active franchise, routine lifecycle action must preserve at least one active/effective owner. A successor-first transition requires platform approval, valid active membership, and UTC effective-date validation before the predecessor’s final-owner status can change. A separately governed closure/inactivation exception is not ordinary access management.
+
+**Excluded scope:** No membership/API/schema/session/application/configuration/test/build/migration/data/environment/credential/telemetry/connector/schedule/branch/pull-request/merge/deployment/release/provider/production action is authorized. This entry does not define legal ownership transfer, notification, platform staffing, or recovery workflow.
+
+**Verification before reassessment:** Any later implementation must prove final-owner change denial, successor-first success only after platform authorization and active/effective validation, no automatic operator/reviewer promotion, no cross-tenant/global-role bypass, separately gated closure exception, complete lifecycle audit attribution, and selected next-request invalidation behavior.
+
+**Next owner decision:** Select which tenant-scoped membership role may perform review/audit state transitions and how the transition must be recorded.
+
+**Status:** AUTHORIZED — minimum-owner continuity policy selected; implementation pending separate Darrin authorization.
