@@ -539,3 +539,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5404391802](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5404391802). The notice does not approve a merge, deployment, release, or production action.
 
 **Status:** OPEN — awaiting Darrin’s explicit scope decision; no implementation action authorized by this record.
+
+## Owner reaffirmation — complete removal remains required for telemetry (2026-08-25)
+
+**Decision:** Darrin selected option A after the PR #6 telemetry-scope divergence notice. The active telemetry policy remains **complete removal**, not a development-only redesign. The current PR #6 development-only collector changes do not satisfy the telemetry gate and do not supersede the prior authorization. Any telemetry remediation remains limited to the already authorized **separate, dedicated source-only deletion PR**.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908` retains the collector source as `client/devtools/debug-collector.js` and retains collector-specific Vite injection, script-serving, telemetry ingest, route helper/test, and documentation changes. The verified static scope divergence and affected-PR notice are recorded above at [issuecomment-5404391802](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5404391802).
+
+**Approved scope:** Policy direction and the existing narrow delegated handoff only: a separate remediation pull request may delete the collector and all collector-specific Vite injection/ingest plumbing, subject to its existing source-only authorization and static Overseer reassessment. This record does not direct an immediate rollback or change to PR #6.
+
+**Excluded scope:** No acceptance of the current development-only redesign; no modification, rollback, code change, test/build, migration, data mutation, managed-workspace validation, credential use, PR approval, merge, close, rebase, deployment, release, provider, or production action is authorized by this reaffirmation.
+
+**Verification before reassessment:** Provide the separate remediation PR URL/head and static proof that the collector source, Vite injection, script serving, telemetry ingest route, route helper/test plumbing, and collector-specific documentation are deleted. The change must remain source-only and within the original deletion-only scope. PR #6 remains held while tenant-membership, provenance, review/audit, migration-preflight, and authorized nonzero-franchisee-evidence gates remain open.
+
+**Next owner decision:** Select canonical provenance terminology for attested inputs, server-calculated metrics, review states, and any future verified/imported state.
+
+**Status:** AUTHORIZED — complete-removal telemetry policy reaffirmed; implementation pending only the previously bounded separate remediation process.
