@@ -283,3 +283,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select a single later implementation authorization. The Stage 0 recommendation is a narrow telemetry-exclusion implementation proposal (not implementation) because its source/build path is bounded; tenancy remains the larger Issue #12 architectural prerequisite.
 
 **Status:** COMPLETED — Stage 0 planning only; PR #6 hold remains in force.
+
+## Owner decision — telemetry-remediation specification preparation (2026-08-25)
+
+**Decision:** Authorize preparation only of a change specification for the PR #6 debug-telemetry gate.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 remains at `992caf85afcc5f321247b16c36e038c55295066e`. Static inspection confirms that `client/public/__manus__/debug-collector.js` captures console, network, error, and UI-event data and posts to `/__manus__/logs`. `vite.config.ts` unconditionally registers the collector plugin; its transform omits injection for `NODE_ENV=production`, but the configured public directory/build output relationship means transform behavior alone is not proof that the asset is absent from production artifacts.
+
+**Outcome:** A planning-only specification was prepared inside Manus as `franchise_pr6_telemetry_remediation_change_spec_2026-08-25.md`. It defines complete-removal and provably-development-only alternatives, their candidate source/build surfaces, and evidence required before reassessment.
+
+**Approved scope:** Planning specification only.
+
+**Excluded scope:** No application/configuration change, command execution, build/test, telemetry use, target-environment access, data/credential use, connector/schedule change, branch/pull-request change, merge, deployment, release, provider, or production action is authorized.
+
+**Next owner decision:** Select a telemetry disposition: A — complete removal (recommended), B — provably development-only redesign, or C — defer. Any selection still requires a separate bounded implementation authorization.
+
+**Status:** COMPLETED — specification prepared; approach selection pending; PR #6 hold remains in force.
