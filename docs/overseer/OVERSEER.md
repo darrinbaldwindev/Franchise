@@ -337,3 +337,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Overseer boundary:** This read-only Overseer will not implement the change. It will perform a fresh independent static review only after the remediation PR URL and head revision are available.
 
 **Status:** AUTHORIZED — bounded separate remediation PR creation by an implementation-capable agent only; PR #6 hold remains in force.
+
+## Owner decision — canonical franchise tenancy and authorization model (2026-08-25)
+
+**Decision:** Select the canonical access model: explicit `franchise_memberships` plus an immutable server-derived `AuthorizedFranchiseContext`. Multi-franchise access is allowed only when explicitly authorized and validated by the server.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 remains at `992caf85afcc5f321247b16c36e038c55295066e`; Issue #12 remains open. `docs/DOMAIN_MODEL.md` requires every franchise-owned transactional path to establish franchise scope and prohibits treating `user_id` as the franchise tenant key. `docs/TENANCY_AUTHORIZATION.md` requires authenticated user → active membership resolution → authorized request context → tenant-scoped query/write, rejects client-supplied franchise IDs as proof, and requires cross-tenant coverage.
+
+**Approved scope:** Design direction only. The logical request context includes authenticated user, franchise, membership, role, membership validity, and context-selection source. Single-membership users may resolve deterministically; a multi-membership user must select an allowed context that the server validates rather than receiving an arbitrary or first-returned membership.
+
+**Excluded scope:** No schema, application, configuration, test/build, migration, environment/data/credential, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. No legacy backfill, membership record, transaction, or historical data may be fabricated. The telemetry-removal authorization remains separate.
+
+**Verification before reassessment:** Any later implementation must prove unaffiliated denial, A/B read and mutation isolation, inactive/expired membership denial, server-side role enforcement, validation of multi-franchise context selection, repository/helper non-bypass, and auditable `franchise_id` ownership. Target migration and live data handling remain separately owner-gated.
+
+**Next owner decision:** Select the initial membership-role policy and privilege boundary before authorizing a tenancy implementation package.
+
+**Status:** AUTHORIZED — canonical tenancy design selected; implementation pending separate Darrin authorization.
