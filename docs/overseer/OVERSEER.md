@@ -231,3 +231,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Owner decision:** No immediate product or merge decision changes. If Darrin elects to revise the recurring-run behavior later, the deduplication baseline must include the current PR head plus the normalized unresolved-gate set and latest notice link; any schedule, connector, or delivery change remains separately owner-authorized. Until then, retain the existing schedule and PR #6 hold.
 
 **Audit boundary:** Static GitHub metadata and review-comment comparison only. No project code, tests, builds, migrations, deployments, provider calls, credentials, production data, or repository settings were accessed or changed.
+
+## Owner decision — Franchise PR #6 bounded remediation proposal (2026-08-25)
+
+**Decision:** Maintain the current hold on [Franchise PR #6](https://github.com/darrinbaldwindev/Franchise/pull/6) and authorize **preparation only** of a bounded remediation proposal for its residual gates.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 is open, non-draft, and `CLEAN` at `992caf85afcc5f321247b16c36e038c55295066e`; [Issue #12](https://github.com/darrinbaldwindev/Franchise/issues/12) remains open. The review record identifies residual franchise/membership tenancy and server-side authorization, provenance terminology, guarded atomic review/audit transition, target-specific migration planning, and production debug-telemetry exclusion gates. Reported validation results remain prior review evidence and were not rerun for this decision.
+
+**Approved scope:** Prepare an owner-reviewable remediation brief that sequences the residual gates, names constrained changed surfaces, and defines acceptance evidence. The brief may distinguish source-controlled migration history from applied migrations and may propose test criteria; it does not itself authorize tests or source changes.
+
+**Excluded scope:** No application, schema, migration, configuration, CI/CD, continuity-record, business-rule, production-data, credential, connector, schedule, branch, pull-request, merge, close, rebase, approval, deployment, release, provider, or production action is authorized. No migration may be generated or applied, and no validation command may be executed, under this decision.
+
+**Verification before reassessment:** The proposed brief must preserve the source-integration boundary, require the explicit membership/tenant authorization model before downstream commerce/financial work, state that reviewer-state and audit-event persistence must be a guarded atomic transition, keep target-environment migration work separately owner-gated, and make debug telemetry absent or provably development-only. Darrin must separately approve any implementation scope or validation execution.
+
+**Expiry or review date:** Pending the next explicit owner decision; the standing PR-comment authorization remains time-bounded to `2026-09-22T13:15:31Z` and does not broaden this decision.
+
+**Status:** AUTHORIZED — planning/remediation-brief preparation only; PR #6 hold remains in force.
