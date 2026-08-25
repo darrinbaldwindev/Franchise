@@ -517,3 +517,25 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the canonical provenance terminology and state vocabulary for attested, corrected, reviewed, approved, and related records.
 
 **Status:** AUTHORIZED — correction resubmission policy selected; implementation pending separate Darrin authorization.
+
+## Material PR #6 update — telemetry remediation scope divergence (2026-08-25T02:43Z)
+
+**Scope:** Read-only static comparison of open, non-draft [PR #6](https://github.com/darrinbaldwindev/Franchise/pull/6) head `67ee3ce8205d2a9c6aa2e25123802dd384dec908` (`fix: deny telemetry routes before static assets`) against prior reviewed head `992caf85afcc5f321247b16c36e038c55295066e`. GitHub metadata at review reported base `b85dce737fe8130186ef551d28a0bd4533ddfc72`, updated `2026-08-25T02:39:15Z`, and merge state `DIRTY`. No project code, test/build, migration, deployment, managed workspace, credential, production endpoint, or data action was performed by Overseer.
+
+**Verified static facts:** Commits `9f5e417f762dfbbc7a88d55619dd6ac0ef9be4ff` and `67ee3ce8205d2a9c6aa2e25123802dd384dec908` rename the former public collector into `apps/franchise-hub/client/devtools/debug-collector.js`; add `apps/franchise-hub/shared/debugCollectorBoundary.ts` and `apps/franchise-hub/server/debugCollectorBoundary.test.ts`; retain/extend the collector Vite plugin, development HTML injection, script-serving middleware, and `/__manus__/logs` ingest handler; add production route-denial logic in `server/_core/vite.ts`; and modify `docs/SOURCE_INTEGRATION.md` plus `docs/continuity/MANUS.md`. The collector was not deleted, and collector-specific Vite injection/ingest plumbing remains. PR comments assert production exclusion, validation, and managed/deployed behavior; these are contributor claims, not independently reproduced evidence in this read-only review.
+
+**Governance comparison:** Darrin’s active decision is complete removal, not a development-only redesign. The separately delegated implementation authorization is limited to a **dedicated source-only remediation PR** that deletes the collector and its collector-specific Vite injection/ingest plumbing. It does not authorize changing PR #6 itself, retaining a development collector, adding route helpers/tests, modifying continuity records, running validation, or treating reported managed validation as independent evidence.
+
+**Risk classification:** **MEDIUM — material authorization/scope divergence and residual telemetry governance risk.** The source change may represent a development-only redesign, but that alternative was explicitly not selected. The report that production assets/routes are excluded does not independently close the selected complete-removal acceptance gate.
+
+**Required owner decision:** Confirm whether to maintain complete removal via a dedicated deletion-only remediation PR, or explicitly supersede it with a bounded development-only redesign authorization. PR #6 remains held. Tenant-membership, provenance, review/audit, target-specific migration-preflight, and authorized nonzero-franchisee-evidence gates remain unresolved.
+
+**Permitted actions:** Preserve the evidence; prepare a separately authorized deletion-only remediation PR if the complete-removal policy remains active; or obtain an explicit superseding owner decision. Reconcile documentation claims with the final authorized scope.
+
+**Prohibited actions:** Do not merge, approve, close, rebase, deploy, release, apply migrations, alter production data, use credentials, or represent the contributor claims as independently verified. Do not treat telemetry as closed solely because a production-exclusion design is reported.
+
+**Verification before reassessment:** For complete removal, provide a dedicated remediation PR URL/head and static proof that collector source, Vite injection, script serving, telemetry ingest route, route helper/test plumbing, and collector-specific documentation are absent; prove the changed-file scope is limited to removal. A development-only alternative requires a distinct owner authorization and separately defined evidence.
+
+**External notification:** New-material, PR-only notice posted under the active authorized dispatch window: [issuecomment-5404391802](https://github.com/darrinbaldwindev/Franchise/pull/6#issuecomment-5404391802). The notice does not approve a merge, deployment, release, or production action.
+
+**Status:** OPEN — awaiting Darrin’s explicit scope decision; no implementation action authorized by this record.
