@@ -445,3 +445,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select the authority for suspension and revocation of operator, reviewer, and owner memberships.
 
 **Status:** AUTHORIZED — membership invitation/approval policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — membership suspension and revocation authority (2026-08-25)
+
+**Decision:** A validated `franchise_owner` may suspend or revoke only `franchise_operator` or `franchise_reviewer` memberships for the owner’s own authorized franchise. Darrin or a separately designated platform-governance authority controls suspension or revocation of every `franchise_owner` membership.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The selected invitation policy protects owner-role creation/elevation with platform governance; the selected invalidation policy denies suspended/revoked membership on the next tenant-owned server request. The canonical tenancy boundary requires membership-based server authorization and data isolation.
+
+**Approved scope:** Policy direction only. Same-franchise owner action is limited to operator/reviewer membership status changes. Owner membership actions are platform governed. A completed status change invokes the selected immediate next-request context invalidation. Historical business/review/audit records remain intact and retain prior attribution.
+
+**Excluded scope:** No lifecycle API, schema, application, configuration, test/build, data mutation, migration, environment/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. No owner succession, restoration, appeal, notice, or reason-taxonomy mechanism is selected by this entry.
+
+**Verification before reassessment:** Any later implementation must prove same-franchise-only operator/reviewer control, owner/co-owner/self action denial, cross-tenant denial, next-request target denial, no context-switch resurrection, server-attributed audit evidence, historical record integrity, and no platform-admin tenant-data bypass.
+
+**Next owner decision:** Select owner succession and the minimum-owner continuity rule for a franchise.
+
+**Status:** AUTHORIZED — suspension/revocation authority selected; implementation pending separate Darrin authorization.
