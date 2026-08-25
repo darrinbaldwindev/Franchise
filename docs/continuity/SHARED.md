@@ -179,6 +179,18 @@ The eventual platform may include:
 
 These are not all required before Franchise #1 opens.
 
+## Gate 3 product/pricing research — CURRENT
+
+ChatGPT has begun Gate 3 with a dedicated research document: `docs/GATE3_PRODUCT_RESEARCH.md`.
+
+The initial V1 direction is a compact approximately 40–60 SKU range of packaged, shelf-stable convenience products, centred on drinks, snacks, confectionery, nuts/healthy snacks and selected niche products. Perishables remain excluded.
+
+Initial supplier candidates identified from current public evidence include The Distributors Brisbane, Campbells, Kelly's Distributors, IBA Distributors, Trumps Wholesale and Nut Grocer. Supplier selection is not final.
+
+Current published Uber Australia reference points have also been captured: Marketplace Uber Delivery is listed at 30% on the merchant pricing page; Uber Webshop lists Uber Delivery at 25%; Uber Direct states no Marketplace commission and currently publishes a $10 ex-GST base delivery fee plus $1.10 ex-GST per kilometre. These are reference points only; the actual contracted service and cost must be verified before final pricing.
+
+**Gate 3 status:** IN PROGRESS. No SKU cost or retail price is yet marked as approved solely from this research. Final economics require supplier evidence and a verified delivery model.
+
 ## Continuity structure
 
 Exactly three primary continuity documents are used:
@@ -288,6 +300,8 @@ Development should then be driven primarily by real operating evidence such as c
 
 **Governance/collaboration:** GREEN — three-log model and AI collaboration protocol established.
 
+**Gate 3 products/pricing:** AMBER — research started; supplier evidence and SKU-level costs remain outstanding.
+
 **Architecture:** AMBER — strong documentation exists, but not all runtime implementation is complete.
 
 **Security/tenancy:** RED — must be correctly implemented and genuinely tested before commerce expands beyond the minimum necessary foundation.
@@ -302,8 +316,8 @@ Development should then be driven primarily by real operating evidence such as c
 
 ## Immediate next action
 
-The next autonomous work should focus on the **highest-value blocker to opening Franchise #1**, not on completing the eventual platform.
+The next autonomous work should focus on the **highest-value blocker to opening Franchise #1**, with Gate 3 currently active.
+
+For Gate 3, obtain verified supplier costs for the first 40–60 candidate SKUs, benchmark them against current customer-facing prices, and model both Marketplace and direct-delivery economics. Do not mark final prices approved until supplier cost and delivery assumptions are evidenced.
 
 If Manus has already implemented a blocker fix, ChatGPT/Overseer should inspect the new commit rather than repeat historical recommendations.
-
-If no implementation change is available, work should shift to a concrete opening-readiness gap, test, or operational requirement rather than expanding architecture.
