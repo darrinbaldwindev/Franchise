@@ -301,3 +301,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select a telemetry disposition: A — complete removal (recommended), B — provably development-only redesign, or C — defer. Any selection still requires a separate bounded implementation authorization.
 
 **Status:** COMPLETED — specification prepared; approach selection pending; PR #6 hold remains in force.
+
+## Owner decision — debug-collector complete removal (2026-08-25)
+
+**Decision:** Select **complete removal** of the PR #6 debug collector and its collector-specific Vite injection/ingest plumbing as the telemetry disposition.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** PR #6 remains at `992caf85afcc5f321247b16c36e038c55295066e`. The collector asset, Vite plugin registration, HTML injection, and `/__manus__/logs` dev-server middleware were statically identified. The current production HTML transform condition is not treated as proof of production asset exclusion.
+
+**Approved scope:** The telemetry approach is selected. A precise source-only implementation authorization was prepared inside Manus as `franchise_pr6_telemetry_removal_implementation_authorization_2026-08-25.md`.
+
+**Excluded scope:** Selection does not authorize code/configuration modification, command execution, build/test, target-environment access, data/credential use, telemetry replacement, connector/schedule change, branch/pull-request modification, merge, deployment, release, provider, or production action.
+
+**Verification before reassessment:** If implementation is later authorized, it must remain limited to collector deletion and collector-specific Vite plumbing removal, provide the specified static diff/reference evidence, and return for a separate build-artifact/runtimes decision. This does not resolve the tenancy, provenance, review/audit, or migration gates.
+
+**Next owner decision:** Authorize or defer one narrow source-only implementation package. The PR #6 hold remains in force either way.
+
+**Status:** AUTHORIZED — telemetry disposition selected; implementation pending separate Darrin authorization.
