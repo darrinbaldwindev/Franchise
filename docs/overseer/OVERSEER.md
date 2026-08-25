@@ -557,3 +557,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select canonical provenance terminology for attested inputs, server-calculated metrics, review states, and any future verified/imported state.
 
 **Status:** AUTHORIZED — complete-removal telemetry policy reaffirmed; implementation pending only the previously bounded separate remediation process.
+
+## Owner decision — canonical provenance terminology and evidence states (2026-08-25)
+
+**Decision:** Use distinct evidence terms. `franchisee-attested` means an authorized franchise member affirmed a specified input revision; `server-calculated` means deterministic output from a specified input revision and known configuration; `awaiting-review`, `needs-correction`, and `review-approved` are review-process states/outcomes; `independently-verified` is reserved for a future separately governed reconciliation or authoritative-evidence process. `imported from <named source>` is a source descriptor only and never implies verification.
+
+**Authority:** Darrin, explicit selection of option A in this task. Darrin also instructed Overseer to proceed autonomously with the recommended option A for subsequent Franchise PR #6 policy decisions, subject to existing read-only and owner-gated operational boundaries.
+
+**Evidence:** At current PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`, static inspection shows persisted `franchisee-attested` origin, attestation timestamp, and `awaiting-review` state, while multiple saved-input, coaching, metrics, and UI paths still use “verified.” The same PR’s `PRODUCTION_READINESS.md` says the dashboard does not independently verify franchisee-entered inputs and reserves “Verified” for a future source integration, reconciliation, or authorised review workflow. Current canonical `main` at `25d4f754560f611f2104670040ddaf3656e72f48` requires membership-derived franchise scope and describes reporting records as non-canonical snapshots. Static source inspection is not run-time verification.
+
+**Approved scope:** Policy direction only. Future terminology must attach each label to a specific input revision; avoid emitting `verified` for merely attested, merely calculated, or merely review-approved records; preserve imported-source identity without asserting source trust/reconciliation; and respect the selected tenant-context and reviewer-only policies.
+
+**Excluded scope:** No copy/API/schema/application/configuration/test/build/migration/data/source-import/reconciliation/external-provider/credential/merge/deployment/release/production action is authorized. A future independently-verified state needs its own owner-approved evidence, authority, retention, and reconciliation design.
+
+**Verification before reassessment:** Any later implementation must prove revision-specific labels; no `verified` designation for attestation/calculation/review alone; named imported origin without verification implication; tenant-scoped review vocabulary; and no legal, accounting, forecasting, or production-readiness claim created by the labels.
+
+**Next policy process:** Apply the delegated recommended A option to the next eligible Franchise PR #6 policy decision, provided it remains policy-only and inside the stated delegated boundary.
+
+**Status:** AUTHORIZED — provenance vocabulary policy selected; implementation pending separate Darrin authorization.
