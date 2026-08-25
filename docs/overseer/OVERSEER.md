@@ -715,3 +715,17 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Verification:** Before a future read-only reassessment, a separately authorized implementation-capable agent must supply an exact revised head and static evidence of scope containment, no conflict markers, conflict-free reconciliation against then-current main, canonical-preservation proof, correct evidence terminology, and retention of all unresolved gates.
 
 **Status:** COMPLETED — read-only preparation only. A separate operational authorization is required before any agent may create or alter a conflict-resolved revision.
+
+## Owner authorization — named PR #6 continuity conflict-resolution implementer (2026-08-25)
+
+**Decision:** Darrin authorizes the separate **Franchise PR #6 Continuity Reconciliation Implementer** to create one dedicated, source-only conflict-resolution candidate branch and pull request for existing PR #6. Overseer remains read-only and may only statically reassess the resulting exact candidate head.
+
+**Evidence:** Existing PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; current main `043301c05b5b6e2eea429b4fe85feabb1b2fe868`; merge base `5e963de433e050c54f7063287f96d971cfde13f2`; static conflicts in `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`. Current main’s canonical `docs/application/APP_TENANCY_IMPLEMENTATION_SPEC.md` is additionally required preservation evidence.
+
+**Approved scope:** The named implementation agent may create a new dedicated branch from then-current main, bring in the existing PR #6 source-integration content only to form a reviewable candidate, resolve the two named continuity conflicts, use Git-only static inspection, and open one candidate PR against main with exact revision/scope/conflict evidence. The current-main strategic/governance direction must prevail. `docs/DOMAIN_MODEL.md`, `docs/TENANCY_AUTHORIZATION.md`, `docs/MIGRATION_MAP.md`, and `docs/application/APP_TENANCY_IMPLEMENTATION_SPEC.md` must remain present and unchanged. The full authorization and acceptance checklist are retained at `/home/ubuntu/overseer_scan/franchise_pr6_conflict_resolution_implementation_authorization_2026-08-25.md`.
+
+**Excluded scope:** Do not modify or rebase the existing PR #6 branch. Do not alter application or telemetry source, Vite wiring, dependencies, CI/CD, authentication, schema/migrations, data, credentials, providers, deployments, canonical design/handoff files, or any target environment. Do not run project commands, tests, checks, builds, migrations, browser validation, database commands, or target-environment actions. Do not merge, approve, close, deploy, or release.
+
+**Verification:** Before Overseer reassessment, provide the candidate PR URL, full head/base/source SHAs, changed-file list, static no-conflict-marker evidence, fresh static merge evidence against then-current main, canonical-preservation proof, evidence-terminology/gate-retention proof, and a statement that no project or target-environment command was run.
+
+**Status:** AUTHORIZED — bounded candidate-PR creation only. All independent PR #6 gates and all merge/deployment/release decisions remain held and separately owner-gated.
