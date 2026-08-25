@@ -427,3 +427,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next owner decision:** Select membership invitation and approval lifecycle, including who may initiate or approve an active membership.
 
 **Status:** AUTHORIZED — UTC effective-date policy selected; implementation pending separate Darrin authorization.
+
+## Owner decision — membership invitation and approval lifecycle (2026-08-25)
+
+**Decision:** A validated `franchise_owner` may initiate `franchise_operator` or `franchise_reviewer` invitations for the owner’s own authorized franchise. Each invitation remains `pending` with no franchise context/data access until authenticated acceptance and server validation. Darrin or a separately designated platform-governance path controls `franchise_owner` creation or role elevation.
+
+**Authority:** Darrin, explicit selection of option A in this task.
+
+**Evidence:** The selected role policy separates tenant-scoped owner/operator/reviewer roles from platform administration; the selected lifecycle policy requires pending membership to be non-authorizing and current membership validity to be enforced server-side. The canonical tenancy boundary requires explicit membership and prohibits client/global-role substitution for tenant authorization.
+
+**Approved scope:** Policy direction only. Same-franchise owner delegation is limited to operator/reviewer initiation; owner-role creation/elevation requires platform governance. A pending invite cannot establish context. Any later acceptance must bind to an authenticated identity and revalidate role, franchise, status, and UTC effective dates before a server-side active transition.
+
+**Excluded scope:** No invite service, email/SMS/notification, token, API, schema, session, application, configuration, test/build, data creation, migration, environment/credential, telemetry, connector/schedule, branch/pull-request, merge, deployment, release, provider, or production action is authorized. Suspension/revocation actor and owner succession remain separate decisions.
+
+**Verification before reassessment:** Any later implementation must prove pending no-access, same-franchise-only delegation, no owner self-elevation, wrong-identity acceptance denial, withdrawn/expired/revoked invitation denial, server-attributed lifecycle transitions, and no cross-tenant membership disclosure.
+
+**Next owner decision:** Select the authority for suspension and revocation of operator, reviewer, and owner memberships.
+
+**Status:** AUTHORIZED — membership invitation/approval policy selected; implementation pending separate Darrin authorization.
