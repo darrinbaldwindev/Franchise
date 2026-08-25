@@ -575,3 +575,21 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next policy process:** Apply the delegated recommended A option to the next eligible Franchise PR #6 policy decision, provided it remains policy-only and inside the stated delegated boundary.
 
 **Status:** AUTHORIZED — provenance vocabulary policy selected; implementation pending separate Darrin authorization.
+
+## Delegated policy decision — review approval finality and exceptional reopening (2026-08-25)
+
+**Decision:** Applying Darrin’s delegated recommended option A, `review-approved` is final for the exact attested input revision in the ordinary workflow. A routine reviewer cannot reopen, revoke, overwrite, or issue a second final decision for that approved revision. The ordinary correction/resubmission path remains limited to `needs-correction → awaiting-review` after a corrected re-attestation. Any approved-record reopening, revocation, or appeal requires a separate Darrin authorization naming the reason, authority, affected revision, target state, event/audit semantics, and reassessment evidence; it is not an automatic reviewer capability.
+
+**Authority:** Darrin’s explicit delegation in this task to continue autonomously using the recommended option A for subsequent Franchise PR #6 policy decisions, bounded to policy/planning and existing owner-gated operational limits.
+
+**Evidence:** At PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`, static schema has only `awaiting-review`, `approved`, and `needs-correction`; review events record only `approved`/`needs-correction`; the ordinary save path resets current review fields to `awaiting-review` through a user/month upsert; and current review persistence has no expected-state guard/transaction. Previous selected policy already limits correction resubmission to `needs-correction` and excludes approved-record reopening. Static source inspection is not run-time verification.
+
+**Approved scope:** Policy direction only. Any later implementation must bind a review approval to an immutable input revision; reject ordinary review changes from approved state; retain prior state and audit events; ensure that a correction resubmission cannot reopen an approved revision; and route every exceptional reopening/revocation through a new owner authorization and immutable reasoned event.
+
+**Excluded scope:** No appeal mechanism, reopening/revocation implementation, API/schema/application/configuration/test/build/migration/data mutation/credential/environment/merge/deployment/release/production action is authorized. This policy does not make an approved record independently verified, financially final, legally certified, or production-ready.
+
+**Verification before reassessment:** Any later implementation must prove exactly-one final decision per immutable revision; denial of routine reviewer, submitter, cross-tenant, stale, and duplicate reopening attempts; immutable history preservation; no approved-to-awaiting transition through ordinary resubmission; and separately authorized exception behavior only when its owner authorization exists.
+
+**Next delegated policy decision:** Determine the minimum immutable audit-event fields and retention semantics necessary to support the selected provenance, review, correction, and finality policies.
+
+**Status:** AUTHORIZED — approval-finality policy selected through Darrin’s delegated recommended-A instruction; implementation pending separate Darrin authorization.
