@@ -68,7 +68,7 @@ Source: https://www.campbells.com.au/
 
 ### 3. Kelly's Distributors
 
-Strong beverage specialist. Kelly's currently publishes a catalogue/range of 800+ wholesale beverages, states there is no minimum order, and operates from South East Queensland. Its current online catalogue provides useful public benchmark prices, although these must not be assumed to be the franchise's negotiated wholesale account price.
+Strong beverage specialist. Kelly's currently publishes a catalogue/range of 800+ wholesale beverages, states there is no minimum order, and operates from South East Queensland. Its online catalogue provides useful public benchmark prices, although these must not be assumed to be the franchise's negotiated wholesale account price.
 
 Use for:
 
@@ -149,35 +149,76 @@ Supplier selection should ultimately consider:
 
 ## Verified public supplier benchmark evidence — August 2026
 
-Kelly's current public catalogue provides concrete price benchmarks for beverage candidates. These are **public listed prices including tax**, not confirmed negotiated franchise wholesale account prices.
+Kelly's current public catalogue provides concrete price benchmarks. These are **public listed prices including tax**, not confirmed negotiated franchise wholesale account prices. Current pages also show promotions such as multi-carton free-carton offers, so promotional economics must be separated from base economics. citeturn0search0turn0search2
 
 | Candidate SKU | Pack | Public listed price incl. tax | Approx. unit cost incl. tax | Status |
 |---|---:|---:|---:|---|
+| Coca-Cola Classic cans 375ml | 24 | $41.91 | $1.75 | benchmark / promotion shown |
+| Coca-Cola Zero Sugar cans 375ml | 24 | $41.91 | $1.75 | benchmark / promotion shown |
+| Coca-Cola Classic PET 600ml | 24 | $86.79 | $3.62 | benchmark / promotion shown |
+| Coca-Cola Zero Sugar PET 600ml | 24 | $86.79 | $3.62 | benchmark / promotion shown |
+| Pepsi Max Zero Sugar PET 600ml | 24 | $82.06 | $3.42 | benchmark / promotion shown |
+| Pepsi Max Zero Sugar cans 375ml | 30 | $42.08 | $1.40 | benchmark / promotion shown |
+| Golden Circle Tropical Punch 375ml | 24 | $44.06 | $1.84 | benchmark |
+| Bundaberg Passionfruit 375ml | 12 | $27.01 | $2.25 | benchmark / promotion shown |
+| Bundaberg Ginger Beer 375ml | 24 | $54.01 | $2.25 | benchmark / promotion shown |
+| Bundaberg Lemon, Lime & Bitters 375ml | 12 | $27.01 | $2.25 | benchmark / promotion shown |
 | Red Bull 250ml | 24 | $59.68 | $2.49 | benchmark |
-| Red Bull 250ml special price | 24 | $45.49 | $1.90 | benchmark/sale |
-| Red Bull Tropical 250ml | 12 | $29.81 | $2.48 | benchmark |
-| Red Bull Red Edition 250ml | 12 | $29.81 | $2.48 | benchmark |
-| Red Bull Berry Sugar Free 250ml | 12 | $29.81 | $2.48 | benchmark |
 | Red Bull 473ml | 12 | $42.13 | $3.51 | benchmark |
-| Red Bull Sugar Free 473ml | 12 | $42.13 | $3.51 | benchmark |
 | Monster Zero Sugar Ultra White 500ml | 24 | $85.30 | $3.55 | benchmark |
 | Monster Super-Premium Import 553ml | 24 | $92.40 | $3.85 | benchmark |
 | Kamikaze Energy Creaming Soda 500ml | 12 | $47.91 | $3.99 | benchmark |
-| Coca-Cola Classic PET 1.25L | 12 | $46.97 | $3.91 | benchmark |
+| Nu Pure Spring Water Minis 250ml | 20 | $12.25 | $0.61 | benchmark |
+| Lipton Iced Tea Peach Zero Sugar 500ml | 24 | $89.60 | $3.73 | benchmark / promotion shown |
+| Boss Iced Latte 237ml | 12 | $42.74 | $3.56 | benchmark |
+| Cobs Popcorn Lightly Salted & Slightly Sweet 30g | 16 | $17.60 | $1.10 | benchmark |
+| Cobs Popcorn Sea Salt 20g | 16 | $17.60 | $1.10 | benchmark |
+| Cobs Popcorn 120g | 12 | $31.85 | $2.65 | benchmark |
+| Byron Bay Cookies Dotty 60g | 12 | $39.55 | $3.30 | benchmark |
+| Byron Bay Cookies Triple Choc 60g | 12 | $39.55 | $3.30 | benchmark |
+| Byron Bay Cookies White Choc & Macadamia 60g | 12 | $39.55 | $3.30 | benchmark |
+| Little Bakes Belgian Caramelised Biscuits 6g | 300 | $52.31 | $0.17 | benchmark |
 
-Kelly's states that it is a South East Queensland wholesale beverage distributor, sells to businesses, offers local pickup/home delivery and has no minimum order. citeturn0search8turn0search7
+Current public pages show Kelly's has 333 drink products and 38 snack/confectionery products, providing enough breadth to build the first candidate range without introducing a large supplier network. citeturn0search2turn0search6
 
-The current public Red Bull listing confirms the $59.68/24-pack price and product specifications; the special-price listing confirms a $45.49/24-pack promotion. citeturn0search5turn0search4
+Kelly's states it is based in Sunnybank Hills, is Australian owned, offers wholesale/trade accounts to registered businesses, and serves South East Queensland and Northern NSW. citeturn0search0
 
-The current energy category also lists Monster and other beverage candidates. citeturn0search1turn0search3
+### Current public benchmark interpretation
 
-### What this tells us
+The strongest immediate candidates for a first commercial quote request are:
 
-1. Beverage suppliers can provide public price evidence sufficient to establish a first benchmark range.
-2. Special pricing can materially change unit economics, so promotions should not be treated as permanent base cost.
-3. The V1 SKU model should record **normal account price** and **temporary promotional price** separately.
-4. The first supplier quote request should prioritise the highest-volume beverage candidates.
-5. We should not approve a retail price until actual account cost and delivery economics are known.
+- Coca-Cola/Pepsi cans;
+- selected 600ml soft drinks;
+- Red Bull 250ml;
+- Monster 500ml;
+- bottled water;
+- Bundaberg;
+- Cobs popcorn;
+- Byron Bay Cookies;
+- selected iced coffee/tea products.
+
+These provide a useful mix of high-frequency products, impulse products, basket builders and differentiated lines.
+
+The catalogue also shows promotional structures such as 6+1, 5+1, 4+1 and 3+1 offers. These are useful for modelling procurement leverage but must **not** be treated as guaranteed recurring margin until supplier terms are confirmed. citeturn0search10
+
+## Supplier quote priority
+
+The next supplier-contact package should request, for each candidate SKU:
+
+1. standard trade/account price ex GST;
+2. volume-break price;
+3. current promotional price and expiry;
+4. MOQ;
+5. freight to the first franchise location;
+6. lead time;
+7. availability;
+8. best-before/shelf-life expectations;
+9. damaged-stock/credit policy;
+10. barcode/product data;
+11. payment terms;
+12. whether prices are subject to membership/account requirements.
+
+Kelly's specifically states that registered businesses can obtain wholesale/trade accounts, so account pricing should be requested rather than treating public shop pricing as the final cost basis. citeturn0search0
 
 ## Delivery economics — current evidence
 
@@ -285,12 +326,11 @@ For V1, the safest operating model is to sell sealed, supplier-packaged products
 8. Delivery economics must be modelled separately for Marketplace and direct-order delivery.
 9. The $50 free-delivery threshold remains an explicit economic test rather than an assumption that every $50 order is profitable.
 10. Promotional supplier pricing should be separated from normal recurring cost in the SKU model.
+11. The current Kelly's public catalogue gives us enough concrete benchmark data to prioritise the first supplier quote request.
 
 ## Immediate next research task
 
-Obtain or capture verified supplier costs for the first 40–60 candidate SKUs, prioritising the core beverage and snack lines.
-
-Then benchmark them against current Australian customer-facing prices and the two delivery models.
+Move from research into **supplier-account evidence and a candidate SKU master**.
 
 The next output should be a SKU-level economics table with:
 
