@@ -872,3 +872,11 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Successor after F-04:** Only after an acceptable conflict candidate exists, issue **F-05**: prepare the bounded membership/context tenancy implementation brief and acceptance-evidence plan under the settled Option A sequencing.
 
 **Verification / review trigger:** Candidate PR appears, candidate metadata/ref changes, or its static acceptance evidence is supplied. **Status:** F-03 closed; F-04 active and blocked on the pre-existing authenticated candidate-creation dependency.
+
+## Comprehensive portfolio scan — Issue #17 validation request — 2026-08-26T17:31:45+10:00
+
+**Verified scan evidence:** Current `main` is `043301c05b5b6e2eea429b4fe85feabb1b2fe868`. PRs #6 and #13 remain `DIRTY`; PR #14 and the Overseer-log PR #8 are `CLEAN`. Tenancy Issue #15 remains open; new owner-authored Issue #17 requests a tenancy/current-implementation validation pass.
+
+**Boundary:** Issue #17 is a material task request, but it does not itself override the standing read-only boundary or authorize execution of code/tests, use of environments/credentials, database actions, supplier/commercial access, merge, deployment, or release. Existing F-04 remains blocked on a permitted two-file continuity-conflict candidate, and tenancy remains mandatory before commerce expansion.
+
+**Task-chain impact:** **F-06 proposed — static tenancy/current-implementation evidence map:** inspect exact-source tenancy routes/models/policies and relevant Hub-integration paths without execution; map them to Issue #15 and the already recorded F-04/F-05 prerequisites; classify implementation claims versus static facts; and identify the exact authorization needed for any later runtime validation. F-06 is a documentation/evidence task only and must not substitute for F-04’s authorized conflict candidate.
