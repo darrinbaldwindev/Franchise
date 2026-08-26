@@ -750,3 +750,22 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next review condition:** Once such task-local authenticated GitHub access is available, the named implementer must re-check the direct live refs, proceed only if still matching, and supply one candidate PR URL with full head/base/source SHAs and the static acceptance evidence defined in the authorization record. Overseer will then conduct a read-only reassessment.
 
 **Status:** BLOCKED — no candidate created; no gate closed; no external PR notice required.
+
+## Project timeline and current milestone — 2026-08-26T11:02:51+10:00
+
+**Scope and evidence:** Deep static review of default `main` at `043301c05b5b6e2eea429b4fe85feabb1b2fe868`, recent default-branch documentation/research history, 26 tracked files (25 documentation-path and one test-path), ten open issues, and open PRs [#6](https://github.com/darrinbaldwindev/Franchise/pull/6), [#8](https://github.com/darrinbaldwindev/Franchise/pull/8), [#13](https://github.com/darrinbaldwindev/Franchise/pull/13), and [#14](https://github.com/darrinbaldwindev/Franchise/pull/14). No source, migration, target database, test, build, provider, credential, deployment, or production action was run.
+
+| Timeline point | Verified observation | Status |
+|---|---|---|
+| 23–25 Aug | The repository established Opening #1, Gate 3 SKU/pricing research, canonical domain/tenancy records, and a tenancy implementation handoff. | Planning and evidence preparation. |
+| Current | `main` ends at `043301c0` (*docs(app): define tenancy implementation handoff*). Managed-source PR #6 is open and `DIRTY` at `67ee3ce8`; PR #13 is also `DIRTY`. No separately authorized continuity-conflict candidate branch or PR has appeared because the named implementation environment lacks private-repository authentication. | Integration held. |
+
+**Current milestone:** Establish the smallest real Opening #1 tenant boundary: `User → Franchise Membership → Authorized Franchise Context → tenant-scoped operation`, then use verified account pricing to support the initial 40–60-SKU commercial seed without inventing costs in application code.
+
+**Held blockers:** Issue [#15](https://github.com/darrinbaldwindev/Franchise/issues/15) remains the P0 tenancy/security gate; current imported schema/db/router evidence is `userId`-centred rather than membership/context-scoped. Issue [#16](https://github.com/darrinbaldwindev/Franchise/issues/16) requires verified supplier-account pricing and landed-cost evidence. PR #6 additionally remains held on complete collector/plumbing removal through its deletion-only remediation path, provenance terminology, tenant/revision-scoped review/audit implementation, target-specific migration preflight, authorized nonzero franchisee evidence, current-main conflict resolution, and Darrin’s merge decision.
+
+**Owner decision:** Existing tenancy and governance policy decisions remain settled; Darrin must authorize any implementation, migration, merge, deployment, or commercial activation separately. This entry does not authorize those actions.
+
+**Next Overseer instruction:** Maintain this timeline append-only. On a material branch, PR, issue, pricing-evidence, or design-record change, record exact revision/evidence, verified fact versus claim, Opening #1 milestone status, unresolved gates, owner decision, and reassessment condition. Do not execute application code, migrations, provider actions, financial transactions, or modify any path other than this log without separate authority.
+
+**Confidence:** High for GitHub metadata and recorded policy/gate evidence; limited for runtime behavior, pricing verification, and check status.
