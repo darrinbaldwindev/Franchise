@@ -769,3 +769,13 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Next Overseer instruction:** Maintain this timeline append-only. On a material branch, PR, issue, pricing-evidence, or design-record change, record exact revision/evidence, verified fact versus claim, Opening #1 milestone status, unresolved gates, owner decision, and reassessment condition. Do not execute application code, migrations, provider actions, financial transactions, or modify any path other than this log without separate authority.
 
 **Confidence:** High for GitHub metadata and recorded policy/gate evidence; limited for runtime behavior, pricing verification, and check status.
+
+## Active task assignment — Wave 1 (F-01) — 2026-08-26T13:50:47+10:00
+
+**Authority and scope:** Darrin’s continuous-task-chain instruction. This is a read-only evidence task; it does not authorize source changes, migration, target-database action, tests, merge, deployment, financial action, credentials, or changes outside this log.
+
+**Task F-01:** Reconcile Opening #1 source-integration and tenancy gates into one evidence matrix. Distinguish PR [#6](https://github.com/darrinbaldwindev/Franchise/pull/6) source integrity/conflict state from Issue [#15](https://github.com/darrinbaldwindev/Franchise/issues/15) membership/context tenancy; include Issues [#12](https://github.com/darrinbaldwindev/Franchise/issues/12)/#15/[#16](https://github.com/darrinbaldwindev/Franchise/issues/16) and PRs #6/#13/#14.
+
+**Closure evidence:** Exact refs; verified facts versus claims; acceptance evidence required; gate status (blocked, independently verifiable, or owner-gated).
+
+**Immediate successor:** On closure, issue **F-02**: prepare a Darrin decision package on retaining managed source as baseline while membership/context tenancy becomes the mandatory next implementation gate.
