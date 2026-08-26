@@ -896,3 +896,17 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Option C:** Freeze all tenancy planning until the source-integration conflict is resolved and Darrin selects a canonical source candidate.
 
 **No option is selected by this record.** F-07 is blocked pending Darrin’s explicit selection. Issue #17 does not independently authorize runtime validation.
+
+## Manus dispatcher assignment — F-08 opening-readiness evidence-delta check — 2026-08-26
+
+**Current task:** **F-08 — Statistically reconcile documentation-only PR #14 against the existing F-04/F-06 evidence and current PR #6/#13 states.** This bounded task determines whether PR #14 changes any source-baseline, conflict, tenancy, validation, or opening-readiness conclusion; it does not perform validation execution.
+
+**Required output:** A short exact-revision delta table covering PR #14’s claimed opening-readiness statements, the supporting or absent PR #6/#13/static evidence, unchanged F-04 conflict-candidate requirement, unchanged Issue #15 membership-tenancy requirement, and the explicit authorization that would be required for any runtime validation requested by Issue #17.
+
+**Permitted scope:** Read-only GitHub PR metadata, changed-file/document comparison, existing project-log evidence, and append-only task-log record. A bounded subreview may be delegated only for static documentation/source-path comparison and must return exact paths, revisions, evidence labels, and confidence to Manus.
+
+**Prohibited scope:** No source change, code/test/run, migration/database action, supplier/provider/credential use, merge, deployment, release, or external notice.
+
+**Return condition:** F-08 returns a material-delta classification and successor recommendation to Manus. F-04 remains active unless an authorised two-file conflict-resolution candidate appears; F-07 remains owner-gated.
+
+**Next review trigger:** PR #14/#6/#13 revision, review, check, or merge-state change; new authorised conflict candidate; Issue #15/#17 update; F-08 closure; or F-07 selection.
