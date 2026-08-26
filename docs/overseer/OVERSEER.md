@@ -779,3 +779,26 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Closure evidence:** Exact refs; verified facts versus claims; acceptance evidence required; gate status (blocked, independently verifiable, or owner-gated).
 
 **Immediate successor:** On closure, issue **F-02**: prepare a Darrin decision package on retaining managed source as baseline while membership/context tenancy becomes the mandatory next implementation gate.
+
+## Wave 1 task closure — F-01 — 2026-08-26T13:58:32+10:00
+
+**Author/platform:** Manus Overseer. **Scope:** Read-only reconciliation of `main` at `043301c05b5b6e2eea429b4fe85feabb1b2fe868`; Issues [#12](https://github.com/darrinbaldwindev/Franchise/issues/12), [#15](https://github.com/darrinbaldwindev/Franchise/issues/15), and [#16](https://github.com/darrinbaldwindev/Franchise/issues/16); and PRs [#6](https://github.com/darrinbaldwindev/Franchise/pull/6), [#13](https://github.com/darrinbaldwindev/Franchise/pull/13), and [#14](https://github.com/darrinbaldwindev/Franchise/pull/14). No source, test, migration, target database, or commercial action was run.
+
+**Result:** **F-01 CLOSED — Opening #1 evidence matrix reconciled.**
+
+| Gate | Verified current state | Status |
+|---|---|---|
+| Managed source / continuity | PR #6 is open, `DIRTY`, and at `67ee3ce8`; PR #13 is also `DIRTY` in the continuity record. | Blocked on source-only conflict resolution; no candidate branch exists. |
+| Canonical tenancy | Issue #15 records `userId`-centred schema/db/router paths rather than `User → Membership → Authorized Franchise Context → tenant-scoped operation`. | P0 blocked; A/B isolation, inactive-membership, and switch-denial evidence absent. |
+| Domain and financial model | Issue #12 requires server-scoped transactional paths, auditable tenant ownership, and documented migration strategy before downstream commerce issues proceed. | Blocked. |
+| Commercial seed | Issue #16 requires verified supplier-account pricing and landed costs for 40–60 SKUs. | Blocked; no account-pricing evidence. |
+| Review/audit, provenance, telemetry, migration | Existing PR #6 gates remain: collector/plumbing deletion path, terminology, tenant/revision-scoped review/audit, target-specific migration preflight, nonzero franchisee evidence. | Blocked / owner-gated. |
+| PR #14 validation wording | PR #14 reports isolated PR-head commands and retained tenancy blocker. That report is contributor evidence, not independently reproduced here. | Claim only for execution results. |
+
+### Active successor — F-02
+
+**Task F-02:** Maintain a Darrin decision package with this precise question: *Should the managed PR #6 source be retained as the approved source-integration baseline, while Issue #15 membership/context tenancy becomes the mandatory next implementation gate before any commerce expansion?* The package must preserve all independent source-integrity, telemetry, provenance, review/audit, migration-preflight, commercial-evidence, conflict-resolution, and merge gates.
+
+**Permitted / prohibited:** This task prepares an owner decision only. It does not authorize merge, rebase, source replacement, implementation, migration, deployment, supplier/contact action, financial action, or release.
+
+**Status:** F-01 closed; F-02 active and pending Darrin decision.
