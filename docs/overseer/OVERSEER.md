@@ -802,3 +802,51 @@ The discrepancy is **MEDIUM** risk because it can misstate current validation st
 **Permitted / prohibited:** This task prepares an owner decision only. It does not authorize merge, rebase, source replacement, implementation, migration, deployment, supplier/contact action, financial action, or release.
 
 **Status:** F-01 closed; F-02 active and pending Darrin decision.
+# Franchise F-02 — Source-Baseline and Tenancy Decision Package
+
+**Prepared:** 2026-08-26T14:07:06+10:00 (`Australia/Sydney`)
+**Prepared by:** Manus Overseer, read-only governance role
+**Decision authority:** Darrin
+**Decision status:** Pending
+
+## Decision requested
+
+> **Should the managed Franchise Hub source in PR #6 be retained as the bounded source-integration baseline, while real franchise membership/context tenancy becomes the mandatory next implementation gate before any commerce expansion?**
+
+This is a decision about **source-baseline handling and task sequencing**. It does **not** authorize merge, rebase, conflict resolution, implementation, migration, testing, deployment, supplier contact, financial action, credential use, or release.
+
+## Current verified evidence
+
+| Item | Exact current evidence | Interpretation |
+|---|---|---|
+| PR #6 source candidate | [PR #6](https://github.com/darrinbaldwindev/Franchise/pull/6) is open, non-draft, `DIRTY`, at head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; it imports managed Franchise Hub source under `apps/franchise-hub/`. | Candidate source is present but cannot be treated as merged/canonical or production-ready. |
+| Current-main continuity conflict | [PR #13](https://github.com/darrinbaldwindev/Franchise/pull/13) is open and `DIRTY` at `55f359090ba24251920ebf126b5b150bf1655379`. | The two continuity records still need their separately authorized source-only resolution; no candidate branch exists because the named implementation environment lacks private-repository access. |
+| Tenancy gate | [Issue #15](https://github.com/darrinbaldwindev/Franchise/issues/15) records `userId`-centred schema/db/router paths rather than `User → Franchise Membership → Authorized Franchise Context → tenant-scoped operation`. | P0 architecture/security gate; required A/B isolation, inactive-membership denial, and unauthorized-switching denial evidence is absent. |
+| Domain/financial gate | [Issue #12](https://github.com/darrinbaldwindev/Franchise/issues/12) requires server-side tenant scope, auditable ownership keys, and documented migration strategy before downstream commerce work. | Tenancy work must align with the canonical domain/financial model. |
+| Commercial gate | [Issue #16](https://github.com/darrinbaldwindev/Franchise/issues/16) requires verified supplier-account pricing and landed cost for an initial 40–60 SKU range. | Commerce economics must not be implemented with invented prices or costs. |
+| Documentation evidence | [PR #14](https://github.com/darrinbaldwindev/Franchise/pull/14) is open and `CLEAN` at `1ac3f12a999e104c3af1d944a6903cbac61213ff`; it reports isolated PR-head command results while retaining the unresolved tenancy prerequisite. | Reported command results remain contributor evidence; `CLEAN` is not approval or proof that independent gates are closed. |
+
+## Alternatives
+
+| Option | Decision | Benefits | Risks and constraints |
+|---|---|---|---|
+| **A — Recommended** | **Retain PR #6 as the bounded managed-source baseline candidate; do not merge it. Require Issue #15 membership/context tenancy as the mandatory next implementation gate before commerce expansion.** | Preserves useful managed-source work without confusing it with platform completion; creates a clear foundation-first sequence; aligns with existing settled tenancy policy. | PR #6 remains `DIRTY`; conflict repair, telemetry-removal path, provenance, review/audit, migration-preflight, franchisee evidence, commercial pricing, and final merge decision remain independent gates. |
+| B | Defer retention judgment until tenancy work has been completed independently. | Avoids any perception that imported source is endorsed before tenancy evidence exists. | Risks duplicating/reconstructing source context and postpones a clear integration baseline. Does not itself resolve conflict, tenancy, or commercial gates. |
+| C | Reject or archive the current managed-source candidate and require a fresh source path after a complete tenancy model exists. | Simplifies the branch narrative by removing the current candidate. | Discards/reworks a substantial source-integration record without evidence that replacement is safer or cheaper; still requires all foundational gates. |
+
+## Recommended decision record
+
+```markdown
+Decision: Select Option A — retain PR #6 only as a bounded managed-source baseline candidate; do not merge it; require Issue #15 membership/context tenancy as the mandatory next implementation gate before commerce expansion.
+Authority: Darrin.
+Evidence: PR #6 `67ee3ce…` (`DIRTY`); PR #13 `55f3590…` (`DIRTY`); PR #14 `1ac3f12…` (`CLEAN`, contributor-reported validation); Issues #12, #15, and #16.
+Approved scope: Source-baseline sequencing and preparation of a separate bounded tenancy implementation brief after the conflict-resolution candidate is available.
+Excluded scope: No merge, rebase, implementation, migration, test execution, deployment, supplier/commercial action, credential use, release, or production change.
+Verification: A separate tenancy candidate supplies server-derived membership/context scope, A/B isolation and denial tests, and the independent PR #6 gates remain tracked as open until evidenced.
+Review trigger: Conflict-resolution candidate appears; tenancy evidence package appears; or an owner decision changes the baseline choice.
+Status: Pending Darrin selection.
+```
+
+## Required response
+
+Darrin may respond in the shared coordination log or this project log with **A**, **B**, or **C**, plus any explicit modification. Without an explicit owner response, this package remains a recommendation only.
