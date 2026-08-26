@@ -928,3 +928,13 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Successor task / precise hold:** **F-09 — authorised conflict-candidate and tenancy-evidence intake.** On a PR #6/#13/#14 revision, new authorised two-file candidate, Issue #15/#17 material evidence, or F-07 decision, inspect only the changed paths and return a gate delta. Do not create a branch, resolve conflicts, change source, run commands, use credentials/providers, merge, migrate, deploy, or release.
 
 **Next review trigger:** New authorised candidate; PR #6/#13/#14 revision/review/check/merge-state change; Issue #15/#17 update; F-09 return; or F-07 selection.
+
+## Daily open-pull-request review — 2026-08-26
+
+**Queue evidence:** The daily organization-wide read-only review enumerated Franchise PRs #6, #8, #13, and #14. PR #8 advanced from prior log head `e36b855` to `2536e36`; PR #6 remains open, non-draft, `DIRTY`, at `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; PR #13 remains `DIRTY` at `55f3590`; and PR #14 remains `CLEAN` at `1ac3f12`. Issues #5, #15, and #17 remain open.
+
+**Franchise PR #6 required-gate assessment:** The source-integration boundary remains unchanged: staged Hub source is not canonical `main` implementation. The documented `User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation` target, genuine A/B isolation, inactive-membership denial, switching denial, scoped record creation, and migration-plan evidence remain absent from the candidate. The previously recorded review/audit behavior and provenance distinctions remain unresolved static gates; no new candidate audit/transaction or provenance evidence was supplied. Migration files remain source history only—no target-specific preflight, backfill/recovery plan, or migration application evidence was reviewed. The former public debug collector path is absent, but the retained development collector/Vite wiring means telemetry provenance and the owner-selected complete-removal gate remain qualified. No runtime security conclusion is inferred.
+
+**Material delta:** PR #8 now records the completed F-08 opening-readiness matrix and active F-09 evidence-intake hold. A deduplicated affected-PR notification was posted at https://github.com/darrinbaldwindev/Franchise/pull/8#issuecomment-5425774380.
+
+**Assessment and boundary:** No authorised conflict candidate, tenancy evidence, review, or check delta was found for PRs #6/#13/#14, so no repeat notification was posted on them. No code/test execution, source change, migration, provider/credential action, merge, deployment, release, or external notice beyond the authorized affected-PR notification occurred.
