@@ -880,3 +880,19 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Boundary:** Issue #17 is a material task request, but it does not itself override the standing read-only boundary or authorize execution of code/tests, use of environments/credentials, database actions, supplier/commercial access, merge, deployment, or release. Existing F-04 remains blocked on a permitted two-file continuity-conflict candidate, and tenancy remains mandatory before commerce expansion.
 
 **Task-chain impact:** **F-06 proposed — static tenancy/current-implementation evidence map:** inspect exact-source tenancy routes/models/policies and relevant Hub-integration paths without execution; map them to Issue #15 and the already recorded F-04/F-05 prerequisites; classify implementation claims versus static facts; and identify the exact authorization needed for any later runtime validation. F-06 is a documentation/evidence task only and must not substitute for F-04’s authorized conflict candidate.
+
+## F-06 static tenancy/current-implementation evidence map — closed; F-07 sequencing decision required — 2026-08-26
+
+**F-06 result:** Static review compared documentation-only `main` `043301c05b5b6e2eea429b4fe85feabb1b2fe868` with unmerged source-integration PR #6 `67ee3ce8205d2a9c6aa2e25123802dd384dec908`. The target model requires authenticated franchise membership/authorization and rejects `user_id` as a tenancy substitute. The candidate source/router/persistence flow and its tenant test are user-ID-scoped; the test verifies forwarding the authenticated numeric user ID to mocked functions, not membership/role/franchise/territory enforcement. The review/audit path remains statically non-transactional and user-associated. No code, test, database, migration, credential, supplier/provider, deployment, or external action occurred.
+
+**Status:** **F-06 CLOSED — static evidence confirms a target-versus-candidate tenancy gap.** This is not a runtime security conclusion. F-04 remains blocked because PR #6 is `DIRTY` and no authorized conflict-resolved candidate exists; F-05 cannot start from the current candidate.
+
+### F-07 — owner-gated source/tenancy sequencing decision
+
+**Recommended Option A:** Retain PR #6 strictly as an unmerged managed-source baseline reference. When an authorized conflict-resolved candidate exists, authorize a named implementation owner to prepare only a fresh membership-context tenancy proposal from that candidate, with no execution, migration, credential, supplier/provider access, deployment, release, or merge.
+
+**Option B:** Authorize a named owner to prepare a documentation-only tenancy design against `main` now, without touching PR #6 or any application source; defer source reconciliation and implementation path until later.
+
+**Option C:** Freeze all tenancy planning until the source-integration conflict is resolved and Darrin selects a canonical source candidate.
+
+**No option is selected by this record.** F-07 is blocked pending Darrin’s explicit selection. Issue #17 does not independently authorize runtime validation.
