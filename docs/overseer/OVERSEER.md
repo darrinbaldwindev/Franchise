@@ -850,3 +850,25 @@ Status: Pending Darrin selection.
 ## Required response
 
 Darrin may respond in the shared coordination log or this project log with **A**, **B**, or **C**, plus any explicit modification. Without an explicit owner response, this package remains a recommendation only.
+
+## Owner decision — F-03 closed; F-04 assigned — 2026-08-26T14:13:50+10:00
+
+**Decision:** **Option A selected.** Retain PR [#6](https://github.com/darrinbaldwindev/Franchise/pull/6) only as the bounded managed-source baseline candidate. Do **not** merge it. Require real Issue [#15](https://github.com/darrinbaldwindev/Franchise/issues/15) membership/context tenancy as the mandatory next implementation gate before any commerce expansion.
+
+**Authority:** Darrin, explicit A selection in the owner-decision interaction on 26 August 2026.
+
+**Evidence:** PR #6 remains open and `DIRTY` at `67ee3ce8205d2a9c6aa2e25123802dd384dec908`; PR #13 remains open and `DIRTY` at `55f359090ba24251920ebf126b5b150bf1655379`; Issue #15 records the outstanding `userId`-substitute tenancy model. The F-02 decision package records all linked gates.
+
+**Approved scope:** Treat source-baseline retention and tenancy sequencing as settled. Monitor and perform read-only verification of the separately authorized, source-only continuity-conflict candidate when it exists; after that candidate is available and statically acceptable, prepare the bounded tenancy implementation brief.
+
+**Excluded scope:** No merge, rebase, source change, implementation, test execution, migration, database action, deployment, release, supplier/commercial action, credential use, provider activation, or production change. This decision does not close any independent PR #6 gate.
+
+**Independent gates still open:** Current-main conflict candidate; complete collector/plumbing deletion path; provenance terminology; tenant/revision-scoped review/audit behavior; target-specific migration preflight; authorized nonzero franchisee evidence; verified supplier-account pricing; and Darrin’s later merge decision.
+
+### Active successor — F-04
+
+**Task F-04:** Verify the separately authorized source-only continuity-conflict candidate when a candidate branch/PR URL exists. Confirm the candidate resolves only `docs/continuity/MANUS.md` and `docs/continuity/SHARED.md`, preserves the canonical source-baseline/tenancy decision, and supplies full head/base/current-main SHAs plus static acceptance evidence. If no candidate exists, maintain **BLOCKED — authenticated implementation capability required** and do not substitute a new implementation agent or edit source.
+
+**Successor after F-04:** Only after an acceptable conflict candidate exists, issue **F-05**: prepare the bounded membership/context tenancy implementation brief and acceptance-evidence plan under the settled Option A sequencing.
+
+**Verification / review trigger:** Candidate PR appears, candidate metadata/ref changes, or its static acceptance evidence is supplied. **Status:** F-03 closed; F-04 active and blocked on the pre-existing authenticated candidate-creation dependency.
