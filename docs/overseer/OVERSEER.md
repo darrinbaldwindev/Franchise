@@ -910,3 +910,21 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Return condition:** F-08 returns a material-delta classification and successor recommendation to Manus. F-04 remains active unless an authorised two-file conflict-resolution candidate appears; F-07 remains owner-gated.
 
 **Next review trigger:** PR #14/#6/#13 revision, review, check, or merge-state change; new authorised conflict candidate; Issue #15/#17 update; F-08 closure; or F-07 selection.
+
+## F-08 return — opening-readiness evidence-delta check — 2026-08-26
+
+**Scope and exact evidence:** Read-only reconciliation of PR #14 head `1ac3f12a999e104c3af1d944a6903cbac61213ff`, PR #6 head `67ee3ce8205d2a9c6aa2e25123802dd384dec908`, PR #13 head `55f359090ba24251920ebf126b5b150bf1655379`, Issue #15, and Issue #17. No source, command, test, build, migration, credential, provider, merge, or deployment action was performed.
+
+| Item | Static reconciliation | Result |
+|---|---|---|
+| PR #14 | Documentation-only continuity change; records staged source, reported/reconciled PR-head validation, and unresolved tenancy. | Does not change a source or opening-readiness gate. |
+| PR #6 | Open and `DIRTY`; retained development collector path/Vite wiring is documented in PR #14’s own review notice although the former public collector path is absent. | Telemetry conclusion remains qualified; no production inference. |
+| Issue #15 tenancy criteria | Membership/context, franchise A/B isolation, inactive denial, switching denial, record scope, and migration-plan evidence are absent from the relevant PR #14/#6 evidence. | F-06 target-vs-candidate gap remains confirmed. |
+| PR #13 | Documentation-only, `DIRTY`, and records superseded validation chronology. | Not a current readiness baseline. |
+| Issue #17 | Requests execution-heavy validation but does not independently authorize it. | No code/test execution was performed. |
+
+**Finding:** **F-08 complete — no material opening-readiness advance.** F-04 conflict-candidate requirement, F-06 static tenancy gap, and F-07 owner decision remain independently active. PR #14’s reported/reproduced validation statements were not rerun by this task and do not close those gates.
+
+**Successor task / precise hold:** **F-09 — authorised conflict-candidate and tenancy-evidence intake.** On a PR #6/#13/#14 revision, new authorised two-file candidate, Issue #15/#17 material evidence, or F-07 decision, inspect only the changed paths and return a gate delta. Do not create a branch, resolve conflicts, change source, run commands, use credentials/providers, merge, migrate, deploy, or release.
+
+**Next review trigger:** New authorised candidate; PR #6/#13/#14 revision/review/check/merge-state change; Issue #15/#17 update; F-09 return; or F-07 selection.
