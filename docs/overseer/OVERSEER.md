@@ -963,3 +963,26 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **PR-only notification:** PR #8 is the affected oversight-log PR; its prior F-08 notice predates `6942dc0` and does not address this material direct-main role/source rewrite. Under standing authority, one deduplicated commentary-only F-09 notice is warranted after this record is pushed. It will not request or approve code changes, merge, close, rebase, execution, deployment, release, migration, or production action. Detailed private return: `franchise_f09_direct_main_continuity_drift_return_2026-08-27.md`.
 
 **Authorized PR-only notice posted:** One commentary-only, deduplicated F-09 continuity-drift notice was posted to affected [Franchise PR #8](https://github.com/darrinbaldwindev/Franchise/pull/8#issuecomment-5434414248) after this record was pushed. It identifies `6942dc0`, the role/source-of-truth ambiguity, exact owner decision, permitted/prohibited boundary, and reassessment evidence. It does not request or approve code changes, merge, close, rebase, test execution, migration, deployment, release, or production action. No repeat F-09 notice is permitted absent a further material revision or Darrin decision.
+
+## Darrin decision — F-10 Option A approved: controlling task/return interface — 2026-08-27
+
+**Decision:** Darrin approved **F-10 Option A.** Treat `docs/continuity/SHARED.md` at `6942dc0` as a current **strategic summary**, not a delegation, implementation, validation, or deployment authority. The **portfolio task registry** and this designated **Project Overseer log** are the controlling task/return interface for Franchise.
+
+| Interface element | Controlling effect |
+|---|---|
+| Portfolio task registry | Determines the current Manus-dispatched task or precise hold, dispatcher, target, permitted/prohibited scope, return contract, and next trigger. |
+| `docs/overseer/OVERSEER.md` | Is the designated append-only Franchise Project Overseer record for evidence, acknowledgement/return, classification, successor/hold, and owner decision reference. |
+| `docs/continuity/SHARED.md` | Remains a strategic/current-state summary. It cannot by itself authorize a named role to change source, run code/tests/workflows, access credentials/providers/data, contact suppliers, merge, deploy, release, or operate production. |
+| `docs/AI_COLLABORATION.md` and agent logs | Retain contextual/procedural value but do not supersede the registry/log task packet or Darrin’s decision authority. |
+
+**Authority:** Darrin, explicit Option A selection in this task. **Evidence:** F-09 direct-main rewrite `6942dc0`; F-09/F-10 return; Darrin approval; current task-registry protocol. **Risk handled:** Material role/source-of-truth ambiguity. **Reversibility:** Documentation/governance decision only; no application/CI/data/configuration state changed.
+
+**Approved scope:** Read-only task dispatch, evidence review, acknowledgement/return recording, and successor/hold selection through the registry and this log. **Excluded scope:** Any implicit authority from role names or continuity prose; source/configuration edits; conflict resolution; code/test/build/workflow execution; migration/data; credentials/providers/network; supplier/commercial action; merge/close/rebase; deploy/release/production action.
+
+**Verification before reassessment:** A role may be treated as available only when it returns a durable receipt identifying task ID, named capability, parent/dispatcher, exact permitted and prohibited scope, evidence baseline, confidence, blockers, and next trigger. A future code/validation claim additionally requires separately owner-authorized command/environment/side-effect boundary and exact output. **Review trigger:** A valid receipt; material task/PR/issue/continuity revision; Darrin decision change; or expiry of the portfolio protocol.
+
+### Active successor — F-11 registry-governed acknowledgement and evidence intake
+
+**Status:** `ACTIVE HOLD — no role acknowledgement or implementation evidence received.` On a valid Franchise role receipt, authorised conflict candidate, PR #6/#13/#14 change, Issue #15/#17 evidence, or verified supplier-account evidence, assess only the stated delta and return to Manus for immediate successor/hold. No role is presumed active merely because it appears in a continuity document.
+
+**Notification decision:** F-10 approval is a material owner decision recorded on the PR #8 oversight branch. One bounded, deduplicated commentary update to affected PR #8 is warranted after this decision record is pushed; it will confirm the authority interface only and will not imply a code/review/merge/deployment/release decision.
