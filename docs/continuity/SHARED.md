@@ -2,17 +2,17 @@
 
 **Owner:** Darrin
 
-**Agents:** ChatGPT + Manus
+**Agents:** Franchise Main + Franchise App + Manus App + Overseer
 
-**Last reconciled:** 25 August 2026
+**Last reconciled:** 27 August 2026
 
 ## Authoritative rule
 
-This file is the merged cross-agent project state. Both agents should read it before substantial work and update it after substantial work.
+This file is the merged cross-agent project state. Agents should read it before substantial work and update it after substantial work.
 
 The user is the final decision authority.
 
-## Strategic priority reset — CURRENT
+## Strategic priority — CURRENT
 
 The immediate objective is **not** to complete the entire eventual Franchise platform.
 
@@ -26,7 +26,7 @@ The project sequence is now:
 
 The Franchise project is a micro home-delivery business first and a technology platform second. Technology exists to operate the business.
 
-When Darrin says `cont` or `continue autonomously`, agents have standing permission to continue the highest-value work toward the current objective without routine confirmation, within their actual tool permissions and the decision boundaries in `docs/AI_COLLABORATION.md`.
+When Darrin says `cont` or `continue autonomously`, agents have standing permission to continue the highest-value work toward the current objective without routine confirmation, within their actual tool permissions and decision boundaries.
 
 ## Scope-control rule
 
@@ -37,8 +37,6 @@ Before significant new work, ask:
 If yes, prioritise it.
 
 If no, defer it unless it is a genuine security, reliability, legal/compliance, architectural prerequisite, or required continuity/governance task.
-
-Existing architecture documentation is retained. Future capability should not automatically become current implementation scope.
 
 ## Definition of opening stage
 
@@ -61,7 +59,6 @@ Franchise #1 is ready to open when:
 ## Minimum V1 operating system
 
 ### Customer
-
 - product catalogue;
 - product pricing;
 - ordering;
@@ -70,7 +67,6 @@ Franchise #1 is ready to open when:
 - order confirmation.
 
 ### Franchisee
-
 - secure login;
 - receive orders;
 - pick/pack workflow;
@@ -81,7 +77,6 @@ Franchise #1 is ready to open when:
 - earned-hours calculation.
 
 ### Business
-
 - product cost;
 - selling price;
 - delivery economics;
@@ -90,7 +85,6 @@ Franchise #1 is ready to open when:
 - daily/weekly reporting.
 
 ### Operations
-
 - opening stock;
 - packaging;
 - equipment;
@@ -107,8 +101,6 @@ The minimum correct security relationship remains:
 
 **User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation**
 
-The first franchise should implement the boundary correctly without prematurely building elaborate multi-franchise functionality.
-
 Real tenant-isolation tests must prove, at minimum:
 
 - Franchise A cannot read Franchise B;
@@ -117,159 +109,110 @@ Real tenant-isolation tests must prove, at minimum:
 - unauthorized franchise switching is denied;
 - new franchise-owned records require authorized franchise scope.
 
-## Current product
-
-A central ecommerce/delivery franchise platform for home-based local operators. The customer interacts with one branded platform; orders are routed to an approved local franchise according to service coverage.
-
-## Commercial model — current working assumptions
+## Commercial state
 
 - Entry franchise package: AUD $4,995.
 - Opening stock: approximately $2,000 cost basis.
 - Target retail value of included stock: $3,300+, requiring SKU-level verification before being marketed as a hard value claim.
-- Optional add-ons: technology, shelving, furniture, extra stock and related equipment.
-- Customer-facing free delivery is part of the current proposition; actual delivery cost must be tracked internally.
-- Royalty concept: 3% through the defined breakeven amount, then 6% on turnover above it. Contractual threshold and legal treatment remain to be finalised.
-- 20% reserve / 80% owner allocation is a proposed configurable layer and must not be treated as final legal/accounting advice.
+- Customer-facing free delivery remains part of the proposition; actual delivery cost must be tracked internally.
+- Royalty concept: 3% through the defined breakeven amount, then 6% on turnover above it; contractual threshold/legal treatment remains to be finalised.
+- 20% reserve / 80% owner allocation remains a proposed configurable layer and must not be treated as final legal/accounting advice.
 
-## Operating model
+## Gate 3 — current state
 
-- Central branded website/app.
-- Franchisee does not need to build an independent website.
-- Territory is based on real service/delivery coverage.
-- Customer cannot select a franchise manually; routing is server-side.
-- Storefront availability can be long, including an 18-hour operating window, if fulfilment capability supports it.
-- Actual labour is recorded through work sessions and is not inferred from store availability.
+The project has a dedicated `docs/GATE3_PRODUCT_RESEARCH.md` research base and `docs/GATE3_SKU_MASTER.md` commercial schema.
 
-## Economics model — latest direction
+The target opening range remains approximately **40–60 packaged, shelf-stable SKUs**. Candidate categories include drinks, energy drinks, water/hydration, savoury snacks, confectionery, biscuits/cookies, nuts/healthy snacks and selected functional products.
 
-The project moved from a fixed-hours model to an earned-hours model.
+Public supplier/catalogue research is sufficient to identify candidates and benchmark pricing, but **does not constitute verified business-account wholesale pricing**.
 
-Primary relationship:
+Gate 3 therefore remains **AMBER / IN PROGRESS**. The next commercial milestone is verified supplier/account pricing, landed-cost modelling, proposed retail pricing, delivery/platform economics and contribution for the candidate opening range.
 
-`actual work → sales → contribution → earned hours`
+## Application state — current verified repository position
 
-Earned hours are calculated from verified contribution available for owner work divided by a configurable wage benchmark.
+The latest repository state inspected by Overseer remains the tenancy implementation handoff/specification commit:
 
-Earned hours are an internal management metric. They are not a Centrelink, pension, tax, employment or legal entitlement calculation.
+`043301c05b5b6e2eea429b4fe85feabb1b2fe868`
 
-The dashboard should make efficiency visible rather than telling the owner how many hours they must work.
+That commit defines the intended tenancy implementation boundary but is not evidence that the runtime tenancy implementation has been completed.
 
-## Product components — eventual platform
+**Security/tenancy remains RED until actual implementation and A/B isolation tests are present and verified.**
 
-The eventual platform may include:
+The current application remains a dashboard/reporting foundation rather than the complete ecommerce/delivery platform.
 
-- customer storefront;
-- franchisee dashboard;
-- franchisor portal;
-- backend/API;
-- database;
-- authentication/roles;
-- franchise tenancy;
-- territory/service-area engine;
-- order lifecycle;
-- delivery adapter;
-- inventory/purchasing;
-- payments/refunds;
-- accounting/export;
-- training;
-- AI coach;
-- network analytics;
-- mobile apps;
-- Windows/PWA experience.
+Do not expand commerce around the existing account/user-only tenancy model.
 
-These are not all required before Franchise #1 opens.
+## Open implementation gates
 
-## Gate 3 product/pricing research — CURRENT
+### P0 — tenancy
 
-ChatGPT has begun Gate 3 with a dedicated research document: `docs/GATE3_PRODUCT_RESEARCH.md`.
+Issue #15 remains the critical technical gate. Required boundary:
 
-The initial V1 direction is a compact approximately 40–60 SKU range of packaged, shelf-stable convenience products, centred on drinks, snacks, confectionery, nuts/healthy snacks and selected niche products. Perishables remain excluded.
+**User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation**
 
-Initial supplier candidates identified from current public evidence include The Distributors Brisbane, Campbells, Kelly's Distributors, IBA Distributors, Trumps Wholesale and Nut Grocer. Supplier selection is not final.
+Required tests must prove cross-franchise read/write isolation, inactive membership denial, unauthorized switching denial and authorization for new franchise-owned records.
 
-Current published Uber Australia reference points have also been captured: Marketplace Uber Delivery is listed at 30% on the merchant pricing page; Uber Webshop lists Uber Delivery at 25%; Uber Direct states no Marketplace commission and currently publishes a $10 ex-GST base delivery fee plus $1.10 ex-GST per kilometre. These are reference points only; the actual contracted service and cost must be verified before final pricing.
+Manus App is the implementation owner; Franchise App is the technical review counterpart; Overseer verifies the repository evidence.
 
-**Gate 3 status:** IN PROGRESS. No SKU cost or retail price is yet marked as approved solely from this research. Final economics require supplier evidence and a verified delivery model.
+### Gate 3 — commercial data
 
-## Continuity structure
+Issue #16 remains the commercial gate for verified supplier/account pricing and the opening SKU economics.
 
-Exactly three primary continuity documents are used:
+Franchise Main owns the commercial work.
 
-- `docs/continuity/CHATGPT.md` — ChatGPT working history;
-- `docs/continuity/MANUS.md` — Manus working history and implementation verification;
-- `docs/continuity/SHARED.md` — merged authoritative state.
+## Coordination structure
 
-An optional Manus sub-agent may reconcile the two agent logs, but must not silently resolve material business disputes.
+**Franchise Main:** project/business lead; commercial strategy, requirements, scope, Opening #1 direction and cross-agent coordination.
 
-## Collaboration protocol
+**Franchise App:** application-focused ChatGPT counterpart; technical review, testing/review, application blockers and Manus implementation review.
 
-`docs/AI_COLLABORATION.md` is the current operating protocol. It establishes autonomous operation for ChatGPT, Manus and authorised Manus sub-agents within their actual capabilities and permissions, while Darrin retains final authority. It also establishes the recommended continuity schedule: lightweight checks every 6 hours, a fast check on pushes to `main`, and a deeper weekly review, with Manus having final say on operational scheduling implementation.
+**Manus App:** application implementation counterpart; code, database/API, integrations, testing, deployment and runtime verification within actual permissions.
 
-## Agent coordination rules
+**Overseer:** independent oversight; scans repository/logs, detects drift/duplication/contradictions, checks progress against Opening #1, and determines the highest-value next action without becoming a competing implementation team.
+
+Darrin remains final authority.
+
+## Continuity rules
+
+Agents coordinate through GitHub rather than using Darrin as a messenger.
 
 Before substantial work:
 
-1. read `SHARED.md`;
+1. read this file;
 2. inspect recent commits and relevant implementation;
-3. read the relevant agent log when context is needed;
-4. identify whether the work is required for Opening #1.
+3. check the relevant agent log;
+4. determine whether the work advances Opening #1.
 
 After substantial work:
 
-1. update the agent's own continuity log;
-2. update `SHARED.md` when overall state materially changes;
+1. update the responsible agent log;
+2. update this file when overall state materially changes;
 3. record commit SHA/message where practical;
-4. distinguish reported validation from independently verified validation.
+4. distinguish reported, automated and independently verified validation.
 
-Agents should coordinate through GitHub rather than using Darrin as a messenger.
+Historical records remain history and must not be silently rewritten to make old work appear current.
 
-## Conflict handling
+## Current reconciliation finding — 27 August 2026
 
-- Darrin decisions override agent assumptions.
-- Existing confirmed decisions override new suggestions.
-- Unresolved material questions must be documented rather than silently decided.
-- Agents should inspect current files and recent commits before modifying shared areas.
-- Prefer small coherent commits.
-- Historical continuity records must be retained as history but superseded by a newer reconciliation entry when the repository state changes.
-- Never treat an old agent report as current merely because it is newer by file timestamp; compare its referenced commit/state with current GitHub state.
+Overseer scanned recent repository activity, open issues and pull requests. No newer application implementation commit was found after the tenancy handoff/specification commit above.
 
-## Scope-freeze guidance
+Therefore:
 
-Defer until after Franchise #1 is operating unless a genuine prerequisite emerges:
+- tenancy implementation is **not marked complete**;
+- Gate 3 verified supplier pricing is **not marked complete**;
+- commerce remains downstream of the tenancy gate;
+- documentation should not expand ahead of implementation without a concrete blocking purpose.
 
-- advanced AI systems;
-- native mobile applications;
-- Windows packaging;
-- sophisticated multi-franchise analytics;
-- complex territory algorithms;
-- advanced accounting automation;
-- elaborate network dashboards;
-- advanced franchise automation;
-- hypothetical enterprise infrastructure.
+The project is considered **implementation constrained**, not planning constrained.
 
-Do not delete existing documentation for these capabilities; simply avoid expanding their implementation before the first franchise proves the operating model.
+## Immediate autonomous priorities
 
-## Current implementation state
+1. **Manus App:** implement the approved tenancy boundary and real isolation tests; record exact validation evidence.
+2. **Franchise App:** review/reproduce the tenancy implementation once committed.
+3. **Franchise Main:** continue the verified supplier-cost/SKU economics work.
+4. **Overseer:** reconcile repository state and prevent scope drift/duplicate work.
 
-The repository contains a substantial Manus-managed Franchise Hub dashboard/reporting foundation. Reported capabilities include tenant-scoped monthly records, server-side KPIs, Earned Hours, productivity/workload metrics, projections, deterministic and LLM coaching safeguards, attestation, immutable revisions, administrator review/audit events and Trends calculations.
-
-The repository also contains the canonical domain, migration and tenancy documentation. These are architecture contracts, not evidence that all corresponding runtime functionality is complete.
-
-The latest PR #6 integration work has reported successful dependency installation, tests, TypeScript validation and production build, with GitHub PR verification green at its current reviewed head. These are to be treated as reported/automated validation unless independently reproduced by the reviewing agent.
-
-Known PR #6 acceptance concerns previously identified remain unless the current implementation demonstrably resolves them:
-
-- the test named `franchiseTenantIsolation.test.ts` was identified as validating user-ID propagation rather than true cross-franchise isolation;
-- the Manus browser debug collector under `apps/franchise-hub/client/public/__manus__/debug-collector.js` has been identified as an executable public asset and should be removed from canonical production source or provably development-gated;
-- migration history must remain distinct from executing/applying production migrations.
-
-Do not claim these concerns are resolved without inspecting the current commit.
-
-## Historical continuity
-
-Previous continuity records, prototype ZIPs and earlier PR states remain historical evidence. They must not be deleted merely because they are stale.
-
-PR/continuity records that reference earlier PR #6 SHAs and earlier dependency failures should be treated as historical once superseded by later commits.
+No new major platform capability should outrank these tasks unless a genuine security, reliability, legal/compliance or opening prerequisite emerges.
 
 ## Opening-first development sequence
 
@@ -284,40 +227,4 @@ PR/continuity records that reference earlier PR #6 SHAs and earlier dependency f
 9. end-to-end operational testing;
 10. opening readiness.
 
-Only after Franchise #1 is operating should the project prioritise replication and broader network automation.
-
-## Post-opening strategy
-
-Once Franchise #1 opens, the project enters:
-
-**Operate → Maintain → Improve → Replicate**
-
-Development should then be driven primarily by real operating evidence such as checkout abandonment, fulfilment time, delivery problems, stock accuracy, supplier issues, customer support, pricing/margin problems and franchisee workload.
-
-## Current health
-
-**Strategic direction:** GREEN — explicitly reset to Opening #1 first.
-
-**Governance/collaboration:** GREEN — three-log model and AI collaboration protocol established.
-
-**Gate 3 products/pricing:** AMBER — research started; supplier evidence and SKU-level costs remain outstanding.
-
-**Architecture:** AMBER — strong documentation exists, but not all runtime implementation is complete.
-
-**Security/tenancy:** RED — must be correctly implemented and genuinely tested before commerce expands beyond the minimum necessary foundation.
-
-**Build/CI:** GREEN — current PR validation is reported/automated healthy; distinguish this from production readiness.
-
-**Production readiness:** RED — current integration still requires resolution of the identified tenancy/debug-telemetry gates.
-
-**Commerce:** AMBER/RED — implementation remains downstream of the security foundation and must now be scoped to Opening #1.
-
-**Scale/network features:** DEFERRED — not a current priority.
-
-## Immediate next action
-
-The next autonomous work should focus on the **highest-value blocker to opening Franchise #1**, with Gate 3 currently active.
-
-For Gate 3, obtain verified supplier costs for the first 40–60 candidate SKUs, benchmark them against current customer-facing prices, and model both Marketplace and direct-delivery economics. Do not mark final prices approved until supplier cost and delivery assumptions are evidenced.
-
-If Manus has already implemented a blocker fix, ChatGPT/Overseer should inspect the new commit rather than repeat historical recommendations.
+Only after Franchise #1 is operating should broader replication/network automation become a primary development target.
