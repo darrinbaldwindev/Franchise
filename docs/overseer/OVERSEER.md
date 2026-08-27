@@ -938,3 +938,26 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Material delta:** PR #8 now records the completed F-08 opening-readiness matrix and active F-09 evidence-intake hold. A deduplicated affected-PR notification was posted at https://github.com/darrinbaldwindev/Franchise/pull/8#issuecomment-5425774380.
 
 **Assessment and boundary:** No authorised conflict candidate, tenancy evidence, review, or check delta was found for PRs #6/#13/#14, so no repeat notification was posted on them. No code/test execution, source change, migration, provider/credential action, merge, deployment, release, or external notice beyond the authorized affected-PR notification occurred.
+
+## F-09 return — direct-main shared-continuity drift; F-10 authority reconciliation hold — 2026-08-27
+
+**Trigger/scope:** Material direct-main documentation revision [`6942dc0`](https://github.com/darrinbaldwindev/Franchise/commit/6942dc0e00890fc491178c69d9fba0f3a07faaf3) modifies only `docs/continuity/SHARED.md` after `043301c` (63 additions/156 deletions). Manus statically inspected the commit, current shared-continuity document, current F-09 record, and Franchise PR #8 comments. No source/test/build/workflow/credential/provider/network/database/deployment/release action occurred.
+
+**Verified result:** The new shared record preserves the opening-first, membership/context-tenancy-before-commerce, and supplier-evidence priorities. It says `043301c` remains a tenancy specification/handoff rather than runtime proof. It does **not** supply an authorised PR #6/#13 conflict candidate, Issue #15 tenant evidence, Issue #17 runtime evidence, source change, test result, or validation output. F-09 therefore returns **documentation/authority delta only; no technical gate advance.**
+
+| Observed record delta | Governance classification |
+|---|---|
+| Names `Franchise Main`, `Franchise App`, `Manus App`, and `Overseer`; assigns Manus App code/testing/deployment role and immediate tenancy priority “within actual permissions.” | A role/planning claim, **not** durable capability acknowledgement or Darrin authority for code/test/deploy work. |
+| Calls `SHARED.md` merged cross-agent state while portfolio task packets/log returns remain active. | **Confirmed source-of-truth interface ambiguity.** The document does not state precedence if these artifacts conflict. |
+| Retains `docs/AI_COLLABORATION.md`, `MANUS.md`, and `CHATGPT.md` but removes the earlier explicit detailed-protocol reference. | **Continuity discoverability/authority ambiguity;** no protocol file deletion. |
+| Restates unverified tenancy, supplier pricing, and implementation constraint. | Consistent with existing F-04/F-06/F-08 conclusions; **not a completed-work claim accepted by Manus.** |
+
+**Confirmed blockers:** Current PR #6/#13 are still `DIRTY`; no authorised candidate exists; membership/context tenant boundary and acceptance evidence remain absent. **Likely blocker:** named-role prose could be misread as execution authority. **Unresolved:** live role availability/capability, task acceptance, runtime behavior, and validation provenance.
+
+### Active successor — F-10 shared-continuity authority reconciliation hold
+
+**Task:** Obtain a Darrin decision on the precedence between `docs/continuity/SHARED.md`, `docs/AI_COLLABORATION.md`, project Overseer records, and the portfolio task registry before any named-role statement is treated as task/implementation authority. **Responsible capability:** `UNCONFIRMED — Manus retains direct governance hold`. **Permitted:** read, compare, and return acknowledgement/decision evidence only. **Prohibited:** source/configuration change; conflict work; code/test/workflow run; migration/data; provider/credential/supplier/commercial action; merge/close/rebase/deploy/release/production.
+
+**Darrin decision:** **A (recommended)** treat `6942dc0` as current strategic summary only; retain portfolio task registry/project Overseer log as the controlling task-return interface, and require explicit packet/acknowledgement before roles work. **B** authorize a future documentation-only precedence/cross-link proposal. **C** defer. No option is selected by this record.
+
+**PR-only notification:** PR #8 is the affected oversight-log PR; its prior F-08 notice predates `6942dc0` and does not address this material direct-main role/source rewrite. Under standing authority, one deduplicated commentary-only F-09 notice is warranted after this record is pushed. It will not request or approve code changes, merge, close, rebase, execution, deployment, release, migration, or production action. Detailed private return: `franchise_f09_direct_main_continuity_drift_return_2026-08-27.md`.
