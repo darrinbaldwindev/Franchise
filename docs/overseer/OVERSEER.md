@@ -988,3 +988,13 @@ Darrin may respond in the shared coordination log or this project log with **A**
 **Notification decision:** F-10 approval is a material owner decision recorded on the PR #8 oversight branch. One bounded, deduplicated commentary update to affected PR #8 is warranted after this decision record is pushed; it will confirm the authority interface only and will not imply a code/review/merge/deployment/release decision.
 
 **Authorized PR-only decision update posted:** One commentary-only F-10 Option A update was posted to affected [Franchise PR #8](https://github.com/darrinbaldwindev/Franchise/pull/8#issuecomment-5435021638) after this decision record was pushed. It confirms the registry/log task-return control, names F-11, and preserves all prohibited scopes. It does not request or approve source changes, code/test/workflow execution, merge, deployment, release, or production work. No repeat F-10 notice is permitted absent a material revision or Darrin decision change.
+
+## Comprehensive PR scan — PR #20 delivery-area specification — 2026-08-28
+
+**Evidence:** New non-draft `CLEAN` Franchise PR [#20](https://github.com/darrinbaldwindev/Franchise/pull/20) at `88ddd55` adds a delivery-area territory target specification and related architecture/domain/migration/continuity documentation. It separates address-level routing from staff tenancy and specifies versioning, historical attribution, audit, overlap, and fallback concepts.
+
+**Result:** PR #20 is a **target specification**, not implementation, migration, provider, legal/privacy, delivery-economics, tenancy, validation, or production evidence. Its “owner confirmed” wording is repository content, not an independently authenticated Darrin decision in this scan. It does not alter the F-11 registry-governed task/return interface or release Franchise PR #6.
+
+**Franchise PR #6 check:** [PR #6](https://github.com/darrinbaldwindev/Franchise/pull/6) remains open and `DIRTY` at `67ee3ce`, with 166 changed paths/27,529 additions. The domain-tenancy, audit/provenance, migration-preflight, production-debug-telemetry, and conflict-resolution gates remain unresolved. Open Issues #15, #17, and new documentation Issue #19 do not supply a qualifying evidence return.
+
+**Current task/hold:** `F-11` remains active pending registry-compatible role receipt, authorised candidate, and gate-specific evidence. **Notification decision:** PR #20 is newly material; one commentary-only notice is warranted after push. No new notice is warranted for PRs #6/#8/#13/#14 because their evidence/gates are unchanged. Detailed private record: `portfolio_pr_scan_henry_comparison_2026-08-28.md`.
