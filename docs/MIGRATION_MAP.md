@@ -27,7 +27,7 @@ Minimum concepts:
 - status
 - activation date
 - initial investment
-- territory reference
+- delivery-area territory reference
 - configuration/version
 - created/updated timestamps
 
@@ -46,17 +46,22 @@ Minimum concepts:
 
 A user may have multiple memberships where the approved access model permits it.
 
-### `territories`
+### `territories` / `delivery_areas`
 
-Operating territory and delivery eligibility boundary.
+A franchise territory is defined by the delivery area it can serve. This is the address-level operating and delivery-eligibility boundary, not an arbitrary postcode or suburb allocation.
 
 Minimum concepts:
 - id
 - franchise_id
-- geographic boundary/reference
-- delivery eligibility configuration
+- display name/label
+- geographic boundary or address-match reference
+- delivery eligibility and service-policy configuration
 - status
 - effective dates
+- active version or version history reference
+- explicit overlap/precedence configuration where relevant
+
+Related records must preserve delivery-area versions, routing decisions, and actual delivery performance/cost. See `docs/DELIVERY_AREA_TERRITORIES.md` before selecting table names, writing migrations, or implementing routing.
 
 ### Commerce entities
 
@@ -91,7 +96,7 @@ Implement after commerce:
 ## Non-destructive migration sequence
 
 1. Create `franchises` and `franchise_memberships`.
-2. Create territory structure.
+2. Create the versioned delivery-area territory structure, service-policy configuration, and routing-decision audit boundary.
 3. Establish deterministic mapping from existing `users` to initial franchise/membership records.
 4. Add nullable `franchise_id` to legacy reporting tables.
 5. Backfill only records with an unambiguous mapping.
@@ -99,7 +104,7 @@ Implement after commerce:
 7. Make franchise scope required for the migrated reporting paths.
 8. Update server-side queries and mutations to resolve franchise from authenticated membership.
 9. Add tests proving cross-franchise access is denied.
-10. Introduce commerce tables independently.
+10. Introduce commerce tables independently, including order attribution to the authorised franchise and resolved delivery-area version.
 11. Introduce finance/contribution tables independently.
 12. Migrate dashboard calculations from attested aggregates to canonical transactions where data exists.
 
