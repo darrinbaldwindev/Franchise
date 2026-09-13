@@ -1,0 +1,5 @@
+project=franchise
+tenant=fixture-a
+territory=fixture-north
+state=ISOLATED
+production_write=false
