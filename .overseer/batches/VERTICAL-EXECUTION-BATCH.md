@@ -4,10 +4,10 @@
 **Workstream:** Franchise App  
 **Purpose:** Move Franchise #1 toward opening by reviewing and validating the smallest secure application path, without creating a competing implementation stream.  
 **Primary control:** Opening #1 Gate 4 security; Issues #15/#18; PR #6.  
-**Last fresh scan:** 2026-09-14 (owner `cont`/vertical-batch trigger context).  
-**Main head at scan:** `5eff54a8d4780d8ccdd411e650348c8593d3a224` (`docs: adopt portfolio vertical batch execution doctrine`).  
-**PR #6 head at scan:** `768d624a149e383939791406dcf8ced1ac271662`.  
-**Current status:** ACTIVE — P0 tenancy remains RED/incomplete; bounded authorization helper exists for review; territory fixture work is synthetic/non-production and secondary.
+**Last fresh scan:** 2026-09-14 after first vertical execution cycle.  
+**Main head after cycle scan:** `a640af75a57f3b5e17956e446c8099cb9d86603e` (`docs: create Franchise App vertical execution batch`).  
+**PR #6 head reviewed:** `768d624a149e383939791406dcf8ced1ac271662`.  
+**Current status:** ACTIVE — P0 tenancy remains RED/incomplete. Exact-head static review is recorded; one fail-closed helper defect and the persistence gap remain.
 
 ## Governance boundaries
 
@@ -17,45 +17,30 @@
 - No merge, deploy, production migration, production tenancy/routing change, provider activation, credential change, spend, customer/supplier contact, or production write is authorized by this batch.
 - Territory fixtures currently on `main` are synthetic evidence only and must not be represented as production routing or tenancy completion.
 
-## Fresh-scan findings
+## Verified/reconciled findings
 
-1. `main` advanced materially on 2026-09-14 with synthetic territory routing/audit hardening and tests, ending at `5eff54a...`.
-2. `docs/continuity/SHARED.md` is stale: it still records the 27-August application position and does not reflect current PR #6 tenancy-helper evidence or current synthetic territory work.
-3. PR #6 is open at `768d624...` and now contains `server/franchiseTenancy.ts` plus deterministic authorization tests. The PR itself correctly states this does **not** complete the tenancy gate.
-4. PR #6 still lacks the required `franchises`/`franchise_memberships` persistence model, DB-backed request-context loading, conversion of existing `userId`-scoped repository methods, genuine cross-tenant persistence tests, and exact-head install/test/typecheck/build evidence.
-5. Existing `franchiseTenantIsolation.test.ts` still verifies propagation of authenticated `userId` into database calls; it is not evidence of franchise A/B persistence isolation.
-6. PR #22 is a draft synthetic territory-fixture hardening batch. It must remain secondary to P0 tenancy and cannot be used to claim production routing readiness.
+1. `main` advanced materially on 2026-09-14 with synthetic territory routing/audit hardening and tests, then vertical-batch adoption.
+2. PR #6 is open at exact head `768d624...` and contains a bounded pure authorization helper plus tests.
+3. Independent static review found the core helper direction sound, but found a concrete fail-closed defect: with `requestedFranchiseId` supplied, duplicate active memberships for the same user + franchise are resolved using first-match semantics. Conflicting duplicate evidence must be rejected instead.
+4. Existing `franchiseTenantIsolation.test.ts` verifies authenticated `userId` propagation to DB mocks; it is **not** proof of Franchise A/B persistence isolation.
+5. P0 tenancy remains RED because the repository still lacks the complete persisted membership/context boundary and persistence-backed isolation evidence.
+6. `docs/continuity/SHARED.md` remains stale at the 27-August application snapshot and should be reconciled after the next implementation head or by the continuity owner; this batch must not borrow its stale implementation statement as current evidence.
+7. PR #22 remains a draft synthetic territory-fixture hardening lane and stays secondary to tenancy P0.
 
-## Current batch
+## Consumed this cycle
 
 ### VB-FR-APP-01 — Exact-head tenancy helper review
-**State:** ACTIVE
+**State:** VERIFIED
 
-Review PR #6 head `768d624...` against Issues #15/#18 and `docs/application/APP_TENANCY_IMPLEMENTATION_SPEC.md`.
-
-**Evidence required:**
-- helper cannot derive authority from client-supplied franchise ID;
-- inactive/expired/future memberships fail closed;
-- ambiguous multi-membership context fails closed;
-- wrong-user membership fails closed;
-- role checks occur only after tenant context resolution;
-- review explicitly distinguishes pure authorization helper from real persisted tenant isolation.
-
-**Exit:** durable technical review recorded on PR #6 with exact head and remaining blockers.
-
-### VB-FR-APP-02 — Reconcile stale application continuity
-**State:** PENDING
-
-Update shared/application continuity only with evidence verified from current repo/PR state. Preserve RED tenancy status until persistence-backed A/B isolation exists.
-
-**Exit:** continuity no longer claims the latest application evidence is only the August handoff; exact heads and evidence classes are recorded.
+- Reviewed PR #6 head `768d624a149e383939791406dcf8ced1ac271662`.
+- Durable PR review recorded as GitHub review `5195364976`.
+- Durable P0 checkpoint recorded on Issue #15 as comment `5661004829`.
+- Validation class: independent static repository review only; tests were not executed in this connector session.
 
 ### VB-FR-APP-03 — Define the smallest next Manus implementation slice
-**State:** PENDING
+**State:** VERIFIED
 
-Keep implementation ownership with Manus App. The next slice must connect the reviewed helper to real persistence rather than expanding dashboard/commerce features.
-
-**Required scope:**
+Handoff recorded on PR #6 and Issue #15. Required next implementation remains:
 1. `franchises` tenant entity;
 2. `franchise_memberships` with role/status/effective dates;
 3. server-side membership loading into request authorization context;
@@ -65,16 +50,57 @@ Keep implementation ownership with Manus App. The next slice must connect the re
 7. inactive/expired and unauthorized-scope denial at the real request/repository boundary;
 8. safe migration plan only — no production migration execution.
 
-### VB-FR-APP-04 — Exact-head validation gate for PR #6
-**State:** BLOCKED
+## Replenished batch
 
-Blocked until the next persistence-integrated tenancy head exists. Required verification then includes frozen install, test suite, typecheck/check, production build, and focused tenancy tests against the exact head. Historical validation from predecessor heads must not be borrowed.
+### VB-FR-APP-06 — Fix duplicate requested-scope membership ambiguity
+**State:** PENDING — Manus implementation lane
 
-### VB-FR-APP-05 — Territory fixture secondary review
+At PR #6 or its successor, replace first-match semantics for requested scope with exactly-one-active-match semantics. Add regression coverage for duplicate active memberships for the same user/franchise, including conflicting roles. Expected result: fail closed with a deterministic authorization error.
+
+**Franchise App verification:** inspect exact successor head and confirm the test exercises the real ambiguity rather than only a type-level case.
+
+### VB-FR-APP-07 — Persist franchise + membership tenancy
+**State:** PENDING — P0
+
+Implement the smallest schema/migration and server loading path needed to make `AuthorizedFranchiseContext` derive from persisted membership evidence. Preserve migration safety; do not apply production migration.
+
+**Required evidence:** schema/migration committed; request context loads server-owned membership evidence; no client parameter creates authority.
+
+### VB-FR-APP-08 — Convert one complete repository vertical slice to franchise scope
+**State:** PENDING behind VB-FR-APP-07
+
+Choose the smallest existing monthly snapshot/read-write slice and convert it end to end from `userId` tenancy to authorized `franchiseId` tenancy: router/context → service/repository → query/write predicates → tests.
+
+**Acceptance:** Franchise A cannot read or mutate Franchise B through that slice; tenant-owned creation binds to authorized Franchise A without trusting client tenant IDs.
+
+### VB-FR-APP-09 — Replace misleading isolation evidence
+**State:** PENDING behind VB-FR-APP-08
+
+Supersede or rename `franchiseTenantIsolation.test.ts` so user-ID propagation tests cannot be mistaken for tenant-isolation proof. Add genuine A/B persistence isolation tests and denial cases for inactive/expired/unauthorized scope.
+
+### VB-FR-APP-10 — Exact-head application validation
+**State:** BLOCKED behind implementation
+
+On the exact successor tenancy head, require:
+- frozen dependency install;
+- focused tenancy tests;
+- full test suite;
+- typecheck/check;
+- production build;
+- independent reproduction where practical.
+
+Historical predecessor-head results do not count.
+
+### VB-FR-APP-11 — Reconcile shared continuity
+**State:** PENDING
+
+Once the successor implementation head is available, update current application continuity to record exact implementation/test state while preserving RED/AMBER/GREEN truth. Do not mark tenancy complete before persistence-backed A/B isolation and exact-head validation.
+
+### VB-FR-APP-12 — Territory fixture secondary lane
 **State:** HOLD
 
-PR #22 / Issue #23 may continue only as synthetic fail-closed fixture hardening. Do not let territory work displace tenancy P0. Confirm exact-head CI before any GREEN claim and preserve synthetic/non-production labelling.
+PR #22 / Issue #23 may proceed only as synthetic fail-closed fixture hardening. Do not let territory work displace tenancy P0. Require exact-head CI before GREEN and retain explicit synthetic/non-production labelling.
 
-## Batch completion rule
+## Next trigger rule
 
-This cycle is successful if it leaves the repo with: (a) an exact-head PR #6 technical review, (b) corrected continuity if current permissions permit, (c) a precise Manus handoff for the persistence-backed tenancy slice, and (d) a replenished next batch that keeps commerce blocked until real tenant isolation is demonstrated.
+On `cont` / `continue autonomously`: fresh-scan `main`, PR #6/successor, Issues #15/#18, PR #22, exact-head CI, and this batch; execute the highest eligible P0 item; verify; scan again; replenish this same file; log the checkpoint durably.
