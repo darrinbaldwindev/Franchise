@@ -18,6 +18,13 @@ class TerritoryFixtureTests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(result["overlap_count"], 0)
 
+    def test_missing_evidence_context_fails_closed(self):
+        for field in ("evidence_source", "evidence_timestamp", "tenancy_context"):
+            payload = self.load()
+            payload[field] = ""
+            with self.assertRaisesRegex(ValueError, "fixture evidence context is incomplete"):
+                validate(payload)
+
     def test_active_overlap_fails_closed(self):
         payload = self.load()
         payload["delivery_areas"].append({
@@ -28,6 +35,12 @@ class TerritoryFixtureTests(unittest.TestCase):
             "postcode_tokens": ["TEST-1000"],
         })
         with self.assertRaisesRegex(ValueError, "ambiguous active delivery-area overlap"):
+            validate(payload)
+
+    def test_invalid_area_version_fails_closed(self):
+        payload = self.load()
+        payload["delivery_areas"][0]["version"] = 0
+        with self.assertRaisesRegex(ValueError, "invalid area version"):
             validate(payload)
 
     def test_unknown_franchise_fails_closed(self):
@@ -49,8 +62,21 @@ class TerritoryFixtureTests(unittest.TestCase):
         case = next(item for item in result["cases"] if item["case_id"] == "route-a")
         self.assertEqual(case["selected_franchise_id"], "FR-A")
         self.assertEqual(case["reason"], "SINGLE_ACTIVE_AREA_MATCH")
-        self.assertTrue(case["matched_area_ids"])
+        self.assertEqual(case["matched_area_ids"], ["AREA-A-1"])
+        self.assertEqual(case["matched_area_versions"], {"AREA-A-1": 1})
         self.assertEqual(case["candidate_franchise_ids"], ["FR-A"])
+        self.assertEqual(case["evidence_source"], "SYNTHETIC_FIXTURE")
+        self.assertEqual(case["tenancy_context"], "SYNTHETIC_FRANCHISE_ROUTING")
+        self.assertTrue(case["evidence_timestamp"])
+        self.assertEqual(len(case["correlation_id"]), 16)
+
+    def test_correlation_id_is_deterministic(self):
+        first = validate(self.load())
+        second = validate(self.load())
+        first_ids = [case["correlation_id"] for case in first["cases"]]
+        second_ids = [case["correlation_id"] for case in second["cases"]]
+        self.assertEqual(first_ids, second_ids)
+        self.assertEqual(len(first_ids), len(set(first_ids)))
 
     def test_unserviceable_case_has_explicit_denial_reason(self):
         result = validate(self.load())
@@ -58,6 +84,7 @@ class TerritoryFixtureTests(unittest.TestCase):
         self.assertEqual(case["actual"], "NO_SERVICE")
         self.assertEqual(case["reason"], "NO_ACTIVE_DELIVERY_AREA")
         self.assertEqual(case["matched_area_ids"], [])
+        self.assertEqual(case["matched_area_versions"], {})
         self.assertEqual(case["candidate_franchise_ids"], [])
 
 
