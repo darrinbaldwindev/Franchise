@@ -1,13 +1,26 @@
 #!/usr/bin/env python3
+import hashlib
 import json
 import sys
 from collections import defaultdict
 
 
+def decision_correlation(case_id, token, matched_areas, owners):
+    material = "|".join([case_id, token, ",".join(matched_areas), ",".join(owners)])
+    return hashlib.sha256(material.encode("utf-8")).hexdigest()[:16]
+
+
 def validate(payload):
+    evidence_source = payload.get("evidence_source")
+    evidence_timestamp = payload.get("evidence_timestamp")
+    tenancy_context = payload.get("tenancy_context")
+    if not evidence_source or not evidence_timestamp or not tenancy_context:
+        raise ValueError("fixture evidence context is incomplete")
+
     franchises = {f["franchise_id"]: f for f in payload.get("franchises", [])}
     token_map = defaultdict(list)
     area_map = defaultdict(list)
+    area_versions = {}
 
     for area in payload.get("delivery_areas", []):
         if area.get("status") != "ACTIVE":
@@ -15,9 +28,14 @@ def validate(payload):
         fid = area.get("franchise_id")
         if fid not in franchises:
             raise ValueError(f"unknown franchise for area {area.get('area_id')}: {fid}")
+        area_id = area.get("area_id")
+        version = area.get("version")
+        if not isinstance(version, int) or version < 1:
+            raise ValueError(f"invalid area version for {area_id}")
+        area_versions[area_id] = version
         for token in area.get("postcode_tokens", []):
             token_map[token].append(fid)
-            area_map[token].append(area.get("area_id"))
+            area_map[token].append(area_id)
 
     overlap = {token: owners for token, owners in token_map.items() if len(set(owners)) > 1}
     if overlap:
@@ -53,10 +71,15 @@ def validate(payload):
             "case_id": case["case_id"],
             "postcode_token": token,
             "matched_area_ids": matched_areas,
+            "matched_area_versions": {area_id: area_versions[area_id] for area_id in matched_areas},
             "candidate_franchise_ids": owners,
             "selected_franchise_id": selected_franchise,
             "actual": actual,
             "reason": reason,
+            "correlation_id": decision_correlation(case["case_id"], token, matched_areas, owners),
+            "evidence_source": evidence_source,
+            "evidence_timestamp": evidence_timestamp,
+            "tenancy_context": tenancy_context,
         })
 
     return {"status": "PASS", "cases": results, "overlap_count": 0}
