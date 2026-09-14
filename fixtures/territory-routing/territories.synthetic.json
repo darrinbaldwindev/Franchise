@@ -1,6 +1,9 @@
 {
   "status": "NON_PRODUCTION_FIXTURE",
   "territory_definition": "ACTIVE_DELIVERY_AREA",
+  "evidence_source": "SYNTHETIC_FIXTURE",
+  "evidence_timestamp": "2026-09-14T00:00:00Z",
+  "tenancy_context": "SYNTHETIC_FRANCHISE_ROUTING",
   "franchises": [
     {"franchise_id": "FR-A", "status": "ACTIVE"},
     {"franchise_id": "FR-B", "status": "ACTIVE"},
