@@ -1,0 +1,20 @@
+{
+  "status": "NON_PRODUCTION_FIXTURE",
+  "territory_definition": "ACTIVE_DELIVERY_AREA",
+  "franchises": [
+    {"franchise_id": "FR-A", "status": "ACTIVE"},
+    {"franchise_id": "FR-B", "status": "ACTIVE"},
+    {"franchise_id": "FR-C", "status": "INACTIVE"}
+  ],
+  "delivery_areas": [
+    {"area_id": "AREA-A-1", "franchise_id": "FR-A", "version": 1, "status": "ACTIVE", "postcode_tokens": ["TEST-1000", "TEST-1001"]},
+    {"area_id": "AREA-B-1", "franchise_id": "FR-B", "version": 1, "status": "ACTIVE", "postcode_tokens": ["TEST-2000", "TEST-2001"]},
+    {"area_id": "AREA-C-1", "franchise_id": "FR-C", "version": 1, "status": "ACTIVE", "postcode_tokens": ["TEST-3000"]}
+  ],
+  "routing_cases": [
+    {"case_id": "route-a", "postcode_token": "TEST-1000", "expected": "FR-A"},
+    {"case_id": "route-b", "postcode_token": "TEST-2001", "expected": "FR-B"},
+    {"case_id": "inactive-franchise", "postcode_token": "TEST-3000", "expected": "DENY_INACTIVE_FRANCHISE"},
+    {"case_id": "unserviceable", "postcode_token": "TEST-9999", "expected": "NO_SERVICE"}
+  ]
+}
