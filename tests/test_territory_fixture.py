@@ -52,9 +52,9 @@ class TerritoryFixtureTests(unittest.TestCase):
         self.assertTrue(case["matched_area_ids"])
         self.assertEqual(case["candidate_franchise_ids"], ["FR-A"])
 
-    def test_no_service_has_explicit_denial_reason(self):
+    def test_unserviceable_case_has_explicit_denial_reason(self):
         result = validate(self.load())
-        case = next(item for item in result["cases"] if item["case_id"] == "no-service")
+        case = next(item for item in result["cases"] if item["case_id"] == "unserviceable")
         self.assertEqual(case["actual"], "NO_SERVICE")
         self.assertEqual(case["reason"], "NO_ACTIVE_DELIVERY_AREA")
         self.assertEqual(case["matched_area_ids"], [])
