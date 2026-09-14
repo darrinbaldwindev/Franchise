@@ -4,9 +4,13 @@ import json
 import sys
 from collections import defaultdict
 
+SYNTHETIC_EVIDENCE_SOURCE = "SYNTHETIC_FIXTURE"
+SYNTHETIC_TENANCY_CONTEXT = "SYNTHETIC_FRANCHISE_ROUTING"
 
-def decision_correlation(case_id, token, matched_areas, owners):
-    material = "|".join([case_id, token, ",".join(matched_areas), ",".join(owners)])
+
+def decision_correlation(case_id, token, matched_areas, owners, area_versions):
+    version_material = ",".join(f"{area_id}:{area_versions[area_id]}" for area_id in matched_areas)
+    material = "|".join([case_id, token, ",".join(matched_areas), version_material, ",".join(owners)])
     return hashlib.sha256(material.encode("utf-8")).hexdigest()[:16]
 
 
@@ -16,11 +20,14 @@ def validate(payload):
     tenancy_context = payload.get("tenancy_context")
     if not evidence_source or not evidence_timestamp or not tenancy_context:
         raise ValueError("fixture evidence context is incomplete")
+    if evidence_source != SYNTHETIC_EVIDENCE_SOURCE or tenancy_context != SYNTHETIC_TENANCY_CONTEXT:
+        raise ValueError("fixture evidence context must remain synthetic-only")
 
     franchises = {f["franchise_id"]: f for f in payload.get("franchises", [])}
     token_map = defaultdict(list)
     area_map = defaultdict(list)
     area_versions = {}
+    seen_area_ids = set()
 
     for area in payload.get("delivery_areas", []):
         if area.get("status") != "ACTIVE":
@@ -29,11 +36,14 @@ def validate(payload):
         if fid not in franchises:
             raise ValueError(f"unknown franchise for area {area.get('area_id')}: {fid}")
         area_id = area.get("area_id")
+        if not area_id or area_id in seen_area_ids:
+            raise ValueError(f"duplicate or missing active area_id: {area_id}")
+        seen_area_ids.add(area_id)
         version = area.get("version")
         if not isinstance(version, int) or version < 1:
             raise ValueError(f"invalid area version for {area_id}")
         area_versions[area_id] = version
-        for token in area.get("postcode_tokens", []):
+        for token in dict.fromkeys(area.get("postcode_tokens", [])):
             token_map[token].append(fid)
             area_map[token].append(area_id)
 
@@ -76,7 +86,7 @@ def validate(payload):
             "selected_franchise_id": selected_franchise,
             "actual": actual,
             "reason": reason,
-            "correlation_id": decision_correlation(case["case_id"], token, matched_areas, owners),
+            "correlation_id": decision_correlation(case["case_id"], token, matched_areas, owners, area_versions),
             "evidence_source": evidence_source,
             "evidence_timestamp": evidence_timestamp,
             "tenancy_context": tenancy_context,
