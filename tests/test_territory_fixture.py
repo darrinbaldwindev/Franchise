@@ -41,6 +41,24 @@ class TerritoryFixtureTests(unittest.TestCase):
         result = validate(payload)
         case = next(item for item in result["cases"] if item["case_id"] == "inactive-franchise")
         self.assertEqual(case["actual"], "DENY_INACTIVE_FRANCHISE")
+        self.assertEqual(case["reason"], "MATCHED_FRANCHISE_INACTIVE")
+        self.assertIsNone(case["selected_franchise_id"])
+
+    def test_successful_route_has_auditable_decision_record(self):
+        result = validate(self.load())
+        case = next(item for item in result["cases"] if item["case_id"] == "route-a")
+        self.assertEqual(case["selected_franchise_id"], "FR-A")
+        self.assertEqual(case["reason"], "SINGLE_ACTIVE_AREA_MATCH")
+        self.assertTrue(case["matched_area_ids"])
+        self.assertEqual(case["candidate_franchise_ids"], ["FR-A"])
+
+    def test_no_service_has_explicit_denial_reason(self):
+        result = validate(self.load())
+        case = next(item for item in result["cases"] if item["case_id"] == "no-service")
+        self.assertEqual(case["actual"], "NO_SERVICE")
+        self.assertEqual(case["reason"], "NO_ACTIVE_DELIVERY_AREA")
+        self.assertEqual(case["matched_area_ids"], [])
+        self.assertEqual(case["candidate_franchise_ids"], [])
 
 
 if __name__ == "__main__":
