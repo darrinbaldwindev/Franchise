@@ -9,6 +9,8 @@ SYNTHETIC_TENANCY_CONTEXT = "SYNTHETIC_FRANCHISE_ROUTING"
 
 
 def decision_correlation(case_id, token, matched_areas, owners, area_versions):
+    matched_areas = sorted(matched_areas)
+    owners = sorted(owners)
     version_material = ",".join(f"{area_id}:{area_versions[area_id]}" for area_id in matched_areas)
     material = "|".join([case_id, token, ",".join(matched_areas), version_material, ",".join(owners)])
     return hashlib.sha256(material.encode("utf-8")).hexdigest()[:16]
@@ -23,7 +25,12 @@ def validate(payload):
     if evidence_source != SYNTHETIC_EVIDENCE_SOURCE or tenancy_context != SYNTHETIC_TENANCY_CONTEXT:
         raise ValueError("fixture evidence context must remain synthetic-only")
 
-    franchises = {f["franchise_id"]: f for f in payload.get("franchises", [])}
+    franchise_rows = payload.get("franchises", [])
+    franchise_ids = [f.get("franchise_id") for f in franchise_rows]
+    if any(not fid for fid in franchise_ids) or len(franchise_ids) != len(set(franchise_ids)):
+        raise ValueError("duplicate or missing franchise_id")
+    franchises = {f["franchise_id"]: f for f in franchise_rows}
+
     token_map = defaultdict(list)
     area_map = defaultdict(list)
     area_versions = {}
@@ -42,8 +49,11 @@ def validate(payload):
         version = area.get("version")
         if not isinstance(version, int) or version < 1:
             raise ValueError(f"invalid area version for {area_id}")
+        tokens = area.get("postcode_tokens", [])
+        if not isinstance(tokens, list) or not tokens or any(not isinstance(token, str) or not token.strip() for token in tokens):
+            raise ValueError(f"missing or empty postcode token for {area_id}")
         area_versions[area_id] = version
-        for token in dict.fromkeys(area.get("postcode_tokens", [])):
+        for token in dict.fromkeys(tokens):
             token_map[token].append(fid)
             area_map[token].append(area_id)
 
@@ -51,11 +61,18 @@ def validate(payload):
     if overlap:
         raise ValueError(f"ambiguous active delivery-area overlap: {overlap}")
 
+    routing_cases = payload.get("routing_cases", [])
+    case_ids = [case.get("case_id") for case in routing_cases]
+    if any(not cid for cid in case_ids) or len(case_ids) != len(set(case_ids)):
+        raise ValueError("duplicate or missing routing case_id")
+
     results = []
-    for case in payload.get("routing_cases", []):
-        token = case["postcode_token"]
-        owners = list(dict.fromkeys(token_map.get(token, [])))
-        matched_areas = list(dict.fromkeys(area_map.get(token, [])))
+    for case in routing_cases:
+        token = case.get("postcode_token")
+        if not isinstance(token, str) or not token.strip():
+            raise ValueError(f"case {case['case_id']} missing postcode_token")
+        owners = sorted(set(token_map.get(token, [])))
+        matched_areas = sorted(set(area_map.get(token, [])))
         if not owners:
             actual = "NO_SERVICE"
             reason = "NO_ACTIVE_DELIVERY_AREA"
