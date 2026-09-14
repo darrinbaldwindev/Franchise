@@ -42,7 +42,24 @@ class TerritoryFixtureTests(unittest.TestCase):
 
     def test_duplicate_active_area_id_fails_closed(self):
         payload = self.load(); duplicate = copy.deepcopy(payload["delivery_areas"][0]); duplicate["postcode_tokens"] = ["TEST-1010"]; payload["delivery_areas"].append(duplicate)
-        with self.assertRaisesRegex(ValueError, "duplicate or missing active area_id"): validate(payload)
+        with self.assertRaisesRegex(ValueError, "duplicate or missing area_id"): validate(payload)
+
+    def test_duplicate_inactive_area_id_fails_closed(self):
+        payload = self.load()
+        duplicate = copy.deepcopy(payload["delivery_areas"][0])
+        payload["delivery_areas"][0]["status"] = "SUSPENDED"
+        duplicate["status"] = "RETIRED"
+        duplicate["postcode_tokens"] = ["TEST-1010"]
+        payload["delivery_areas"].append(duplicate)
+        with self.assertRaisesRegex(ValueError, "duplicate or missing area_id"): validate(payload)
+
+    def test_invalid_franchise_status_fails_closed(self):
+        payload = self.load(); payload["franchises"][0]["status"] = "PAUSED"
+        with self.assertRaisesRegex(ValueError, "invalid franchise status"): validate(payload)
+
+    def test_invalid_delivery_area_status_fails_closed(self):
+        payload = self.load(); payload["delivery_areas"][0]["status"] = "PAUSED"
+        with self.assertRaisesRegex(ValueError, "invalid delivery-area status"): validate(payload)
 
     def test_missing_or_empty_postcode_tokens_fail_closed(self):
         for bad in ([], [""], ["   "]):
@@ -92,6 +109,15 @@ class TerritoryFixtureTests(unittest.TestCase):
         original_case = next(item for item in original["cases"] if item["case_id"] == "route-a")
         changed_case = next(item for item in changed_result["cases"] if item["case_id"] == "route-a")
         self.assertNotEqual(original_case["correlation_id"], changed_case["correlation_id"])
+
+    def test_routing_case_output_order_is_deterministic(self):
+        baseline = validate(self.load())
+        reordered = self.load(); reordered["routing_cases"] = list(reversed(reordered["routing_cases"]))
+        again = validate(reordered)
+        baseline_ids = [case["case_id"] for case in baseline["cases"]]
+        again_ids = [case["case_id"] for case in again["cases"]]
+        self.assertEqual(baseline_ids, sorted(baseline_ids))
+        self.assertEqual(baseline_ids, again_ids)
 
     def test_unserviceable_case_has_explicit_denial_reason(self):
         case = next(item for item in validate(self.load())["cases"] if item["case_id"] == "unserviceable")
