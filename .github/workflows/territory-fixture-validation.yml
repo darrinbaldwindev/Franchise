@@ -1,0 +1,23 @@
+name: Territory fixture validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-territory-fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run territory routing tests
+        run: python -m unittest discover -s tests -p 'test_territory_fixture.py' -v
+      - name: Validate baseline fixture
+        run: python tools/validate_territory_fixture.py fixtures/territory-routing/territories.synthetic.json
