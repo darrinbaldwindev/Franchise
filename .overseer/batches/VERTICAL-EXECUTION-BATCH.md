@@ -4,10 +4,11 @@
 **Workstream:** Franchise App / Franchise Overseer  
 **Purpose:** Move Franchise #1 toward opening through the smallest secure application and commercial path without creating a competing implementation stream.  
 **Standing trigger:** `cont`, `continue`, `continue autonomously`, and `continue autonomously vertically` run fresh-scan → reconcile → execute → verify → fresh-scan → replenish → durable-log.  
-**Cycle:** 2026-09-14 18:39 AEST.  
-**Main head scanned:** `7baa8027533bc71d82dea5661f50a5016dfaba0f`.  
+**Cycle:** 2026-09-14 18:41 AEST.  
+**Main head scanned:** `00de71f85a4f41f4007be00cf957d22c1e3b79f8`.  
 **PR #6 head scanned:** `768d624a149e383939791406dcf8ced1ac271662`.  
-**Status:** ACTIVE — P0 tenancy RED/incomplete; no successor tenancy head exists. Gate 3 supplier evidence remains the safe parallel lane.
+**Franchise App review PR:** #24 at `ac208a07c40e99ee1c1f70f67a1a857d8207fa6e`.  
+**Status:** ACTIVE — P0 tenancy RED/incomplete; bounded duplicate-membership fail-closed repair exists in draft review PR #24; no persisted tenancy successor head exists.
 
 ## Governance boundary
 
@@ -19,32 +20,47 @@
 
 ## Fresh-scan result
 
-1. `main` has not received tenancy implementation since the preceding batch; latest head is the Overseer batch reconciliation commit `7baa8027...`.
-2. PR #6 remains open and non-mergeable at `768d624...`; no successor head is available for persistence review.
-3. Therefore the persisted franchise/membership boundary, DB-backed membership loading, franchise-scoped repository operations and genuine A/B persistence tests remain absent from the reviewable successor implementation.
-4. The known helper ambiguity remains open: requested franchise scope must require exactly one active matching membership and fail closed on duplicate authority evidence.
-5. PR #22 remains draft/synthetic territory work and is not P0.
-6. Gate 3 Issue #16 remains the useful parallel lane while tenancy implementation is pending.
+1. `main` moved concurrently to `00de71f...` with a vertical-batch reconciliation commit; newer verified state was preserved rather than overwritten.
+2. PR #6 remains open at `768d624...`; no persistence-backed tenancy successor head is available.
+3. PR #6 exact-head has no associated pull-request workflow runs, so no exact-head CI GREEN exists.
+4. Persisted `franchises`/`franchise_memberships`, DB-backed membership loading, franchise-scoped repository operations and genuine A/B persistence tests remain absent from the reviewable successor implementation.
+5. The helper ambiguity identified in prior review was reproducible by inspection: requested franchise scope used first-match semantics when duplicate active membership rows existed.
+6. PR #22 remains draft/synthetic territory work and is not P0.
 
-## Executed this cycle
+## Executed this Franchise App cycle
 
-### VB-FR-APP-13 — Reconfirm P0 implementation handoff
-**State:** COMPLETE
+### VB-FR-APP-17 — Duplicate membership fail-closed repair
+**State:** IMPLEMENTED / NOT YET CI-VERIFIED
 
-Posted Issue #18 checkpoint comment `5661297641` with exact current heads, RED status, duplicate-membership fail-closed requirement, persistence requirements and no-merge/deploy/migration boundary.
+Created review branch `review/franchise-app-tenancy-duplicate-failclosed` from exact PR #6 head `768d624...`.
 
-### VB-FR-COM-02 — Tighten Gate 3 evidence acceptance
-**State:** COMPLETE
+Changed only:
+- `apps/franchise-hub/server/franchiseTenancy.ts`
+- `apps/franchise-hub/server/franchiseTenancy.test.ts`
 
-Posted Issue #16 checkpoint comment `5661300094`. Required business-account price ex GST + freight/landed evidence before VERIFIED/APPROVED status; public catalogue data remains research/priced evidence; freight-unknown, promo-dependent and uncertain-supply candidates are quarantined.
+Repair:
+- explicit requested franchise scope now gathers all active matching memberships;
+- zero matches remains `FRANCHISE_SCOPE_NOT_AUTHORIZED`;
+- more than one match fails closed as `AMBIGUOUS_FRANCHISE_MEMBERSHIP`;
+- regression test uses duplicate active rows with conflicting roles to prove row order cannot silently choose authority.
+
+Implementation head: `ac208a07c40e99ee1c1f70f67a1a857d8207fa6e`.
+
+Draft PR #24 targets Manus branch `agent/manus/source-integration`, not `main`, preserving Manus implementation ownership and avoiding a competing product branch.
+
+### VB-FR-APP-18 — Exact-head automation check
+**State:** BLOCKED / NO CI EVIDENCE
+
+Checked workflow runs for PR #6 head `768d624...` and review fix head `ac208a0...`: no pull-request workflow runs were returned. Therefore neither head receives a CI PASS claim from this cycle.
 
 ## Replenished P0 application lane
 
-### VB-FR-APP-14 — Detect successor tenancy head
+### VB-FR-APP-19 — Consume Manus persistence successor
 **State:** WAITING ON IMPLEMENTATION
 
-On next trigger, scan PR #6 and all open branches/PRs first. If a successor head exists, immediately inspect:
+On next trigger, scan PR #6 and related branches/PRs first. If a successor head exists, immediately inspect:
 - `franchises` and `franchise_memberships` schema/migration;
+- uniqueness/constraint handling for duplicate active membership authority;
 - effective dates/status/role constraints;
 - server-side membership loading from authenticated identity;
 - immutable authorized franchise context;
@@ -56,15 +72,20 @@ On next trigger, scan PR #6 and all open branches/PRs first. If a successor head
 - unauthorized scope switching;
 - safe legacy migration/backfill behaviour.
 
-### VB-FR-APP-15 — Exact-head assurance
-**State:** BLOCKED behind VB-FR-APP-14
+### VB-FR-APP-20 — Review PR #24 verification
+**State:** PENDING
 
-For the exact successor head require frozen install, focused tenancy tests, full tests, typecheck/check, production build, debug-collector production-boundary check, and independent reproduction where practical. Do not borrow predecessor-head GREEN.
+If exact-head CI or Manus/local validation is posted for `ac208a0...`, inspect the evidence. Do not merge/ready. If tests fail, diagnose and repair only within this bounded helper slice.
 
-### VB-FR-APP-16 — Commerce release gate
+### VB-FR-APP-21 — Exact-head persistence assurance
+**State:** BLOCKED behind VB-FR-APP-19
+
+For the exact persistence successor head require frozen install, focused tenancy tests, full tests, typecheck/check, production build, debug-collector production-boundary check, and independent reproduction where practical. Do not borrow predecessor-head GREEN.
+
+### VB-FR-APP-22 — Commerce release gate
 **State:** BLOCKED
 
-Catalogue/order/checkout transactional implementation remains blocked until persistence-backed A/B isolation and exact-head assurance pass. Dashboard expansion is not a substitute for tenancy closure.
+Catalogue/order/checkout transactional implementation remains blocked until persistence-backed A/B isolation and exact-head assurance pass. PR #24 only hardens pure authorization semantics; it does not close tenancy.
 
 ## Parallel Gate 3 lane
 
@@ -101,15 +122,17 @@ Issue #21 remains blocked until authoritative breakeven threshold, turnover basi
 ## Verified cycle disposition
 
 - **Tenancy:** RED.
+- **Pure authorization helper:** improved on draft PR #24; not CI-verified.
+- **Persistence-backed A/B isolation:** absent / blocking.
 - **Commerce:** BLOCKED by tenancy.
-- **Exact-head app assurance:** BLOCKED pending successor implementation.
+- **Exact-head app assurance:** BLOCKED pending persistence successor and CI evidence.
 - **Gate 3 SKU economics:** ACTIVE parallel blocker-reduction lane.
 - **Territory:** synthetic/downstream.
 - **Royalty production rule:** owner/legal blocked.
-- **Merge/deploy/migration:** not authorized.
+- **Merge/deploy/migration:** not authorized and not performed.
 
 ## Next trigger
 
-Fresh-scan before acting. If tenancy moved, consume the whole cycle on exact-head tenancy review and assurance. If it has not moved, continue Gate 3 evidence work while preserving the application implementation boundary. Record exact evidence and replenish this same file.
+Fresh-scan before acting. If Manus tenancy moved, consume the cycle on exact-head persistence review and assurance. If PR #24 gains validation evidence, review that evidence without merging. If neither moved, continue independent Gate 3 evidence work while preserving the application implementation boundary.
 
 A batch succeeds only when it reduces a real blocker or creates independently usable evidence; activity volume alone is not progress.
