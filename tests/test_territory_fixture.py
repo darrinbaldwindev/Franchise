@@ -25,6 +25,16 @@ class TerritoryFixtureTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "fixture evidence context is incomplete"):
                 validate(payload)
 
+    def test_non_synthetic_evidence_context_fails_closed(self):
+        for field, value in (
+            ("evidence_source", "PRODUCTION_DB"),
+            ("tenancy_context", "LIVE_TENANCY"),
+        ):
+            payload = self.load()
+            payload[field] = value
+            with self.assertRaisesRegex(ValueError, "synthetic-only"):
+                validate(payload)
+
     def test_active_overlap_fails_closed(self):
         payload = self.load()
         payload["delivery_areas"].append({
@@ -36,6 +46,22 @@ class TerritoryFixtureTests(unittest.TestCase):
         })
         with self.assertRaisesRegex(ValueError, "ambiguous active delivery-area overlap"):
             validate(payload)
+
+    def test_duplicate_active_area_id_fails_closed(self):
+        payload = self.load()
+        duplicate = copy.deepcopy(payload["delivery_areas"][0])
+        duplicate["postcode_tokens"] = ["TEST-1010"]
+        payload["delivery_areas"].append(duplicate)
+        with self.assertRaisesRegex(ValueError, "duplicate or missing active area_id"):
+            validate(payload)
+
+    def test_duplicate_postcode_within_same_area_is_deduplicated(self):
+        payload = self.load()
+        payload["delivery_areas"][0]["postcode_tokens"].append("TEST-1000")
+        result = validate(payload)
+        case = next(item for item in result["cases"] if item["case_id"] == "route-a")
+        self.assertEqual(case["matched_area_ids"], ["AREA-A-1"])
+        self.assertEqual(case["candidate_franchise_ids"], ["FR-A"])
 
     def test_invalid_area_version_fails_closed(self):
         payload = self.load()
@@ -70,13 +96,20 @@ class TerritoryFixtureTests(unittest.TestCase):
         self.assertTrue(case["evidence_timestamp"])
         self.assertEqual(len(case["correlation_id"]), 16)
 
-    def test_correlation_id_is_deterministic(self):
+    def test_correlation_id_is_deterministic_and_version_bound(self):
         first = validate(self.load())
         second = validate(self.load())
         first_ids = [case["correlation_id"] for case in first["cases"]]
         second_ids = [case["correlation_id"] for case in second["cases"]]
         self.assertEqual(first_ids, second_ids)
         self.assertEqual(len(first_ids), len(set(first_ids)))
+
+        changed = self.load()
+        changed["delivery_areas"][0]["version"] = 2
+        changed_result = validate(changed)
+        original_case = next(item for item in first["cases"] if item["case_id"] == "route-a")
+        changed_case = next(item for item in changed_result["cases"] if item["case_id"] == "route-a")
+        self.assertNotEqual(original_case["correlation_id"], changed_case["correlation_id"])
 
     def test_unserviceable_case_has_explicit_denial_reason(self):
         result = validate(self.load())
