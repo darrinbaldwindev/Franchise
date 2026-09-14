@@ -63,8 +63,14 @@ export function resolveAuthorizedFranchiseContext(input: {
     if (!Number.isInteger(requestedFranchiseId) || Number(requestedFranchiseId) <= 0) {
       throw new FranchiseAuthorizationError("INVALID_FRANCHISE_SCOPE");
     }
-    const match = active.find(membership => membership.franchiseId === requestedFranchiseId);
-    if (!match) throw new FranchiseAuthorizationError("FRANCHISE_SCOPE_NOT_AUTHORIZED");
+    const matches = active.filter(membership => membership.franchiseId === requestedFranchiseId);
+    if (matches.length === 0) {
+      throw new FranchiseAuthorizationError("FRANCHISE_SCOPE_NOT_AUTHORIZED");
+    }
+    if (matches.length !== 1) {
+      throw new FranchiseAuthorizationError("AMBIGUOUS_FRANCHISE_MEMBERSHIP");
+    }
+    const match = matches[0];
     return Object.freeze({
       userId: authenticatedUserId as number,
       franchiseId: match.franchiseId,
