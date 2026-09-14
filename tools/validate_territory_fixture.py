@@ -6,6 +6,8 @@ from collections import defaultdict
 
 SYNTHETIC_EVIDENCE_SOURCE = "SYNTHETIC_FIXTURE"
 SYNTHETIC_TENANCY_CONTEXT = "SYNTHETIC_FRANCHISE_ROUTING"
+ALLOWED_FRANCHISE_STATUSES = {"ACTIVE", "INACTIVE"}
+ALLOWED_DELIVERY_AREA_STATUSES = {"DRAFT", "ACTIVE", "SUSPENDED", "RETIRED"}
 
 
 def decision_correlation(case_id, token, matched_areas, owners, area_versions):
@@ -29,29 +31,37 @@ def validate(payload):
     franchise_ids = [f.get("franchise_id") for f in franchise_rows]
     if any(not fid for fid in franchise_ids) or len(franchise_ids) != len(set(franchise_ids)):
         raise ValueError("duplicate or missing franchise_id")
+    for franchise in franchise_rows:
+        status = franchise.get("status")
+        if status not in ALLOWED_FRANCHISE_STATUSES:
+            raise ValueError(f"invalid franchise status for {franchise['franchise_id']}: {status}")
     franchises = {f["franchise_id"]: f for f in franchise_rows}
+
+    delivery_areas = payload.get("delivery_areas", [])
+    all_area_ids = [area.get("area_id") for area in delivery_areas]
+    if any(not area_id for area_id in all_area_ids) or len(all_area_ids) != len(set(all_area_ids)):
+        raise ValueError("duplicate or missing area_id")
 
     token_map = defaultdict(list)
     area_map = defaultdict(list)
     area_versions = {}
-    seen_area_ids = set()
 
-    for area in payload.get("delivery_areas", []):
-        if area.get("status") != "ACTIVE":
-            continue
+    for area in delivery_areas:
+        area_id = area["area_id"]
+        status = area.get("status")
+        if status not in ALLOWED_DELIVERY_AREA_STATUSES:
+            raise ValueError(f"invalid delivery-area status for {area_id}: {status}")
         fid = area.get("franchise_id")
         if fid not in franchises:
-            raise ValueError(f"unknown franchise for area {area.get('area_id')}: {fid}")
-        area_id = area.get("area_id")
-        if not area_id or area_id in seen_area_ids:
-            raise ValueError(f"duplicate or missing active area_id: {area_id}")
-        seen_area_ids.add(area_id)
+            raise ValueError(f"unknown franchise for area {area_id}: {fid}")
         version = area.get("version")
         if not isinstance(version, int) or version < 1:
             raise ValueError(f"invalid area version for {area_id}")
         tokens = area.get("postcode_tokens", [])
         if not isinstance(tokens, list) or not tokens or any(not isinstance(token, str) or not token.strip() for token in tokens):
             raise ValueError(f"missing or empty postcode token for {area_id}")
+        if status != "ACTIVE":
+            continue
         area_versions[area_id] = version
         for token in dict.fromkeys(tokens):
             token_map[token].append(fid)
@@ -67,7 +77,7 @@ def validate(payload):
         raise ValueError("duplicate or missing routing case_id")
 
     results = []
-    for case in routing_cases:
+    for case in sorted(routing_cases, key=lambda item: item["case_id"]):
         token = case.get("postcode_token")
         if not isinstance(token, str) or not token.strip():
             raise ValueError(f"case {case['case_id']} missing postcode_token")
