@@ -65,6 +65,15 @@ describe("server-derived franchise tenancy context", () => {
     expect(context).toMatchObject({ userId: 7, franchiseId: 202, role: "manager" });
   });
 
+  it("fails closed when duplicate active memberships exist for the requested franchise", () => {
+    expectCode(() => resolveAuthorizedFranchiseContext({
+      authenticatedUserId: 7,
+      memberships: [membership({ franchiseId: 101, role: "owner" }), membership({ franchiseId: 101, role: "manager" })],
+      requestedFranchiseId: 101,
+      now,
+    }), "AMBIGUOUS_FRANCHISE_MEMBERSHIP");
+  });
+
   it("fails closed when multiple memberships exist and scope is omitted", () => {
     expectCode(() => resolveAuthorizedFranchiseContext({
       authenticatedUserId: 7,
