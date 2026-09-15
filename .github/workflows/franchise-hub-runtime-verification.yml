@@ -1,0 +1,51 @@
+name: Franchise Hub runtime verification
+
+on:
+  pull_request:
+    branches:
+      - main
+      - agent/manus/source-integration
+    types: [opened, synchronize, reopened]
+    paths:
+      - "apps/franchise-hub/**"
+      - ".github/workflows/franchise-hub-runtime-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime:
+    name: Test, type-check and build Franchise Hub
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/franchise-hub
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: apps/franchise-hub/package.json
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/franchise-hub/pnpm-lock.yaml
+
+      - name: Install frozen dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Type-check
+        run: pnpm check
+
+      - name: Build
+        run: pnpm build
