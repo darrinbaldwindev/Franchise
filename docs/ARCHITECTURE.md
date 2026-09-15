@@ -49,10 +49,13 @@ Use least privilege. A franchisee must never be able to read another franchise's
 Responsibilities:
 
 - approved service areas
-- postcode/address eligibility
-- overlap priority
-- territory status
-- delivery-provider availability
+- address-level delivery-area eligibility; postcodes/suburbs are explanatory aids only
+- versioned delivery-area boundaries and effective dates
+- explicit overlap precedence and authorised fallback
+- territory/service state, kitchen hours, and capacity availability
+- delivery-provider availability and actual delivery outcome/cost capture
+- routing-decision audit record linked to the assigned franchise and delivery-area version
+- `docs/DELIVERY_AREA_TERRITORIES.md` as the detailed routing/acceptance specification
 
 ### Commerce
 
@@ -70,7 +73,8 @@ Responsibilities:
 
 Responsibilities:
 
-- route order to franchise
+- route order server-side from the delivery address and active delivery-area policy
+- persist the assigned franchise, delivery-area version, fulfilment path, and routing reason
 - inventory reservation
 - fulfilment state
 - delivery request

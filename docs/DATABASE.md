@@ -7,8 +7,10 @@ The production database should be relational and transactional.
 - users
 - franchises
 - franchise_members
-- territories
-- service_areas
+- delivery_area_territories
+- delivery_area_versions
+- service_policies
+- routing_decisions
 - franchise_packages
 - franchise_applications
 - agreements
@@ -48,6 +50,10 @@ Orders, payments, refunds, stock movements, work sessions and royalty calculatio
 
 Inventory quantity should be derived from or reconciled against stock movements. Every adjustment requires a reason and actor.
 
+### Delivery-area territory rule
+
+A franchise territory is the active delivery area it can serve. Address-level serviceability is determined server-side from the active delivery-area and service-policy configuration; customer-facing postcode/suburb lists do not override that decision. Delivery-area changes, overlap precedence, and routing decisions must be versioned/auditable. See `docs/DELIVERY_AREA_TERRITORIES.md`.
+
 ### Configuration
 
 These must be configurable, not hard-coded:
@@ -58,6 +64,6 @@ These must be configurable, not hard-coded:
 - reserve percentage
 - delivery policies
 - basket/order limits
-- territory rules
+- delivery-area territory rules, versions, overlap precedence, and change authority
 
 The current commercial assumptions are 3% through breakeven and 6% above breakeven, with a 20%/80% reserve/owner allocation concept. They are not immutable system constants.

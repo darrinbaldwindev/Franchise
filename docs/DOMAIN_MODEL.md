@@ -18,7 +18,7 @@ Key concepts:
 - status
 - activation date
 - initial investment
-- territory assignment
+- delivery-area territory assignment
 - configuration/version references
 
 ### User / Membership
@@ -27,19 +27,20 @@ Users authenticate as people. A person may have one or more memberships/roles ag
 
 Do not use user_id as a substitute for franchise tenancy.
 
-### Territory
+### Delivery-Area Territory
 
-Defines the operating territory available to a franchise.
+Defines the operating territory available to a franchise. **A territory is defined by the active delivery area it can serve**, evaluated at the customer delivery address and relevant service time; it is not defined by an arbitrary suburb or postcode.
 
 The territory model must support:
-- territory_id
+- territory_id / delivery_area_id
 - franchise_id
-- geographic boundary/reference
-- delivery eligibility rules
+- geographic boundary or address-match reference
+- delivery eligibility and service-policy rules
 - status
-- effective dates
+- effective dates and version history
+- explicit overlap/precedence handling where relevant
 
-Territory must be distinct from user identity.
+Territory must be distinct from user identity. It is an operating attribute of a franchise, not an authorisation substitute. The detailed delivery-area lifecycle, routing, audit, and acceptance requirements are defined in `docs/DELIVERY_AREA_TERRITORIES.md`.
 
 ## Commerce
 

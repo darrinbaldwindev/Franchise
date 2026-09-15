@@ -167,3 +167,18 @@ This log is now aligned with that decision. The next meaningful implementation s
 ## Recommended next action
 
 Inspect the current canonical PR/application state and select the smallest secure implementation step that materially advances Opening #1. Do not duplicate existing work. If a blocker has already been fixed, verify the new commit rather than repeating the historical recommendation.
+
+## 27 August 2026 — Delivery-area territory implementation handoff
+
+**Confirmed owner rule:** A franchise territory is defined by the delivery area it can serve, rather than an arbitrary suburb, postcode, or static allocation.
+
+**Documentation work on branch `agent/manus/delivery-area-territory-spec`:**
+
+- Added `docs/DELIVERY_AREA_TERRITORIES.md`, defining address-level serviceability, versioned delivery areas, overlap/fallback controls, routing-decision audit records, delivery-area metrics, acceptance tests, implementation sequence, and open owner decisions.
+- Aligned `docs/DOMAIN_MODEL.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_MAP.md`, and `docs/DATABASE.md` with the delivery-area rule.
+- Explicitly retained the P0 tenancy boundary. A delivery area is an operating attribute of an authorised franchise and does not replace membership-based tenant isolation.
+- Explicitly excluded production migration, deployment, provider activation, customer communication, commercial-policy change, territory activation, and franchise-offering action.
+
+**First-hand validation:** `git diff --check` passed and required internal references to the new specification were present. No application code, migration, production data, secrets, or deployment configuration was changed.
+
+**Remaining gate:** Implement the existing franchise/membership authorised-context boundary and then use this specification for the smallest delivery-area domain/routing implementation. The current source-integration PR #6 remains open with a `DIRTY` merge state as observed on 27 August 2026.

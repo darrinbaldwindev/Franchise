@@ -228,3 +228,17 @@ No new major platform capability should outrank these tasks unless a genuine sec
 10. opening readiness.
 
 Only after Franchise #1 is operating should broader replication/network automation become a primary development target.
+
+## Delivery-area territory rule — 27 August 2026
+
+**Decision:** A franchise territory is defined by the delivery area it can serve, rather than an arbitrary suburb, postcode, or static allocation.
+
+**Authority:** Darrin — confirmed in the current project task.
+
+**Evidence and bounded documentation handoff:** On branch `agent/manus/delivery-area-territory-spec`, Manus added `docs/DELIVERY_AREA_TERRITORIES.md` and aligned `docs/DOMAIN_MODEL.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION_MAP.md`, and `docs/DATABASE.md`. The new specification defines address-level server-side serviceability, versioned boundaries, overlap/fallback controls, routing-decision audit records, delivery-area performance metrics, and implementation acceptance tests.
+
+**Approved scope of this entry:** Documentation and implementation handoff only. It does not activate a delivery area, change a franchise agreement, set a radius/fee/free-delivery policy, select a delivery provider, execute a migration, deploy application code, or offer/sell a franchise.
+
+**Verification:** `git diff --check` passed and the updated canonical documents link to the detailed specification. No application code, migration, production data, secrets, or deployment configuration was changed.
+
+**Next action:** The existing P0 franchise membership/authorised-context tenancy implementation remains first. Once it exists, the delivery-area model can be implemented as the next domain layer under an approved migration plan.
