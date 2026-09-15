@@ -4,11 +4,11 @@
 **Workstream:** Franchise App / Franchise Overseer  
 **Purpose:** Move Franchise #1 toward opening through the smallest secure application and commercial path without creating a competing implementation stream.  
 **Standing trigger:** `cont`, `continue`, `continue autonomously`, and `continue autonomously vertically` run fresh-scan → reconcile → execute → verify → fresh-scan → replenish → durable-log.  
-**Cycle:** 2026-09-14 AEST.  
-**Main head scanned:** `aa3ffa30a35ca4322ed7762992d7cae69f190a28`.  
+**Cycle:** 2026-09-15 AEST.  
+**Main head at cycle start:** `0ea3b26de71f78f7eafc38cf50079805b43a7d93`.  
 **PR #6 head scanned:** `768d624a149e383939791406dcf8ced1ac271662`.  
-**PR #24 head reviewed:** `ac208a07c40e99ee1c1f70f67a1a857d8207fa6e`.  
-**Status:** ACTIVE — tenancy remains RED; duplicate-membership helper repair is independently statically reviewed but has no runtime/CI evidence; no persistence-backed Manus successor exists; Gate 3 public pricing evidence advanced without overstating verification.
+**PR #24 head scanned:** `ac208a07c40e99ee1c1f70f67a1a857d8207fa6e`.  
+**Status:** ACTIVE — tenancy RED; no persistence successor; Gate 3 supplier delivery evidence advanced without overstating landed-cost verification.
 
 ## Governance boundary
 
@@ -16,132 +16,106 @@
 - Security contract: **User → Franchise Membership → Authorized Franchise Context → Tenant-scoped operation**.
 - Manus App remains primary application implementation counterpart.
 - No merge, ready transition, deployment, production migration, provider activation, credential change, spend, supplier/customer contact or production write is authorized.
-- Territory fixture work remains synthetic/downstream of tenancy.
-- Public catalogue prices are RESEARCH/PRICED evidence only unless business-account and freight/landed evidence is independently established.
+- Territory remains synthetic/downstream of tenancy.
+- Public supplier prices remain RESEARCH/PRICED until account price and actual landed freight are evidenced.
 
 ## Fresh-scan result
 
-1. `main` was `aa3ffa30...` at cycle start; no persistence-backed tenancy implementation followed it.
-2. PR #6 remains at `768d624...`; no successor tenancy head exists.
-3. Draft PR #24 remains at `ac208a0...` and changes only the pure authorization helper/test.
-4. Exact-head GitHub Actions lookup for `ac208a0...` returned zero workflow runs and combined status has zero checks; no CI GREEN exists.
-5. Amazon Q independently commented that PR #24 correctly fails closed on duplicate active memberships; this is additional static review, not runtime proof.
-6. Persisted `franchises`/`franchise_memberships`, DB-backed membership loading, franchise-scoped repository operations and genuine A/B persistence tests remain absent/unproven.
-7. PR #22 remains synthetic territory work and is secondary.
+1. `main` advanced only through governance/evidence commits; no persistence-backed application implementation landed.
+2. PR #6 remains `768d624...`; no successor tenancy head exists.
+3. Draft PR #24 remains `ac208a0...`; bounded duplicate-membership repair remains static-only evidence.
+4. Persisted franchises/memberships, DB membership loading, franchise-scoped repositories and genuine A/B persistence tests remain absent/unproven.
+5. PR #22 remains synthetic territory work and secondary.
+6. With P0 implementation unchanged, the safe autonomous lane was Gate 3 supplier evidence.
 
-## Executed application lane
+## Application lane
 
-### VB-FR-APP-28 — Exact-head independent review of PR #24
-**State:** STATICALLY VERIFIED / NOT RUNTIME VERIFIED
-
-Review recorded as GitHub PR review `5195904550` against exact head `ac208a07c40e99ee1c1f70f67a1a857d8207fa6e`.
-
-Verified statically:
-- requested scope now filters all active same-franchise memberships rather than selecting first row;
-- zero matches remains unauthorized;
-- more than one active same-franchise match fails closed with `AMBIGUOUS_FRANCHISE_MEMBERSHIP`;
-- regression test uses conflicting owner/manager duplicate rows;
-- bounded change touches only tenancy helper + test.
-
-Disposition: correct bounded repair for the identified ambiguity. No approval/merge-ready/GREEN claim because exact-head runtime evidence is absent.
-
-### VB-FR-APP-29 — Exact-head automation evidence
-**State:** BLOCKED / NONE
-
-For PR #24 head `ac208a0...`:
-- pull-request workflow runs: none;
-- combined statuses/checks: zero;
-- independent static reviewer evidence exists, but no runnable pass evidence.
-
-Do not promote PR #24 beyond static PARTIAL until exact-head tests/check/build are reproduced.
-
-## Replenished P0 application lane
-
-### VB-FR-APP-30 — Consume persistence successor
+### VB-FR-APP-33 — Persistence successor watch
 **State:** WAITING ON MANUS IMPLEMENTATION
 
-On the next trigger, scan PR #6 plus new branches/PRs first. If a successor exists, inspect immediately for:
-- canonical `franchises` entity;
-- `franchise_memberships` with role/status/effective windows;
-- database uniqueness/constraint strategy for duplicate active authority evidence;
-- server-side membership loading from authenticated identity;
-- immutable authorized franchise context;
-- no client franchise ID authority;
-- router/service/repository operations scoped by authorized `franchiseId`;
-- A cannot read/create/update/delete B persistence tests;
-- inactive/expired/future membership denial through real request path;
-- unauthorized scope switching denial;
-- safe legacy migration/backfill without fabricated ownership or transactions.
+Next trigger must scan PR #6 and all new application branches/PRs first. Any successor is immediately reviewed for canonical `franchises`, `franchise_memberships`, role/status/effective windows, duplicate-authority constraints, authenticated server-side membership loading, immutable authorized context, no client franchise authority, franchise-scoped read/write/create/update/delete operations, genuine A/B persistence isolation, inactive/expired/future denial, unauthorized scope switching, and safe legacy migration/backfill.
 
-### VB-FR-APP-31 — Exact-head successor assurance
-**State:** BLOCKED behind VB-FR-APP-30
-
-Require frozen install, focused tenancy tests, full test suite, typecheck/check, production build, debug/telemetry production-boundary inspection and independent reproduction where practical. Historical predecessor results do not count.
-
-### VB-FR-APP-32 — Commerce implementation release gate
+### VB-FR-APP-34 — Exact-head assurance
 **State:** BLOCKED
 
-No transactional catalogue/order/checkout expansion until persistence-backed A/B isolation plus exact-head assurance are demonstrated. Pure helper hardening is necessary but insufficient.
+Require frozen install, focused tenancy tests, full tests, typecheck/check, production build, debug/telemetry boundary inspection and independent reproduction on the exact successor head. Historical predecessor GREEN does not transfer.
 
-## Executed Gate 3 commercial lane
+### VB-FR-APP-35 — Commerce implementation release
+**State:** BLOCKED
 
-### VB-FR-COM-05 — Fresh Kelly's public catalogue evidence
+Do not expand transactional catalogue/order/checkout implementation until persistence-backed A/B isolation and exact-head assurance pass.
+
+## Executed Gate 3 lane
+
+### VB-FR-COM-07 — Kelly's Sunshine Coast delivery capability
+**State:** VERIFIED CAPABILITY / FREIGHT RATE UNKNOWN
+
+Fresh public supplier evidence establishes that Kelly's:
+- supports wholesale/trade accounts for registered businesses;
+- states account deliveries across South East Queensland and Northern NSW;
+- explicitly includes Sunshine Coast service in current convenience/wholesale material;
+- states standard local business delivery within two business days subject to suburb;
+- offers local pickup from 215 Jackson Rd, Sunnybank Hills;
+- states public catalogue prices include GST.
+
+This materially improves supplier viability: Kelly's is now classified **DELIVERY-CAPABLE / FREIGHT RATE UNKNOWN** for the Sunshine Coast lane. It does not prove the actual freight charge/allocation for the opening location or business-account net pricing.
+
+Durable evidence: Issue #16 comment `5673395846`.
+
+### VB-FR-COM-08 — Expand current candidate evidence
 **State:** COMPLETE AS PRICED / NOT VERIFIED
 
-Issue #16 comment `5661639280` records current public evidence checked 2026-09-14. These values are catalogue evidence only; account pricing and Sunshine Coast freight remain unverified.
+Additional public catalogue candidates recorded on Issue #16:
 
-| Candidate | Supplier ref | Public carton price inc GST | Derived ex GST carton | Derived ex GST unit | Gate 3 state |
-|---|---|---:|---:|---:|---|
-| Red Bull Energy Drink 250ml x24 | Kelly's SKU 106 | $47.69 special | ~$43.35 | ~$1.81 | PRICED / PROMO-QUARANTINED |
-| Red Bull Sugar Free 250ml x24 | Kelly's SKU 128 | $59.68 | ~$54.25 | ~$2.26 | PRICED / FREIGHT UNKNOWN |
-| Red Bull Zero 250ml x24 | Kelly's SKU 299 | $59.68 | ~$54.25 | ~$2.26 | PRICED / FREIGHT UNKNOWN |
-| Red Bull Energy Drink 473ml x12 | Kelly's public catalogue | $46.53 | ~$42.30 | ~$3.53 | PRICED / FREIGHT UNKNOWN |
-| Red Bull Tropical 250ml x12 | Kelly's public catalogue | $23.81 | ~$21.65 | ~$1.80 | PRICED / FREIGHT UNKNOWN |
-| Cobs LSSS Popcorn 30g x16 | Kelly's public catalogue | $17.60 | $16.00 | $1.00 | PRICED / FREIGHT UNKNOWN |
-| Byron Bay Triple Choc Cookie 60g x12 | Kelly's public catalogue | $39.55 | ~$35.95 | ~$3.00 | PRICED / FREIGHT UNKNOWN |
+| Candidate | Current public carton price inc GST | Commercial note | Gate 3 state |
+|---|---:|---|---|
+| Coca-Cola Classic Cans 375ml x24 | $41.91 | 6+1 deal | PRICED / DEAL-DEPENDENT / FREIGHT UNKNOWN |
+| Coca-Cola Zero Sugar Cans 375ml x24 | $41.91 | SKU 389; 6+1 deal | PRICED / DEAL-DEPENDENT / FREIGHT UNKNOWN |
+| Mount Franklin Still Water 600ml x24 | $32.60 | 5+1 deal | PRICED / DEAL-DEPENDENT / FREIGHT UNKNOWN |
+| Monster Original 500ml x24 | $85.30 | 5+1 deal | PRICED / DEAL-DEPENDENT / FREIGHT UNKNOWN |
+| Monster Ultra White 500ml x24 | $85.30 | 5+1 deal | PRICED / DEAL-DEPENDENT / FREIGHT UNKNOWN |
 
-Evidence notes:
-- Kelly's product pages state Australia-wide shipping, but no order-specific Sunshine Coast freight allocation was evidenced in this cycle.
-- Red Bull 250ml x24 is explicitly marked limited-time/special and cannot anchor normal launch economics.
-- None of these candidates advances to VERIFIED/APPROVED without business-account price plus landed freight evidence.
+Deal/free-carton benefits must be modelled separately from normal base-case economics. None advances to VERIFIED/APPROVED.
 
-### VB-FR-COM-06 — Gate 3 next evidence target
-**State:** ACTIVE
+### VB-FR-COM-09 — Landed-cost closure
+**State:** ACTIVE / BLOCKED ON EXACT RATE EVIDENCE
 
-Next safe commercial work, if tenancy does not move:
-1. obtain independently accessible normal-price evidence for promo-sensitive candidates;
-2. inspect Kelly's delivery/freight terms for a usable Sunshine Coast landed-cost rule if publicly available;
-3. expand current-price evidence across sealed snacks, soft drinks, water and shelf-stable convenience lines;
-4. keep every row PRICED until account/freight evidence crosses the VERIFIED threshold;
-5. reject/quarantine rows dependent on clearance, unknown freight or unreliable availability.
+Next commercial acceptance target:
+1. exact business-account price for representative launch cartons;
+2. exact freight rule/charge to the opening Sunshine Coast delivery location or a documented zero/flat delivery condition;
+3. landed unit cost;
+4. normal-case retail and contribution before promotions;
+5. separate promotion/free-carton sensitivity;
+6. opening quantity/reorder point;
+7. dated evidence and VERIFIED/REJECTED disposition.
 
-No supplier contact or spend without owner authorization.
+Do not contact suppliers or spend without owner authorization. If exact freight cannot be independently obtained, preserve FREIGHT UNKNOWN rather than estimating it into launch economics.
 
 ## Secondary lanes
 
-### VB-FR-TERR-03 — Territory
-**State:** HOLD / SYNTHETIC ONLY
+### VB-FR-TERR-04 — Territory
+**State:** HOLD / SYNTHETIC
 
-PR #22 remains downstream fixture hardening. Do not represent it as production routing or consume P0 capacity.
+PR #22 remains fixture evidence only; no production-routing claim.
 
-### VB-FR-GOV-04 — Royalty
+### VB-FR-GOV-05 — Royalty
 **State:** OWNER/LEGAL DEPENDENT
 
-Issue #21 remains blocked until authoritative breakeven threshold, turnover basis, refund/discount/tax/exclusion treatment and legal/commercial validation exist. Keep the proposed 3%/6% logic configurable/non-production.
+Issue #21 remains blocked pending authoritative breakeven threshold, turnover basis, refund/discount/tax/exclusion treatment and legal/commercial validation. Keep proposed 3%/6% configurable/non-production.
 
-## Verified cycle disposition
+## Verified disposition
 
 - **Tenancy:** RED.
-- **PR #24 helper repair:** independently statically verified on exact head; runtime/CI absent.
-- **Persistence-backed A/B isolation:** absent / P0 blocking.
+- **PR #24 helper repair:** static evidence only; runtime/CI still required.
+- **Persistence A/B isolation:** absent / P0 blocking.
 - **Commerce implementation:** BLOCKED by tenancy.
-- **Gate 3:** advanced with seven current catalogue-priced candidates, none falsely promoted to VERIFIED.
+- **Kelly's delivery capability to Sunshine Coast lane:** VERIFIED at capability level; exact freight rate remains UNKNOWN.
+- **Gate 3 candidate pool:** expanded; all current public-price rows remain PRICED, not VERIFIED.
 - **Territory:** synthetic/downstream.
-- **Royalty:** owner/legal blocked.
 - **Merge/deploy/migration/provider activation:** not authorized and not performed.
 
 ## Next trigger
 
-Fresh-scan all heads before acting. If a Manus persistence successor exists, consume the batch on exact-head tenancy review and assurance. If PR #24 gains runtime evidence, verify it but do not merge/ready autonomously. If neither moves, deepen Gate 3 landed-cost evidence and expand the candidate range while preserving strict RESEARCH/PRICED/VERIFIED distinctions.
+Fresh-scan all heads before acting. If Manus tenancy moves, switch immediately to exact-head persistence review. Otherwise continue Gate 3 by seeking exact landed-cost evidence and broadening the 40–60 SKU candidate range while strictly separating normal pricing from promotions.
 
 A batch succeeds only when it reduces a real blocker or creates independently usable evidence; activity volume alone is not progress.
